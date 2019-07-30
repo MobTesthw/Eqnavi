@@ -42,7 +42,7 @@ import java.util.Calendar;
 
 public class ControllerMainWindow {
     //    private final Set<KeyCode> pressedKeys = new HashSet<>();
-    @FXML    private GridPane treeView;
+    @FXML    private TreeView treeView;
     @FXML    private GridPane gridPaneMain;
     @FXML    private Pane viewportPane;
     @FXML    private SplitPane MainSplitPane;
