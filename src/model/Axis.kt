@@ -8,70 +8,70 @@ import javafx.scene.shape.Line
 import javafx.scene.text.Text
 import javafx.scene.transform.Rotate
 
-class Axis() {
-    val axisGroup=Group()
+class Axis(sceneBounds:Double) {
 
+    private val labelsOnAxis = 10.0
+    private val axisLabelOffset = 10.0
+    private val axisLength = sceneBounds * 2
+    private val axisRadius = axisLabelOffset / 2
+    private val gridDivision = 20.0
 
-    val axeX = Cylinder(axesRadius, axesLength)
-    val axeY = Cylinder(axesRadius, axesLength)
-    val axeZ = Cylinder(axesRadius, axesLength)
+    val axis = Group()
+    val axisLabels = Group()
+    val grid = Group()
 
-//        Line lineX = new Line(-);
-    val gridIterator = sceneBounds / gridDivision
-    run {
-        var i = 0
-        while (i < gridDivision) {
-            grid.getChildren().addAll(
-                    Line(i * gridIterator, (-sceneBounds).toDouble(), i * gridIterator, sceneBounds.toDouble()),
-                    Line((-sceneBounds).toDouble(), i * gridIterator, sceneBounds.toDouble(), i * gridIterator)
-            )
-            i++
+    init {
+
+        val axisX = Cylinder(axisRadius, axisLength)
+        val axisY = Cylinder(axisRadius, axisLength)
+        val axisZ = Cylinder(axisRadius, axisLength)
+        axis.children.addAll(axisX,axisY,axisZ)
+
+        val gridIterator = sceneBounds / gridDivision
+
+        for(i in 0 .. gridDivision.toInt())  {
+                grid.children.addAll(
+                        Line(i * gridIterator, (-sceneBounds), i * gridIterator, sceneBounds),
+                        Line((-sceneBounds), i * gridIterator, sceneBounds, i * gridIterator)
+                )
         }
+
+        val materialX = PhongMaterial()
+        val materialY = PhongMaterial()
+        val materialZ = PhongMaterial()
+
+
+        axisX.translateX = axisX.height / 2
+        axisX.transforms.addAll(Rotate(90.0, Rotate.Z_AXIS))
+        materialX.specularColor = Color.rgb(255, 255, 0)
+        materialX.diffuseColor = Color.rgb(255, 255, 125)
+        axisX.id = "X axis"
+        axisX.material = materialX
+
+        axisY.translateY = axisY.height / 2
+        materialY.specularColor = Color.rgb(0, 0, 255)
+        materialY.diffuseColor = Color.rgb(125, 125, 255)
+        axisY.id = "Y axis"
+        axisY.material = materialY
+
+        axisZ.translateZ = axisZ.height / 2
+        axisZ.transforms.addAll(Rotate(90.0, Rotate.X_AXIS))
+        materialZ.specularColor = Color.rgb(255, 0, 0)
+        materialZ.diffuseColor = Color.rgb(255, 125, 125)
+        axisZ.id = "Z axis"
+        axisZ.material = materialZ
+
+        //Labels Tick Marks
+        var i = 0
+        while (i < axisLength)
+        {
+            axisLabels.children.add(Text(i.toDouble(), axisLabelOffset * 4, "x $i : 0"))
+            axisLabels.children.add(Text(axisLabelOffset * 4, i.toDouble(), "y $i : 0"))
+            val text = Text(axisLabelOffset * 4, axisLabelOffset * 4, "Z 0 : 0 $i")
+            text.translateZ = i.toDouble()
+            axisLabels.children.add(text)
+            i += (axisLength / labelsOnAxis).toInt()
+        }
+
     }
-
-    val materialX = PhongMaterial()
-    val materialY = PhongMaterial()
-    val materialZ = PhongMaterial()
-
-    axeX.translateX = axeX.height / 2
-    axeX.transforms.addAll(Rotate(90.0, Rotate.Z_AXIS))
-    materialX.specularColor = Color.rgb(255, 255, 0)
-    materialX.diffuseColor = Color.rgb(255, 255, 125)
-    axeX.id = "X axis"
-    axeX.material = materialX
-
-    axeY.translateY = axeY.height / 2
-    materialY.specularColor = Color.rgb(0, 0, 255)
-    materialY.diffuseColor = Color.rgb(125, 125, 255)
-    axeY.id = "Y axis"
-    axeY.material = materialY
-
-    axeZ.translateZ = axeZ.height / 2
-    axeZ.transforms.addAll(Rotate(90.0, Rotate.X_AXIS))
-    materialZ.specularColor = Color.rgb(255, 0, 0)
-    materialZ.diffuseColor = Color.rgb(255, 125, 125)
-    axeZ.id = "Z axis"
-    axeZ.material = materialZ
-
-//        //Aim
-//        Line middleHorizontalLine = new Line(viewportPane.getWidth()/2,0,viewportPane.getWidth()/2,viewportPane.getHeight());
-//        Line middleVerticalLine = new Line(0,viewportPane.getHeight()/2,viewportPane.getWidth(),viewportPane.getHeight()/2);
-//        aim.getChildren().addAll(middleHorizontalLine,middleVerticalLine);
-//        viewportPane.getChildren().addAll(aim);
-    //Grid
-
-    //Labels Tick Marks
-    var i = 0
-    while (i < axesLength) {
-        axesLabels.getChildren().add(Text(i.toDouble(), axesLabelOffset * 4, "x $i : 0"))
-        axesLabels.getChildren().add(Text(axesLabelOffset * 4, i.toDouble(), "y $i : 0"))
-        val text = Text(axesLabelOffset * 4, axesLabelOffset * 4, "Z 0 : 0 $i")
-        text.translateZ = i.toDouble()
-        axesLabels.getChildren().add(text)
-        i += (axesLength / labelsOnAxes).toInt()
-    }
-
-    return Group(axeX, axeY, axeZ, axesLabels, grid)
-
-
 }

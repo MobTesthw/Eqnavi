@@ -130,14 +130,11 @@ public class ControllerMainWindow {
     private double viewportHeight,viewPortWidth;
     private double cameraInitX =0, cameraInitY =0, cameraInitZ =-500;
     private double cameraInitAngleX =0, cameraInitAngleY =0, cameraInitAngleZ =0;
-    private double gridDivision=20;
+
 
     private Node selectedNode;
 
     private int sceneBounds=1000;
-    //Axis
-    private double /*boundX=500,boundY=500,boundZ=500,*/ labelsOnAxes =10, axesLabelOffset =10;
-    private double axesLength = sceneBounds*2, axesRadius= axesLabelOffset /2;
 
     private double rotateIncrement =5, shiftIncrement=10;
     private Rotate    cameraRotateX = new Rotate(0, Rotate.X_AXIS);
@@ -151,16 +148,16 @@ public class ControllerMainWindow {
     private Rotate    nodeRotateZ = new Rotate(0, Rotate.Z_AXIS);
     private Translate nodeTranslate=new Translate(0, 0, 0);
 
-    private Group axes=new Group();
-    private Group axesLabels=new Group();
-    private Group aim=new Group();
-    private Group grid=new Group();
+
+
+
     private PerspectiveCamera perspectiveCamera =new PerspectiveCamera(true);
 //    private ParallelCamera parallelCamera=new ParallelCamera();
 //    private Group camerasGroup;
     private Group root= new Group();
     private Group content= new Group();//Group for content of the scene
     private SubScene subScene;
+    private Axis axis = new Axis(sceneBounds);
 
     //Initialization
     public void initialize() {
@@ -210,11 +207,11 @@ public class ControllerMainWindow {
 //        parallelCamera.setId("Parallel camera");
         //camerasGroup=new Group(perspectiveCamera,parallelCamera);
 
-        //Axes
-        axes=InitAxes();
+
 
         content.getChildren().clear();
-        root.getChildren().addAll(perspectiveCamera,axes,content);
+
+        root.getChildren().addAll(perspectiveCamera,axis.getAxis(), axis.getAxisLabels(),axis.getGrid(),content);
         //SubScene
         subScene= new SubScene(root, 500, 400, true,SceneAntialiasing.BALANCED);
         viewportPane.getChildren().clear();
@@ -247,10 +244,10 @@ public class ControllerMainWindow {
     @FXML
     private void DrawAxes (){
         if(CB_ShowAxes.isSelected()){
-            root.getChildren().addAll(axes);
+            root.getChildren().addAll(axis.getAxis());
         }
         else
-            root.getChildren().removeAll(axes);
+            root.getChildren().removeAll(axis.getAxis());
     }
     @FXML
     private void BtnGoClick(ActionEvent event) {
@@ -369,61 +366,7 @@ public class ControllerMainWindow {
     }
 
 
-    private Group InitAxes(){
-        Cylinder axeX = new Cylinder(axesRadius,axesLength);
-        Cylinder axeY = new Cylinder(axesRadius,axesLength);
-        Cylinder axeZ = new Cylinder(axesRadius,axesLength);
 
-//        Line lineX = new Line(-);
-        double gridIterator=sceneBounds/gridDivision;
-        for (int i=0;i<gridDivision;i++)
-            grid.getChildren().addAll(
-                    new Line(i*gridIterator,-sceneBounds,i*gridIterator,sceneBounds),
-                    new Line(-sceneBounds,i*gridIterator,sceneBounds,i*gridIterator)
-            );
-
-        final PhongMaterial materialX = new PhongMaterial();
-        final PhongMaterial materialY = new PhongMaterial();
-        final PhongMaterial materialZ = new PhongMaterial();
-
-        axeX.setTranslateX(axeX.getHeight()/2);
-        axeX.getTransforms().addAll(new Rotate(90,Rotate.Z_AXIS));
-        materialX.setSpecularColor(Color.rgb(255,255,0));
-        materialX.setDiffuseColor(Color.rgb(255,255,125));
-        axeX.setId("X axis");
-        axeX.setMaterial(materialX);
-
-        axeY.setTranslateY(axeY.getHeight()/2);
-        materialY.setSpecularColor(Color.rgb(0,0,255));
-        materialY.setDiffuseColor(Color.rgb(125,125,255));
-        axeY.setId("Y axis");
-        axeY.setMaterial(materialY);
-
-        axeZ.setTranslateZ(axeZ.getHeight()/2);
-        axeZ.getTransforms().addAll(new Rotate(90,Rotate.X_AXIS));
-        materialZ.setSpecularColor(Color.rgb(255,0,0));
-        materialZ.setDiffuseColor(Color.rgb(255,125,125));
-        axeZ.setId("Z axis");
-        axeZ.setMaterial(materialZ);
-
-//        //Aim
-//        Line middleHorizontalLine = new Line(viewportPane.getWidth()/2,0,viewportPane.getWidth()/2,viewportPane.getHeight());
-//        Line middleVerticalLine = new Line(0,viewportPane.getHeight()/2,viewportPane.getWidth(),viewportPane.getHeight()/2);
-//        aim.getChildren().addAll(middleHorizontalLine,middleVerticalLine);
-//        viewportPane.getChildren().addAll(aim);
-        //Grid
-
-        //Labels Tick Marks
-        for(int i=0;i<axesLength;i+=axesLength/ labelsOnAxes) {
-            axesLabels.getChildren().add(new Text(i, axesLabelOffset * 4, "x " + i + " : 0"));
-            axesLabels.getChildren().add(new Text(axesLabelOffset * 4, i, "y " + i + " : 0"));
-            Text text=                   new Text(axesLabelOffset * 4, axesLabelOffset * 4, "Z 0 :" + " 0 " + i);
-            text.setTranslateZ(i);
-            axesLabels.getChildren().add(text);
-        }
-
-        return new Group(axeX,axeY,axeZ,axesLabels,grid);
-    }
 
     @FXML
     private void BtnSaveClick(ActionEvent event) {
@@ -629,11 +572,9 @@ public class ControllerMainWindow {
 
         //Set listener to all camera transforms
         ObservableList<Transform> observableList = FXCollections.observableList(subScene.getCamera().getTransforms());
-            for(int i=0;i<observableList.size();i++){
-                observableList.get(i).setOnTransformChanged(transformChangedEvent -> {
-                    ShowCameraTransform();});
-//                ta.appendText(observableList.get(i).toString());
-            }
+        observableList.forEach(node->{node.setOnTransformChanged(transformChangedEvent -> ShowCameraTransform());});
+
+
 
 
         MSN_cameraX.textField.setOnKeyReleased(eh->cameraTranslate.setX(MSN_cameraX.getValue()));
