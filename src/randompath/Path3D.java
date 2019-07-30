@@ -1,4 +1,4 @@
-package RandomPath;
+package randompath;
 
 public class Path3D {
 

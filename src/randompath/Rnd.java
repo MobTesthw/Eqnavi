@@ -1,4 +1,4 @@
-package RandomPath;
+package randompath;
 
 //import javafx.scene.paint.Color;
 import java.awt.*;

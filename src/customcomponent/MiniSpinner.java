@@ -1,9 +1,8 @@
-package CustomComponent;
+package customcomponent;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -14,7 +13,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.StringConverter;
-import org.w3c.dom.events.MouseEvent;
 
 
 import java.awt.*;

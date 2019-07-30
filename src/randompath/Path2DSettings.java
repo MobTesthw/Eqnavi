@@ -1,4 +1,4 @@
-package RandomPath;
+package randompath;
 // Iteration
 //Bounds sizes
 //Color span

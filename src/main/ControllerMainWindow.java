@@ -1,7 +1,7 @@
 package main;
 
-import CustomComponent.MiniSpinner;
-import RandomPath.RndFX;
+import customcomponent.MiniSpinner;
+import randompath.RndFX;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -162,7 +162,7 @@ public class ControllerMainWindow {
 
     //Initialization
     public void initialize() {
-        SPN_Iteration.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000,10,2)     );
+        SPN_Iteration.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000,10,2)      );
         SPN_SceneBounds.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000,100,100) );
 
         //Camera properties
@@ -549,7 +549,7 @@ public class ControllerMainWindow {
             printNodeProperties(e.getPickResult().getIntersectedNode());
 
             //Show node properties statusbar if node selected
-            if(selectedNode.getId()==viewportPane.getId()){
+            if(selectedNode.getId().equals(viewportPane.getId())){
                 HB_nodeStatusBar.setVisible(false);
                 printNodeProperties(perspectiveCamera);
             }
@@ -600,9 +600,9 @@ public class ControllerMainWindow {
         w1=798.4;
         pos1=0.785;
         //System.out.println("Start ToolSplitPane.getWidth: " +ToolSplitPane.getWidth());
-        ChangeListener<Number> ToolSplitPaneSizeListener = (observable, oldValue, newValue) -> {
+        ChangeListener<Number> ToolSplitPaneSizeListener = (observable, oldValue, newValue) ->
             ToolSplitPane.setDividerPositions(1-w1*(1-pos1)/ ToolSplitPane.getWidth());
-        };
+
         ToolSplitPane.widthProperty().addListener(ToolSplitPaneSizeListener);
         //Slider camera Field of View
         S_FieldOfView.valueProperty().addListener(new ChangeListener<Number>() {
