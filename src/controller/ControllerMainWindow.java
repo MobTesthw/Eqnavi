@@ -1,6 +1,7 @@
 package controller;
 
 import customcomponent.MiniSpinner;
+import model.Axis;
 import randompath.RndFX;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -211,6 +212,7 @@ public class ControllerMainWindow {
 
         //Axes
         axes=InitAxes();
+
         content.getChildren().clear();
         root.getChildren().addAll(perspectiveCamera,axes,content);
         //SubScene
@@ -365,6 +367,8 @@ public class ControllerMainWindow {
 //        subScene.setCamera(parallelCamera);
         subScene.setCamera(perspectiveCamera);
     }
+
+
     private Group InitAxes(){
         Cylinder axeX = new Cylinder(axesRadius,axesLength);
         Cylinder axeY = new Cylinder(axesRadius,axesLength);
