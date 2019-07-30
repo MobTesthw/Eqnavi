@@ -28,11 +28,13 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints />
-      <RowConstraints minHeight="10.0" />
    </rowConstraints>
    <children>
-      <SplitPane dividerPositions="0.0" prefHeight="160.0" prefWidth="200.0">
+      <SplitPane dividerPositions="0.0" prefHeight="542.0" prefWidth="800.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -41,7 +43,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane fx:id="MainSplitPane" dividerPositions="0.9" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane fx:id="MainSplitPane" dividerPositions="0.9310221586847748" orientation="VERTICAL" prefHeight="521.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
@@ -111,15 +113,15 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-                  <VBox prefHeight="0.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <HBox fx:id="HB_nodeStatusBar" prefHeight="100.0" prefWidth="200.0" visible="false" />
-                        <HBox fx:id="HB_CameraStatusBar" alignment="CENTER_LEFT" />
-                     </children>
-                  </VBox>
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
+      <VBox prefHeight="36.0" prefWidth="800.0" GridPane.rowIndex="1">
+         <children>
+            <HBox fx:id="HB_nodeStatusBar" prefHeight="100.0" prefWidth="200.0" visible="false" />
+            <HBox fx:id="HB_CameraStatusBar" alignment="CENTER_LEFT" />
+         </children>
+      </VBox>
    </children>
 </GridPane>

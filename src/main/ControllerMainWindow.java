@@ -550,7 +550,7 @@ public class ControllerMainWindow {
             printNodeProperties(e.getPickResult().getIntersectedNode());
 
             //Show node properties statusbar if node selected
-            if(selectedNode.getId().equals(viewportPane.getId())){
+            if(selectedNode.getId()==viewportPane.getId()){
                 HB_nodeStatusBar.setVisible(false);
                 printNodeProperties(perspectiveCamera);
             }
