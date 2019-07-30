@@ -1,0 +1,554 @@
+Viewport sizes changed to w: 0.0 h: 0.0
+Camera: Perspective camera is selected..
+Viewport sizes changed to w: 0.0 h: 0.0
+Viewport sizes changed to w: 623.0 h: 483.0
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Viewport sizes changed to w: 624.0 h: 481.0
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Pane   x: 0  y: 0  z: 0  viewportPane
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Text[text="0,2", x=0.0, y=13.7, alignment=LEFT, origin=BASELINE, boundsType=LOGICAL_VERTICAL_CENTER, font=Font[name=System Regular, family=System, style=Regular, size=12.0], fontSmoothingType=LCD, fill=0x333333ff]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$1@6ac440cf[styleClass=increment-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_ENTERED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_DRAGGED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_CLICKED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Pane@6b50226e  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_ENTERED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_MOVED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: MOUSE_EXITED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: SpinnerSkin$2@7604deed[styleClass=decrement-arrow-button]  type: MOUSE_EXITED_TARGET
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_PRESSED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_TYPED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: FakeFocusTextField@37657725[styleClass=text-input text-field]  type: KEY_RELEASED
+Source Spinner[id=SPN_CameraX, styleClass=spinner]  target: Spinner[id=SPN_CameraX, styleClass=spinner]  type: KEY_RELEASED

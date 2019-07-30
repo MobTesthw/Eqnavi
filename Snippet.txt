@@ -1,0 +1,12 @@
+// Event Filter
+//        viewportPane.addEventHandler(ActionEvent.ANY, a->ta.appendText("Action event type: "+a.getEventType()+"  source: "+a.getSource()+" target: "+a.getTarget()+"  string: "+a.toString()+"  hash: "+a.hashCode()+"  class: "+a.getClass()+"\n") );
+//        viewportPane.addEventHandler(WindowEvent.ANY,a->ta.appendText( "Window event type:"+a.getEventType()+"  source: "+a.getSource()+" target: "+a.getTarget()+"  string: "+a.toString()+"  hash: "+a.hashCode()+"  class: "+a.getClass()+"\n") );
+//        viewportPane.addEventHandler(InputEvent.ANY, a->ta.appendText( "Input event type:"+a.getEventType()+"  source: "+a.getSource()+" target: "+a.getTarget()+"  string: "+a.toString()+"  hash: "+a.hashCode()+"  class: "+a.getClass()+"\n") );
+        //Working
+//        SPN_CameraX.addEventFilter(InputEvent.ANY, eh->{
+//            if(eh.getEventType().toString()== "MOUSE_CLICKED"||eh.getEventType().toString()=="KEY_RELEASED") {
+//                cameraTranslate.setX(SPN_CameraX.getValue());
+//                ta.appendText("Source " + eh.getSource().toString() + "  target: " + eh.getTarget() + "  type: " + eh.getEventType() + "\n");
+//                ta.appendText("Value"+SPN_CameraX.getValue()+"  this: "+this.toString());
+//            }
+//        });

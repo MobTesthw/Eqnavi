@@ -1,0 +1,48 @@
+Form creation
+css loading
+Viewport
+defining:
+	Axes
+	Camera
+	Camera List
+	Camera Transformations
+	Group root
+Initialize:
+	Controls:
+		Iteration
+		SplitPane sizes
+	Init:
+		clear:
+			root
+			SubScene
+			
+		Viewport
+			Define Subcene Sizes
+			
+		Axes
+		Cameras
+	Registering Listenars
+	Go
+Go
+		Creating 
+
+
+1. How to get initial component (SplitPane) Width and Divider position just scene build.
+2. update scene after resize
+
+Issue
+Camera rotating pivot
+camera rotation and positioning
+
+camera (perspective and parallel selecttion)
+Random path
+
+
+
+
+
+added
+Camera reset 
+axes
+Picked node description append to Text Area
+

@@ -1,0 +1,12 @@
+                                          <HBox alignment="CENTER" layoutX="173.0" layoutY="142.0" scaleX="5.0" scaleY="5.0">
+                                             <children>
+                                                <StackPane fx:id="CameraX_SP" prefHeight="26.0" prefWidth="15.0">
+                                                   <children>
+                                                      <Label fx:id="CameraX_L_Label" alignment="CENTER" text=" X:" textAlignment="CENTER" />
+                                                      <Label fx:id="CameraX_L_Minus" alignment="CENTER" contentDisplay="CENTER" opacity="0.0" text="-" textAlignment="CENTER" />
+                                                      <Label fx:id="CameraX_L_plus" alignment="CENTER" opacity="0.0" text="+" />
+                                                   </children>
+                                                </StackPane>
+                                                <TextField fx:id="CameraX_TF" prefHeight="26.0" prefWidth="23.0" text="0" />
+                                             </children>
+                                          </HBox>
