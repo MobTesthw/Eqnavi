@@ -1,4 +1,4 @@
-package main;
+package controller;
 
 import customcomponent.MiniSpinner;
 import randompath.RndFX;

@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="gridPaneMain" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ControllerMainWindow">
+<GridPane fx:id="gridPaneMain" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMainWindow">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
