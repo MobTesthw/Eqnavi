@@ -3,7 +3,6 @@ package controller;
 import customcomponent.MiniSpinner;
 import model.Axis;
 import model.EnvironmentNodes;
-import randompath.RndFX;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,16 +23,12 @@ import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
-import javafx.scene.shape.Polygon;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.stage.Popup;
+import view.CameraTransform;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -72,32 +67,6 @@ public class ControllerMainWindow {
     @FXML    private HBox HB_CameraStatusBar;
     @FXML    private HBox HB_nodeStatusBar;
 
-    /*
-    Issue:
-    Z rotation local pivot
-    MiniSpinner:
-        V Caret jumping while editing
-        V Change on scroll
-        Round Value 0
-        Try buttons instead of Labels
-    ViewPort:
-        Popup
-        orientation 550 offset
-        add aim and grid
-    Scene content to xml
-    selected element:
-        Modifying
-        Display properties
-    screenshot:
-        File Choosing to save
-        screenshot resolution
-    Initial information
-    - Boundaries
-    subScene AntiAliasing
-    Aligning camera and node properties
-    */
-
-
 
     private MiniSpinner MSN_cameraX;
     private MiniSpinner MSN_cameraY;
@@ -117,9 +86,6 @@ public class ControllerMainWindow {
     private MiniSpinner MSN_nodeAngleY;
     private MiniSpinner MSN_nodeAngleZ;
 
-//    private Popup popupViewPort;
-
-
     private double orgSceneX, orgSceneY;
     private double orgTranslateX, orgTranslateY;
     private double mousePosX,mousePosY;
@@ -127,22 +93,19 @@ public class ControllerMainWindow {
     private double mouseOldY=0;
     private double nearFlip=0.1;
     private double farFlip=50000;
-    private double cameraZoomFactor = 5;
+
     private double viewportHeight,viewPortWidth;
-    private double cameraInitX =0, cameraInitY =0, cameraInitZ =-500;
+
     private double cameraInitAngleX =0, cameraInitAngleY =0, cameraInitAngleZ =0;
 
-
     private Node selectedNode;
-
     private int sceneBounds=1000;
-
     private double rotateIncrement =5, shiftIncrement=10;
     private Rotate    cameraRotateX = new Rotate(0, Rotate.X_AXIS);
     private Rotate    cameraRotateY = new Rotate(0, Rotate.Y_AXIS);
     private Rotate    cameraRotateZ = new Rotate(0, Rotate.Z_AXIS);
-    private Translate cameraTranslate=new Translate(cameraInitX, cameraInitY, cameraInitZ);
-//    private final double TURN_FACTOR = 0.5;
+
+//    private Translate cameraTranslate=new Translate(cameraInitX, cameraInitY, cameraInitZ);
 
     private Rotate    nodeRotateX = new Rotate(0, Rotate.X_AXIS);
     private Rotate    nodeRotateY = new Rotate(0, Rotate.Y_AXIS);
@@ -160,6 +123,7 @@ public class ControllerMainWindow {
     private SubScene subScene;
     private Axis axis = new Axis(sceneBounds);
     private EnvironmentNodes environmentNodes ;
+    private CameraTransform cameraTransform =new CameraTransform();;
 
     //Initialization
     public void initialize() {
@@ -205,9 +169,8 @@ public class ControllerMainWindow {
 
 
         perspectiveCamera.setId("Perspective Camera");
-
 //        parallelCamera.setId("Parallel camera");
-        //camerasGroup=new Group(perspectiveCamera,parallelCamera);
+//        camerasGroup=new Group(perspectiveCamera,parallelCamera);
 
 
 
@@ -220,6 +183,8 @@ public class ControllerMainWindow {
         SetViewportSize();
         viewportPane.getChildren().add(subScene);
 
+
+
         //        //Fill camera selector
 //        ComboBox_CameraSelector.getItems().clear();
 //        for(int i=0;i<camerasGroup.getChildren().size();i++){
@@ -228,7 +193,8 @@ public class ControllerMainWindow {
 //        ComboBox_CameraSelector.setValue(perspectiveCamera.getId());
 
         SetSelectedCamera();
-        ResetCamera();
+
+//        ResetCamera();
 
         //Register Events and listeners
         LookAndFeel();
@@ -236,8 +202,8 @@ public class ControllerMainWindow {
     }
 
     private void SetViewportSize(){
-        viewPortWidth=  viewportPane.getWidth();
-        viewportHeight= viewportPane.getHeight();
+        viewPortWidth =  viewportPane.getWidth();
+        viewportHeight = viewportPane.getHeight();
         subScene.setWidth(viewPortWidth);
         subScene.setHeight(viewportHeight);
 //        ta.appendText("Viewport sizes set to w: "+viewPortWidth+" h: "+viewportHeight+"\n");
@@ -261,43 +227,20 @@ public class ControllerMainWindow {
         environmentNodes= new EnvironmentNodes(sceneBounds,itr);
         content.getChildren().add(environmentNodes.getContent());
 
-        ta.appendText("\n  Calculation finished.. Scene nodes: "+root.getChildren().toArray().toString()+"\n");
+        ta.appendText("\n  Calculation finished.. ? Scene nodes: " /*+root.getChildren().toArray().toString()*/+"\n");
 
     }
     @FXML
     private void BtnDoClick(ActionEvent event){
-//        perspectiveCamera.setRotate(perspectiveCamera.getRotate()+10);
         selectedNode.setRotate(selectedNode.getRotate()+10);
-
 }
 
     @FXML
     private void ResetCamera(){
-        //subScene.setCamera(perspectiveCamera);
-//        Camera camera=subScene.getCamera();
-//        PerspectiveCamera camera =perspectiveCamera;
-        perspectiveCamera.getTransforms().clear();
-
-        cameraRotateX.setAngle(cameraInitAngleX);
-        cameraRotateY.setAngle(cameraInitAngleY);
-        cameraRotateZ.setAngle(cameraInitAngleZ);
-
-        cameraTranslate.setX(cameraInitX);
-        cameraTranslate.setY(cameraInitY);
-        cameraTranslate.setZ(cameraInitZ);
-
-        perspectiveCamera.getTransforms().addAll (cameraTranslate,cameraRotateX, cameraRotateY,cameraRotateZ);
-        perspectiveCamera.setFarClip(farFlip);
-        perspectiveCamera.setNearClip(nearFlip);
+        cameraTransform.reset(perspectiveCamera);
     }
     @FXML
     private void SetSelectedCamera(){
-//        for(int i=0;i<ComboBox_CameraSelector.getItems().size();i++)
-//            if(camerasGroup.getChildren().get(i).getId()==ComboBox_CameraSelector.getValue().toString()){
-////              subScene.setCamera(camerasGroup.getChildren().get(i));
-//                ta.appendText("Camera: "+ camerasGroup.getChildren().get(i).getId()+" is selected..\n");
-//            }
-//        subScene.setCamera(parallelCamera);
         subScene.setCamera(perspectiveCamera);
     }
 
@@ -332,52 +275,7 @@ public class ControllerMainWindow {
     }
     private void LookAndFeel(){
         //Mouse Scroll
-        viewportPane.setOnScroll(e-> {
-
-//            taa.appendText(" Camera X: "+sin(cameraRotateX.getAngle())+"  Y: "+cameraRotateY.getAngle()+"  Z: "+cameraRotateZ.getAngle()+"\n");
-//            double dX=e.getDeltaY()*cameraZoomFactor;
-//            double dY=e.getDeltaY()*cameraZoomFactor;
-//            double dZ=e.getDeltaY()*cameraZoomFactor;
-//
-//            subScene.getCamera().setTranslateZ(subScene.getCamera().getTranslateX()-dX*sin(cameraRotateX.getAngle()));
-//            subScene.getCamera().setTranslateZ(subScene.getCamera().getTranslateY()-dY*sin(cameraRotateY.getAngle()));
-//            subScene.getCamera().setTranslateZ(subScene.getCamera().getTranslateZ()-dZ*sin(cameraRotateZ.getAngle()));
-//            ta.appendText("Scroll dY: "+e.getDeltaY()+" Camera angle X: "+cameraRotateX.getAngle()+"  Y: "+cameraRotateY.getAngle()+"  Z: "+cameraRotateZ.getAngle()+"\n");
-//            ta.appendText(" Camera  sin angle X: "+sin(cameraRotateX.getAngle())+"  Y: "+cameraRotateY.getAngle()+"  Z: "+cameraRotateZ.getAngle()+"\n");
-
-            //Math calculates in radians!!!!!!!
-            double dr,dx,dy,dz;
-            double yaw,roll,pitch;
-            dr=e.getDeltaY()*cameraZoomFactor;
-            pitch=cameraRotateX.getAngle();
-            yaw=cameraRotateY.getAngle();
-            //Converting to radians
-            pitch=pitch*Math.PI/180;
-            yaw=yaw*Math.PI/180;
-
-
-//            dz=dr*Math.cos(yaw);
-//            dy=-dz*Math.tan(pitch);
-//            dx= dr*Math.sin(yaw);
-
-
-//            double alfa, alfa1, rxz;
-//            alfa=-pitch;
-//            alfa1=Math.atan(Math.tan(alfa)/Math.sin(yaw));
-//            rxz=dr*Math.cos(alfa1);
-
-            dz=dr*Math.cos(pitch)*Math.cos(yaw);
-            dx=dr*Math.sin(yaw);
-            dy=-dr*Math.sin(pitch)*Math.cos(yaw);
-
-            ta.appendText("dr: "+dr+"  dx: "+dx+"  dy: "+dy+"  dz: "+dz+" -   pitch: "+pitch+"  yaw: "+yaw+"   - sin( yaw ): "+Math.sin(yaw)+"  cos( yaw ): "+Math.cos(yaw)+"\n");
-
-
-            cameraTranslate.setX(cameraTranslate.getX()+dx);
-            cameraTranslate.setY(cameraTranslate.getY()+dy);
-            cameraTranslate.setZ(cameraTranslate.getZ()+dz);
-//            cameraTranslate.setZ(cameraTranslate.getZ()-e.getDeltaY()*cameraZoomFactor);
-        });
+        viewportPane.setOnScroll(e-> cameraTransform.zoom(perspectiveCamera, e.getDeltaY())  );
         //Mouse pressed
         viewportPane.setOnMousePressed(e-> {
 
@@ -408,10 +306,7 @@ public class ControllerMainWindow {
             else if (e.getButton() == MouseButton.MIDDLE){
                 double dx = (mousePosX - e.getSceneX()) ;
                 double dy = (mousePosY - e.getSceneY());
-//                if (e.isMiddleButtonDown()) {
-//                    cameraRotateX.setPivotX(0);
-//                    cameraRotateY.setPivotY(0);
-//                    cameraRotateZ.setPivotZ(0);
+
                     //For Camera
                     cameraRotateX.setAngle(cameraRotateX.getAngle() +
                             (dy / viewportPane.getHeight() * 360) * (Math.PI / 180));
@@ -441,6 +336,7 @@ public class ControllerMainWindow {
                 HB_nodeStatusBar.setVisible(true);
                 ShowSelectedNodeTransformBar();
 
+                //RMB Selected object properties
                 if(e.getButton()==MouseButton.SECONDARY){
 //          Worked
 //                    final Stage dialog = new Stage();
@@ -501,14 +397,14 @@ public class ControllerMainWindow {
 
         //Set listener to all camera transforms
         ObservableList<Transform> observableList = FXCollections.observableList(subScene.getCamera().getTransforms());
-        observableList.forEach(node->{node.setOnTransformChanged(transformChangedEvent -> ShowCameraTransform());});
+        observableList.forEach(node->node.setOnTransformChanged(transformChangedEvent -> ShowCameraTransform()));
 
 
 
 
-        MSN_cameraX.textField.setOnKeyReleased(eh->cameraTranslate.setX(MSN_cameraX.getValue()));
-        MSN_cameraY.textField.setOnKeyReleased(eh->cameraTranslate.setY(MSN_cameraY.getValue()));
-        MSN_cameraZ.textField.setOnKeyReleased(eh->cameraTranslate.setZ(MSN_cameraZ.getValue()));
+        MSN_cameraX.textField.setOnKeyReleased(eh->perspectiveCamera.setTranslateX(MSN_cameraX.getValue()));
+        MSN_cameraY.textField.setOnKeyReleased(eh->perspectiveCamera.setTranslateY(MSN_cameraY.getValue()));
+        MSN_cameraZ.textField.setOnKeyReleased(eh->perspectiveCamera.setTranslateZ(MSN_cameraZ.getValue()));
         MSN_cameraAngleX.textField.setOnKeyReleased(eh->cameraRotateX.setAngle(MSN_cameraAngleX.getValue()));
         MSN_cameraAngleY.textField.setOnKeyReleased(eh->cameraRotateY.setAngle(MSN_cameraAngleY.getValue()));
         MSN_cameraAngleZ.textField.setOnKeyReleased(eh->{
@@ -553,9 +449,9 @@ public class ControllerMainWindow {
 
     private void ShowCameraTransform(){
         //int caret=0;
-        MSN_cameraX.setText(cameraTranslate.getX());
-        MSN_cameraY.setText(cameraTranslate.getY());
-        MSN_cameraZ.setText(cameraTranslate.getZ());
+        MSN_cameraX.setText(perspectiveCamera.getTranslateX());
+        MSN_cameraY.setText(perspectiveCamera.getTranslateY());
+        MSN_cameraZ.setText(perspectiveCamera.getTranslateZ());
         MSN_cameraAngleX.setText( cameraRotateX.getAngle());
         MSN_cameraAngleY.setText( cameraRotateY.getAngle());
         MSN_cameraAngleZ.setText( cameraRotateZ.getAngle());
@@ -578,63 +474,26 @@ public class ControllerMainWindow {
 //        MSN_nodeAngleZ.setText( cameraRotateZ.getAngle());
     }
     @FXML     private void CameraAlongX(){
-
-        cameraRotateX.setAngle(0);
-        cameraRotateY.setAngle(-90);
-        cameraRotateZ.setAngle(0);
-
-        cameraTranslate.setX(sceneBounds*3);
-        cameraTranslate.setY(0);
-        cameraTranslate.setZ(0);
+        cameraTransform.alongX(perspectiveCamera,sceneBounds);
     }
     @FXML     private void CameraAlongY(){
-
-        cameraRotateX.setAngle(90);
-        cameraRotateY.setAngle(0);
-        cameraRotateZ.setAngle(0);
-
-        cameraTranslate.setX(0);
-        cameraTranslate.setY(sceneBounds*3);
-        cameraTranslate.setZ(0);
+        cameraTransform.alongY(perspectiveCamera,sceneBounds);
     }
     @FXML     private void CameraAlongZ(){
-
-        cameraRotateX.setAngle(0);
-        cameraRotateY.setAngle(180);
-        cameraRotateZ.setAngle(0);
-
-        cameraTranslate.setX(0);
-        cameraTranslate.setY(0);
-        cameraTranslate.setZ(sceneBounds*3);
+        cameraTransform.alongZ(perspectiveCamera,sceneBounds);
     }
     @FXML     private void CameraAlong0(){
 
-        cameraRotateX.setAngle(-56);
-        cameraRotateY.setAngle(-135);
-        cameraRotateZ.setAngle(146);
-
-        cameraTranslate.setX(sceneBounds*2/Math.sqrt(2));
-        cameraTranslate.setY(sceneBounds*2);
-        cameraTranslate.setZ(sceneBounds*2/Math.sqrt(2));
     }
 
-//    public void traverse (Node root){ // Each child of a tree is a root of its subtree.
-//        root.
-//        if (root.add.chi.left != null){
-//            traverse (root.left);
-//        }
-//        System.out.println(root.data);
-//        if (root.right != null){
-//            traverse (root.right);
-//        }
-//    }
+
 private void printNodeProperties(Node node){
 
     Bounds boundsInScene = node.localToScene(node.getBoundsInLocal());
 
     ta.appendText(
 //            "\n"+
-                    node.getTypeSelector().toString()+
+                    node.getTypeSelector()+
                     " "+node.getStyle()+
                     "  x: "/*+ nodeTranslate.getX()+*/+((int)boundsInScene.getMinX())+
                     "  y: "/*+ nodeTranslate.getY()+*/+((int)boundsInScene.getMinY())+
@@ -651,8 +510,8 @@ private void printNodeProperties(Node node){
 }
 
 
-public static ArrayList<Node> getAllNodes(Parent root) {
-    ArrayList<Node> nodes = new ArrayList<Node>();
+private static ArrayList<Node> getAllNodes(Parent root) {
+    ArrayList<Node> nodes = new ArrayList<>();
     addAllDescendants(root, nodes);
     return nodes;
 }
@@ -706,3 +565,29 @@ public static ArrayList<Node> getAllNodes(Parent root) {
 //                ImageIO.write(renderedImage, "png", file);
 //            } catch (IOException ex) { ex.printStackTrace(); }
 //        }
+
+
+    /*
+    Issue:
+    Z rotation local pivot
+    MiniSpinner:
+        V Caret jumping while editing
+        V Change on scroll
+        Round Value 0
+        Try buttons instead of Labels
+    ViewPort:
+        Popup
+        orientation 550 offset
+        add aim and grid
+    Scene content to xml
+    selected element:
+        Modifying
+        Display properties
+    screenshot:
+        File Choosing to save
+        screenshot resolution
+    Initial information
+    - Boundaries
+    subScene AntiAliasing
+    Aligning camera and node properties
+    */

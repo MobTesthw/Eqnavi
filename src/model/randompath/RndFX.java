@@ -1,4 +1,4 @@
-package randompath;
+package model.randompath;
 
 import javafx.scene.Group;
 import javafx.scene.effect.BoxBlur;
@@ -11,7 +11,7 @@ import javafx.scene.transform.Translate;
 
 //Random Material
 
-import static randompath.Rnd.getBelow;
+import static model.randompath.Rnd.getBelow;
 
  public class RndFX {
       static public Material getMaterial(){

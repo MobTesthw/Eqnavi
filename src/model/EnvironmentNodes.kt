@@ -8,7 +8,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.Text
 import javafx.scene.transform.Rotate
 import javafx.scene.transform.Translate
-import randompath.RndFX
+import model.randompath.RndFX
 
 class EnvironmentNodes(sceneBounds:Int,iteration:Int) {
     val content = Group()//Group for content of the scene

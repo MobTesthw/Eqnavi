@@ -1,4 +1,4 @@
-package randompath;
+package model.randompath;
 
 import javafx.scene.shape.Rectangle;
 
