@@ -2,6 +2,7 @@ package controller;
 
 import customcomponent.MiniSpinner;
 import model.Axis;
+import model.EnvironmentNodes;
 import randompath.RndFX;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -158,6 +159,7 @@ public class ControllerMainWindow {
     private Group content= new Group();//Group for content of the scene
     private SubScene subScene;
     private Axis axis = new Axis(sceneBounds);
+    private EnvironmentNodes environmentNodes ;
 
     //Initialization
     public void initialize() {
@@ -217,8 +219,8 @@ public class ControllerMainWindow {
         viewportPane.getChildren().clear();
         SetViewportSize();
         viewportPane.getChildren().add(subScene);
-        //Fill camera selector
 
+        //        //Fill camera selector
 //        ComboBox_CameraSelector.getItems().clear();
 //        for(int i=0;i<camerasGroup.getChildren().size();i++){
 //            ComboBox_CameraSelector.getItems().add(camerasGroup.getChildren().get(i).getId());
@@ -243,9 +245,8 @@ public class ControllerMainWindow {
 
     @FXML
     private void DrawAxes (){
-        if(CB_ShowAxes.isSelected()){
+        if(CB_ShowAxes.isSelected())
             root.getChildren().addAll(axis.getAxis());
-        }
         else
             root.getChildren().removeAll(axis.getAxis());
     }
@@ -257,73 +258,8 @@ public class ControllerMainWindow {
         sceneBounds=SPN_SceneBounds.getValue();
         ta.setText("Starting new iteration number of iterations: "+itr+"  scene bound: "+sceneBounds+"\n");
 
-//        Box slab = new Box(46,230,5);
-//        slab.setTranslateX(400);
-//        slab.setTranslateX(400);
-//        slab.setTranslateX(400);
-//        PhongMaterial slabMat = new PhongMaterial();
-//        slabMat.setDiffuseMap(new Image("file:D:\\Dist\\img\\Gravel_Diffuse.png"));
-//        slabMat.setBumpMap(new Image("file:D:\\Dist\\img\\Gravel_Normal.png"));
-//        slabMat.setSpecularMap(new Image("file:D:\\Dist\\img\\Gravel_Specular.png"));
-//        slab.setMaterial(slabMat);
-//        content.getChildren().add(slab);
-
-        Box slabX = new Box(200,200,1);
-        Box slabZ = new Box(200,200,1);
-        slabX.setTranslateZ(100);
-        slabZ.setTranslateX(100);
-//        slabX.setTranslateY(-100);
-//        slabZ.setTranslateY(-100);
-        slabX.getTransforms().addAll(new Rotate(-45,Rotate.X_AXIS));
-        slabZ.getTransforms().addAll(new Rotate(-45,Rotate.Z_AXIS));
-        slabZ.getTransforms().addAll(new Rotate(-90,Rotate.X_AXIS));
-        content.getChildren().addAll(slabX,slabZ);
-
-
-        Text text = new Text("RHUB group");
-        text.setX(10);
-        text.setY(50);
-        text.setFont(new Font(20));
-        text.getTransforms().add(new Rotate(30, 50, 30));
-        content.getChildren().add(text);
-
-        Polygon polygon = new Polygon();
-        polygon.getPoints().addAll(
-                0.0, 0.0,
-                20.0, 10.0,
-                10.0, 20.0 );
-        polygon.setTranslateZ(100);
-        content.getChildren().add(polygon);
-
-//        Sphere sphere = new Sphere();
-//        sphere.setRadius(50);
-//        sphere.setTranslateX(200);
-//        sphere.setTranslateY(200);
-//        sphere.setTranslateZ(200);
-//        PhongMaterial mat = new PhongMaterial();
-//        Image diffuseMap = new Image("file:D:\\Dist\\img\\diffuseMap1.png");
-////        Image diffuseMap = new Image("file:D:\\Dist\\img\\2_no_clouds_4k.jpg");
-////        2_no_clouds_4k.jpg
-////        elev_bump_4k.jpg
-////        Image normalMap = new Image("file:D:\\Dist\\img\\elev_bump_4k.jpg");
-//        Image normalMap = new Image("file:D:\\Dist\\img\\normalMap1.png");
-//        mat.setDiffuseMap(diffuseMap);
-//        mat.setBumpMap(normalMap);
-//        mat.setSpecularColor(Color.CORNFLOWERBLUE);
-////        m`at.sp
-//        sphere.setMaterial(mat);
-//        content.getChildren().add(sphere);
-
-        Cylinder cylinder=new Cylinder(2,4000) ;
-        cylinder.getTransforms().addAll(new Translate(707,707,1000),new Rotate(-54,45,-54));
-        content.getChildren().add(cylinder);
-
-
-//        content.getChildren().add(RndFX.getCircles(3));
-        content.getChildren().add(RndFX.getBoxes(itr,50,50,50,sceneBounds,sceneBounds,sceneBounds));
-//        content.getChildren().add(RndFX.getSpheres(30,50,boundX,boundY,boundZ));
-
-        //ResetCamera();
+        environmentNodes= new EnvironmentNodes(sceneBounds,itr);
+        content.getChildren().add(environmentNodes.getContent());
 
         ta.appendText("\n  Calculation finished.. Scene nodes: "+root.getChildren().toArray().toString()+"\n");
 
@@ -552,23 +488,16 @@ public class ControllerMainWindow {
             ToolSplitPane.setDividerPositions(1-w1*(1-pos1)/ ToolSplitPane.getWidth());
 
         ToolSplitPane.widthProperty().addListener(ToolSplitPaneSizeListener);
+
         //Slider camera Field of View
-        S_FieldOfView.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) {
-               // if(subScene.getCamera().getTypeSelector()==perspectiveCamera.getTypeSelector()) {
-                    perspectiveCamera.setFieldOfView(S_FieldOfView.getValue());
-                    //ta.appendText("Perspective camera is the current camera, Field of View property changed to: "+S_FieldOfView.getValue()+"\n");
-                //}
-            }
-        });
+        S_FieldOfView.valueProperty().addListener((ObservableValue<? extends Number> ov,
+                                Number old_val, Number new_val) ->
+                    perspectiveCamera.setFieldOfView(new_val.doubleValue())        );
+
         //Slider rotate around Z axis
-        S_RotateZ.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) {
-                cameraRotateZ.setAngle(S_RotateZ.getValue());
-            }
-        });
+        S_RotateZ.valueProperty().addListener((ObservableValue<? extends Number> ov,
+                                Number old_val, Number new_val) ->
+                cameraRotateZ.setAngle(new_val.doubleValue())        );
 
         //Set listener to all camera transforms
         ObservableList<Transform> observableList = FXCollections.observableList(subScene.getCamera().getTransforms());
@@ -594,23 +523,24 @@ public class ControllerMainWindow {
         MSN_cameraNearClip.textField.setOnKeyReleased(eh->perspectiveCamera.nearClipProperty().setValue(MSN_cameraNearClip.getValue()));
         MSN_cameraFarClip.textField.setOnKeyReleased(eh->perspectiveCamera.farClipProperty().setValue(MSN_cameraNearClip.getValue()));
 
+
         //Selected Node
-        TF_nodeID.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // expand the TextField
-                // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
-                Platform.runLater(() -> {
-                    Text text = new Text(newValue);
-                    text.setFont(TF_nodeID.getFont()); // Set the same font, so the size is the same
-                    double width = text.getLayoutBounds().getWidth() // This big is the Text in the TextField
-                            + TF_nodeID.getPadding().getLeft() + TF_nodeID.getPadding().getRight() // Add the padding of the TextField
-                            + 2d; // Add some spacing
-                    TF_nodeID.setPrefWidth(width); // Set the width
-                    TF_nodeID.positionCaret(TF_nodeID.getCaretPosition()); // If you remove this line, it flashes a little bit
-                });
-            }
-        });
+        TF_nodeID.textProperty().addListener(
+            (ObservableValue<? extends String> observable, String oldValue, String newValue) ->
+            {
+                    // expand the TextField
+                    // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
+                    Platform.runLater(() -> {
+                        Text text = new Text(newValue);
+                        text.setFont(TF_nodeID.getFont()); // Set the same font, so the size is the same
+                        double width = text.getLayoutBounds().getWidth() // This big is the Text in the TextField
+                                + TF_nodeID.getPadding().getLeft() + TF_nodeID.getPadding().getRight() // Add the padding of the TextField
+                                + 2d; // Add some spacing
+                        TF_nodeID.setPrefWidth(width); // Set the width
+                        TF_nodeID.positionCaret(TF_nodeID.getCaretPosition()); // If you remove this line, it flashes a little bit
+                    });
+                }
+            );
         MSN_nodeX.textField.setOnKeyReleased(eh->selectedNode.setTranslateX(MSN_nodeX.getValue()));
         MSN_nodeY.textField.setOnKeyReleased(eh->selectedNode.setTranslateY(MSN_nodeY.getValue()));
         MSN_nodeZ.textField.setOnKeyReleased(eh->selectedNode.setTranslateZ(MSN_nodeZ.getValue()));
