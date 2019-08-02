@@ -67,7 +67,6 @@ public class ControllerMainWindow {
     @FXML    private HBox HB_CameraStatusBar;
     @FXML    private HBox HB_nodeStatusBar;
 
-
     private MiniSpinner MSN_cameraX;
     private MiniSpinner MSN_cameraY;
     private MiniSpinner MSN_cameraZ;
@@ -102,20 +101,6 @@ public class ControllerMainWindow {
     private Node selectedNode;
     private int sceneBounds=1000;
 
-
-//    private Translate cameraTranslate=new Translate(cameraInitX, cameraInitY, cameraInitZ);
-
-//    private Rotate    nodeRotateX = new Rotate(0, Rotate.X_AXIS);
-//    private Rotate    nodeRotateY = new Rotate(0, Rotate.Y_AXIS);
-//    private Rotate    nodeRotateZ = new Rotate(0, Rotate.Z_AXIS);
-//    private Translate nodeTranslate=new Translate(0, 0, 0);
-
-
-
-
-
-//    private ParallelCamera parallelCamera=new ParallelCamera();
-//    private Group camerasGroup;
     private Group root= new Group();
     private Group content= new Group();//Group for content of the scene
     private SubScene subScene;
@@ -175,9 +160,7 @@ public class ControllerMainWindow {
         SetViewportSize();
         viewportPane.getChildren().add(subScene);
 
-
-
-        //        //Fill camera selector
+//        //Fill camera selector
 //        ComboBox_CameraSelector.getItems().clear();
 //        for(int i=0;i<camerasGroup.getChildren().size();i++){
 //            ComboBox_CameraSelector.getItems().add(camerasGroup.getChildren().get(i).getId());
@@ -219,7 +202,7 @@ public class ControllerMainWindow {
         environmentNodes= new EnvironmentNodes(sceneBounds,itr);
         content.getChildren().add(environmentNodes.getContent());
 
-        ta.appendText("\n  Calculation finished.. ? Scene nodes: " /*+root.getChildren().toArray().toString()*/+"\n");
+        ta.appendText("\n  Calculation finished.. ? Scene nodes: " +root.getChildren().toArray().length+"\n");
 
     }
     @FXML
@@ -446,9 +429,7 @@ public class ControllerMainWindow {
     @FXML     private void CameraAlongZ(){
         cameraTransform.alongZ(sceneBounds);
     }
-    @FXML     private void CameraAlong0(){
-
-    }
+    @FXML     private void CameraAlong0() { cameraTransform.along0(sceneBounds); }
 
 
 private void printNodeProperties(Node node){

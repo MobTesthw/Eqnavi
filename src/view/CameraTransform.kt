@@ -2,11 +2,14 @@ package view
 
 import javafx.scene.PerspectiveCamera
 import javafx.scene.transform.Rotate
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 class CameraTransform:MoveCamera {
-    val cameraInitX = 0.0
-    val cameraInitY = 0.0
-    val cameraInitZ = -500.0
+    private val cameraInitX = 0.0
+    private val cameraInitY = 0.0
+    private val cameraInitZ = -500.0
     val cameraZoomFactor = 5.0
 
 
@@ -40,22 +43,46 @@ class CameraTransform:MoveCamera {
     }
 
     override fun alongX(sceneBounds:Double) {
-            pCamera.rotate+=10 // rotate around Z axis
-
         pCamera.translateX=sceneBounds * 3
-        pCamera.translateY=0.0
-        pCamera.translateZ=0.0
+        pCamera.translateY= 0.0
+        pCamera.translateZ= 0.0
+
+        cameraRotateX.angle = 90.0
+        cameraRotateY.angle = -90.0
+        cameraRotateZ.angle = 0.0
 
     }
     override fun alongY (sceneBounds:Double){
-//        cameraRotateX.setAngle(90.0)
-//        cameraRotateY.setAngle(0.0)
-//        cameraRotateZ.setAngle(0.0)
-//
-//        cameraTranslate.setX(0)
-//        cameraTranslate.setY(sceneBounds * 3)
-//        cameraTranslate.setZ(0)
+        pCamera.translateX=0.0
+        pCamera.translateY= sceneBounds * 3
+        pCamera.translateZ=0.0
+
+        cameraRotateX.angle = 90.0
+        cameraRotateY.angle = 0.0
+        cameraRotateZ.angle = 0.0
     }
+
+    override fun alongZ(sceneBounds:Double) {
+        pCamera.translateX=0.0
+        pCamera.translateY= 0.0
+        pCamera.translateZ=sceneBounds * 3
+
+        cameraRotateX.angle = 90.0
+        cameraRotateY.angle = 180.0
+        cameraRotateZ.angle = 0.0
+    }
+
+    override fun along0(sceneBounds:Double) {
+        pCamera.translateX= -56.0
+        pCamera.translateY= -135.0
+        pCamera.translateZ=  146.0
+
+        cameraRotateX.angle = sceneBounds*2/ sqrt(2.0)
+        cameraRotateY.angle = sceneBounds*2
+        cameraRotateZ.angle = sceneBounds*2/ sqrt(2.0)
+    }
+
+
 
     override fun reset() {
         //subScene.setCamera(perspectiveCamera);
@@ -82,36 +109,25 @@ class CameraTransform:MoveCamera {
     }
 
     override fun zoom(delta:Double) {
-//        //Math calculates in radians!!!!!!!
-//        val dr = delta * cameraZoomFactor
-//        val dx: Double
-//        val dy: Double
-//        val dz: Double
-//        var yaw: Double
-////        val roll: Double
-//        var pitch: Double
-//
-//        pCamera.rotate.
-//
-//
-//        pitch = cameraRotateX.getAngle()
-//        yaw = cameraRotateY.getAngle()
-//        //Converting to radians
-//        pitch = pitch * Math.PI / 180
-//        yaw = yaw * Math.PI / 180
-//
-//
-//
-//        dz = dr * Math.cos(pitch) * Math.cos(yaw)
-//        dx = dr * Math.sin(yaw)
-//        dy = -dr * Math.sin(pitch) * Math.cos(yaw)
-//
-////        ta.appendText("dr: " + dr + "  dx: " + dx + "  dy: " + dy + "  dz: " + dz + " -   pitch: " + pitch + "  yaw: " + yaw + "   - sin( yaw ): " + Math.sin(yaw) + "  cos( yaw ): " + Math.cos(yaw) + "\n")
-//
-//
-//        pCamera.translateX = pCamera.translateX + dx
-//        pCamera.translateY = pCamera.translateY + dy
-//        pCamera.translateZ = pCamera.translateZ + dz
+        //Math calculates in radians!!!!!!!
+        val dr = delta * cameraZoomFactor
+        val dx: Double
+        val dy: Double
+        val dz: Double
+        val yaw: Double = cameraRotateY.angle * Math.PI / 180
+//        val roll: Double
+        val pitch: Double = cameraRotateX.angle * Math.PI / 180
+
+        dz =  dr * cos(pitch) * cos(yaw)
+        dx =  dr * sin(yaw)
+        dy = -dr * sin(pitch) * cos(yaw)
+
+//        ta.appendText("dr: " + dr + "  dx: " + dx + "  dy: " + dy + "  dz: " + dz + " -   pitch: " + pitch + "  yaw: " + yaw + "   - sin( yaw ): " + Math.sin(yaw) + "  cos( yaw ): " + Math.cos(yaw) + "\n")
+
+
+        pCamera.translateX = pCamera.translateX + dx
+        pCamera.translateY = pCamera.translateY + dy
+        pCamera.translateZ = pCamera.translateZ + dz
     }
 
     override fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double) {
@@ -144,6 +160,7 @@ interface MoveCamera{
     fun alongX(sceneBounds:Double){}
     fun alongY(sceneBounds:Double){}
     fun alongZ(sceneBounds:Double){}
+    fun along0(sceneBounds:Double){}
 
     fun reset(){}
 
