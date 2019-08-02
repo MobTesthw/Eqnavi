@@ -47,7 +47,7 @@ class CameraTransform:MoveCamera {
         pCamera.translateY= 0.0
         pCamera.translateZ= 0.0
 
-        cameraRotateX.angle = 90.0
+        cameraRotateX.angle = 0.0
         cameraRotateY.angle = -90.0
         cameraRotateZ.angle = 0.0
 
@@ -67,7 +67,7 @@ class CameraTransform:MoveCamera {
         pCamera.translateY= 0.0
         pCamera.translateZ=sceneBounds * 3
 
-        cameraRotateX.angle = 90.0
+        cameraRotateX.angle = 0.0
         cameraRotateY.angle = 180.0
         cameraRotateZ.angle = 0.0
     }
@@ -104,8 +104,11 @@ class CameraTransform:MoveCamera {
 //        cameraTranslate.setZ(cameraInitZ)
 //
 //        perspectiveCamera.getTransforms().addAll(cameraTranslate, cameraRotateX, cameraRotateY, cameraRotateZ)
-//        perspectiveCamera.setFarClip(farFlip)
-//        perspectiveCamera.setNearClip(nearFlip)
+
+         val nearFlip = 0.1
+         val farFlip = 50000.0
+        pCamera.farClip = farFlip
+        pCamera.nearClip = nearFlip
     }
 
     override fun zoom(delta:Double) {

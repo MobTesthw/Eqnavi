@@ -27,7 +27,7 @@
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="590.2000488281251" minHeight="558.2000488281251" prefHeight="590.2000488281251" valignment="CENTER" vgrow="ALWAYS" />
       <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
       <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
