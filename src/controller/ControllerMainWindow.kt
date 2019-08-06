@@ -335,7 +335,7 @@ class ControllerMainWindow {
         w1 = 798.4
         pos1 = 0.785
         //System.out.println("Start ToolSplitPane.getWidth: " +ToolSplitPane.getWidth());
-        toolSplitPane.widthProperty().addListener { _, _, _-> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
+        toolSplitPane.widthProperty().addListener { _, _, _ -> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
 
         //Slider camera Field of View
         sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
@@ -421,7 +421,7 @@ class ControllerMainWindow {
     @FXML     private fun cameraBackwardX() = flyCamera.backwardX()
     @FXML     private fun cameraBackwardY() = flyCamera.backwardY()
     @FXML     private fun cameraBackwardZ() = flyCamera.backwardZ()
-    @FXML     private fun cameraAlong0() = flyCamera.alongX()
+    @FXML     private fun cameraAlong0() = flyCamera.along0()
 
 
     private fun printNodeProperties(node: Node) {

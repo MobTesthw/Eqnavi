@@ -14,10 +14,10 @@ open class FlyCamera(val sceneBounds:Double) {
     val cameraRotateY =  Rotate(0.0, Rotate.Y_AXIS)
     val cameraRotateZ =  Rotate(0.0, Rotate.Z_AXIS)
 
-    protected val cameraInitX = 0.0
-    protected val cameraInitY = 0.0
-    protected val cameraInitZ = -500.0
-    protected val cameraZoomFactor = 5.0
+    val cameraInitX = 0.0
+    val cameraInitY = 0.0
+    val cameraInitZ = -500.0
+    val cameraZoomFactor = 5.0
 
 
 
@@ -30,25 +30,18 @@ open class FlyCamera(val sceneBounds:Double) {
         camera.id = "Perspective Camera"
         camera.transforms.addAll(cameraRotateX,cameraRotateY,cameraRotateZ)
 
+        reset()
     }
 
      fun moveViewport(deltaX: Double, deltaY: Double) {
+         camera.translateX = - deltaX
+         camera.translateY = - deltaY
+     }
 
-    }
 
 
 
 
-     fun reset() {
-
-        camera.transforms.removeAll()
-        camera.translateX=cameraInitX
-        camera.translateY=cameraInitY
-        camera.translateZ=cameraInitZ
-
-        camera.farClip = sceneBounds*5
-        camera.nearClip = 0.1
-    }
 
      fun zoom(delta:Double) {
         //Math calculates in radians!!!!!!!
