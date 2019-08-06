@@ -11,7 +11,6 @@ import javafx.scene.*
 import javafx.scene.control.*
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
-import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
@@ -42,22 +41,22 @@ class ControllerMainWindow {
     @FXML     private val viewportPane: Pane? = null
     @FXML     private val mainSplitPane: SplitPane? = null
     @FXML     private val toolSplitPane: SplitPane? = null
-    @FXML     private val SPN_Iteration: Spinner<Int>? = null
-    @FXML     private val SPN_SceneBounds: Spinner<Int>? = null
+    @FXML     private val spnIteration: Spinner<Int>? = null
+    @FXML     private val spnSceneBounds: Spinner<Int>? = null
 
-    @FXML     private val BtnPrintAllScene: Button? = null
+//    @FXML     private val BtnPrintAllScene: Button? = null
 
-    @FXML     private val SelectSavePath: TextField? = null
+    @FXML     private val selectSavePath: TextField? = null
     @FXML     private val ta: TextArea? = null
     @FXML     private val sFieldOfView: Slider? = null
     @FXML     private val sRotateZ: Slider? = null
-    @FXML     private val CB_ShowAxes: CheckBox? = null
+    @FXML     private val cbShowAxes: CheckBox? = null
 
-    @FXML     private val HB_CameraStatusBar: HBox? = null
-    @FXML     private val HB_nodeStatusBar: HBox? = null
+    @FXML     private val hbCameraStatusBar: HBox? = null
+    @FXML     private val hbNodeStatusBar: HBox? = null
 
-    internal val shiftIncrement = 10.0
-    internal val rotateIncrement = 5.0
+    private val shiftIncrement = 10.0
+    private val rotateIncrement = 5.0
 
     private val msnCameraX: MiniSpinner=MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
     private val msnCameraY: MiniSpinner = MiniSpinner(" Y:", -999999.0, 0.0, 999999.0, shiftIncrement)
@@ -69,13 +68,13 @@ class ControllerMainWindow {
     private val msnCameraNearClip: MiniSpinner = MiniSpinner(" Near Clip:", -999999.0, 0.0, 999999.0, 0.1)
     private val msnCameraFarClip: MiniSpinner = MiniSpinner(" Far Clip:", -999999.0, 0.0, 999999.0, 0.1)
 
-    private val TF_nodeID: TextField = TextField("?")
-    private val MSN_nodeX: MiniSpinner = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
-    private val MSN_nodeY: MiniSpinner = MiniSpinner(" Y:", -999999.0, 0.0, 999999.0, shiftIncrement)
-    private val MSN_nodeZ: MiniSpinner = MiniSpinner(" Z:", -999999.0, 0.0, 999999.0, shiftIncrement)
-    private val MSN_nodeAngleX: MiniSpinner = MiniSpinner(" ∠X:", -999999.0, 0.0, 999999.0, rotateIncrement)
-    private val MSN_nodeAngleY: MiniSpinner = MiniSpinner(" ∠Y:", -999999.0, 0.0, 999999.0, rotateIncrement)
-    private val MSN_nodeAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val tfNodeID: TextField = TextField("?")
+    private val msnNodeX: MiniSpinner = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnNodeY: MiniSpinner = MiniSpinner(" Y:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnNodeZ: MiniSpinner = MiniSpinner(" Z:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnNodeAngleX: MiniSpinner = MiniSpinner(" ∠X:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val msnNodeAngleY: MiniSpinner = MiniSpinner(" ∠Y:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val msnNodeAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", -999999.0, 0.0, 999999.0, rotateIncrement)
 
     private var onPrssSceneX: Double = 0.toDouble()
     private var onPressSceneY: Double = 0.toDouble()
@@ -110,30 +109,30 @@ class ControllerMainWindow {
     fun initialize() {
 
 
-        SPN_Iteration!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
-        SPN_SceneBounds!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
+        spnIteration!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
+        spnSceneBounds!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
 
         //Camera properties
 //        MSN_cameraX = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
-        HB_CameraStatusBar!!.children.add(msnCameraX.component)
-        HB_CameraStatusBar.children.add(msnCameraY.component)
-        HB_CameraStatusBar.children.add(msnCameraZ.component)
-        HB_CameraStatusBar.children.add(msnCameraAngleX.component)
-        HB_CameraStatusBar.children.add(msnCameraAngleY.component)
-        HB_CameraStatusBar.children.add(msnCameraAngleZ.component)
-        HB_CameraStatusBar.children.add(msnCameraFieldOfView.component)
-        HB_CameraStatusBar.children.add(msnCameraNearClip.component)
-        HB_CameraStatusBar.children.add(msnCameraFarClip.component)
+        hbCameraStatusBar!!.children.add(msnCameraX.component)
+        hbCameraStatusBar.children.add(msnCameraY.component)
+        hbCameraStatusBar.children.add(msnCameraZ.component)
+        hbCameraStatusBar.children.add(msnCameraAngleX.component)
+        hbCameraStatusBar.children.add(msnCameraAngleY.component)
+        hbCameraStatusBar.children.add(msnCameraAngleZ.component)
+        hbCameraStatusBar.children.add(msnCameraFieldOfView.component)
+        hbCameraStatusBar.children.add(msnCameraNearClip.component)
+        hbCameraStatusBar.children.add(msnCameraFarClip.component)
 
         //Selected Node properties
 
-        HB_nodeStatusBar!!.children.add(TF_nodeID)
-        HB_nodeStatusBar.children.add(MSN_nodeX.component)
-        HB_nodeStatusBar.children.add(MSN_nodeY.component)
-        HB_nodeStatusBar.children.add(MSN_nodeZ.component)
-        HB_nodeStatusBar.children.add(MSN_nodeAngleX.component)
-        HB_nodeStatusBar.children.add(MSN_nodeAngleY.component)
-        HB_nodeStatusBar.children.add(MSN_nodeAngleZ.component)
+        hbNodeStatusBar!!.children.add(tfNodeID)
+        hbNodeStatusBar.children.add(msnNodeX.component)
+        hbNodeStatusBar.children.add(msnNodeY.component)
+        hbNodeStatusBar.children.add(msnNodeZ.component)
+        hbNodeStatusBar.children.add(msnNodeAngleX.component)
+        hbNodeStatusBar.children.add(msnNodeAngleY.component)
+        hbNodeStatusBar.children.add(msnNodeAngleZ.component)
 
 
         content.children.clear()
@@ -171,7 +170,7 @@ class ControllerMainWindow {
 
     @FXML
     private fun DrawAxes() {
-        if (CB_ShowAxes!!.isSelected)
+        if (cbShowAxes!!.isSelected)
             root.children.addAll(axis.axis)
         else
             root.children.removeAll(axis.axis)
@@ -181,8 +180,8 @@ class ControllerMainWindow {
     private fun BtnGoClick(event: ActionEvent) {
         content.children.clear()
         //SetViewportSize();
-        val itr = SPN_Iteration!!.value
-        sceneBounds = SPN_SceneBounds!!.value
+        val itr = spnIteration!!.value
+        sceneBounds = spnSceneBounds!!.value
         ta!!.text = "Starting new iteration number of iterations: $itr  scene bound: $sceneBounds\n"
 
         environmentNodes = EnvironmentNodes(sceneBounds, itr)
@@ -284,10 +283,10 @@ class ControllerMainWindow {
 
             //Show node properties statusbar if node selected
             if (selectedNode!!.id === viewportPane.id) {
-                HB_nodeStatusBar!!.isVisible = false
+                hbNodeStatusBar!!.isVisible = false
                 printNodeProperties(flyCamera.camera)
             } else {
-                HB_nodeStatusBar!!.isVisible = true
+                hbNodeStatusBar!!.isVisible = true
                 ShowSelectedNodeTransformBar()
 
                 //RMB Selected object properties
@@ -320,7 +319,7 @@ class ControllerMainWindow {
         }
 
         //Hide node status when no nodes selected
-        HB_nodeStatusBar!!.managedProperty().bind(HB_nodeStatusBar.visibleProperty())
+        hbNodeStatusBar!!.managedProperty().bind(hbNodeStatusBar.visibleProperty())
 
         viewportPane.widthProperty().addListener { cl -> SetViewportSize() }
         viewportPane.heightProperty().addListener {cl -> SetViewportSize() }
@@ -368,24 +367,24 @@ class ControllerMainWindow {
 
 
         //Selected Node
-        TF_nodeID.textProperty().addListener { _: ObservableValue<out String>, oldValue: String, newValue: String ->
+        tfNodeID.textProperty().addListener { _: ObservableValue<out String>, oldValue: String, newValue: String ->
             // expand the TextField
             // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
             Platform.runLater {
                 val text = Text(newValue)
-                text.font = TF_nodeID.font // Set the same font, so the size is the same
+                text.font = tfNodeID.font // Set the same font, so the size is the same
                 val width = (text.layoutBounds.width // This big is the Text in the TextField
 
-                        + TF_nodeID.padding.left + TF_nodeID.padding.right // Add the padding of the TextField
+                        + tfNodeID.padding.left + tfNodeID.padding.right // Add the padding of the TextField
 
                         + 2.0) // Add some spacing
-                TF_nodeID.prefWidth = width // Set the width
-                TF_nodeID.positionCaret(TF_nodeID.caretPosition) // If you remove this line, it flashes a little bit
+                tfNodeID.prefWidth = width // Set the width
+                tfNodeID.positionCaret(tfNodeID.caretPosition) // If you remove this line, it flashes a little bit
             }
         }
-        MSN_nodeX.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = MSN_nodeX.value }
-        MSN_nodeY.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = MSN_nodeY.value }
-        MSN_nodeZ.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = MSN_nodeZ.value }
+        msnNodeX.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = msnNodeX.value }
+        msnNodeY.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = msnNodeY.value }
+        msnNodeZ.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = msnNodeZ.value }
 
         //        MSN_nodeAngleX.textField.setOnKeyReleased(eh->selectedNode.getTransforms().addAll(nodeRotateX.setAngle(MSN_nodeAngleX.getValue())));
         //        MSN_nodeAngleY.textField.setOnKeyReleased(eh->nodeRotateY.setAngle(MSN_nodeAngleY.getValue()));
@@ -408,10 +407,10 @@ class ControllerMainWindow {
     }
 
     private fun ShowSelectedNodeTransformBar() {
-        TF_nodeID.text = selectedNode!!.id
-        MSN_nodeX.setText(selectedNode!!.translateX)
-        MSN_nodeY.setText(selectedNode!!.translateY)
-        MSN_nodeZ.setText(selectedNode!!.translateZ)
+        tfNodeID.text = selectedNode!!.id
+        msnNodeX.setText(selectedNode!!.translateX)
+        msnNodeY.setText(selectedNode!!.translateY)
+        msnNodeZ.setText(selectedNode!!.translateZ)
 
     }
 
