@@ -19,6 +19,7 @@ fun FlyCamera.reset() {
 }
 
 
+
 fun FlyCamera.alongX() {
     camera.translateX=sceneBounds * 3
     camera.translateY= 0.0
