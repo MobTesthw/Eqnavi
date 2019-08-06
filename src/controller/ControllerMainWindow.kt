@@ -44,7 +44,7 @@ class ControllerMainWindow {
     @FXML     lateinit var hbNodeStatusBar: HBox
 
     private val shiftIncrement = 10.0
-    private val rotateIncrement = 5.0
+    private val rotateIncrement = 0.1
     private val minVal = -999999.0
     private val maxVal = 999999.0
 

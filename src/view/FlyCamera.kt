@@ -7,12 +7,12 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 open class FlyCamera(val sceneBounds:Double) {
-//    val presets=FlyCameraPresets(this)
+    //    val presets=FlyCameraPresets(this)
     val camera = PerspectiveCamera(true)
 
-    val cameraRotateX =  Rotate(0.0, Rotate.X_AXIS)
-    val cameraRotateY =  Rotate(0.0, Rotate.Y_AXIS)
-    val cameraRotateZ =  Rotate(0.0, Rotate.Z_AXIS)
+    val cameraRotateX = Rotate(0.0, Rotate.X_AXIS)
+    val cameraRotateY = Rotate(0.0, Rotate.Y_AXIS)
+    val cameraRotateZ = Rotate(0.0, Rotate.Z_AXIS)
 
     val cameraInitX = 0.0
     val cameraInitY = 0.0
@@ -23,47 +23,36 @@ open class FlyCamera(val sceneBounds:Double) {
     private val cameraZoomMultiplier = -2.0
 
 
-
-//    fun AngleAlongX() = cameraRotateX.angle
-//    fun AngleAlongY() = cameraRotateY.angle
-//    fun AngleAlongZ() = cameraRotateZ.angle
-
-
     init {
         camera.id = "Perspective Camera"
-        camera.transforms.addAll(cameraRotateX,cameraRotateY,cameraRotateZ)
-
+        camera.transforms.addAll(cameraRotateX, cameraRotateY, cameraRotateZ)
         reset()
     }
 
-     fun moveViewport(deltaX: Double, deltaY: Double) {
+    fun moveViewport(deltaX: Double, deltaY: Double) {
 //         camera.translateX  += deltaX * cameraMoveMultiplier
 //         camera.translateY  += deltaY * cameraMoveMultiplier
-         //x - yz
-         //y - zx
-         //z - xy
+        //x - yz
+        //y - zx
+        //z - xy
 
-         val ax=cameraRotateX.angle * Math.PI / 180
-         val ay=cameraRotateY.angle * Math.PI / 180
+        val ax = cameraRotateX.angle * Math.PI / 180
+        val ay = cameraRotateY.angle * Math.PI / 180
 //         val az=cameraRotateZ.angle * Math.PI / 180
 
-         camera.translateX  += deltaX * cos(ay) * cameraMoveMultiplier
-         camera.translateY  += deltaY * cos(ax) * cameraMoveMultiplier
-         camera.translateZ  += (deltaX * sin(ay) - deltaY * sin(ax)) * cameraMoveMultiplier
-     }
+        camera.translateX += deltaX * cos(ay) * cameraMoveMultiplier
+        camera.translateY += deltaY * cos(ax) * cameraMoveMultiplier
+        camera.translateZ += (deltaX * sin(ay) - deltaY * sin(ax)) * cameraMoveMultiplier
+    }
 
-    fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double) {
+    fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double) {
         //For Camera
-        cameraRotateX.angle -=  deltaY * cameraRotateMultiplier / viewPortHeight*  360 * (Math.PI / 180)
-        cameraRotateY.angle -=  deltaX * cameraRotateMultiplier/ viewPortWidth * -360 * (Math.PI / 180)
+        cameraRotateX.angle -= deltaY * cameraRotateMultiplier / viewPortHeight * 360 * (Math.PI / 180)
+        cameraRotateY.angle -= deltaX * cameraRotateMultiplier / viewPortWidth * -360 * (Math.PI / 180)
 
     }
 
-
-
-
-
-     fun zoom(delta:Double) {
+    fun zoom(delta: Double) {
         //Math calculates in radians!!!!!!!
         val dr = delta * cameraZoomMultiplier
         val dx: Double
@@ -73,31 +62,14 @@ open class FlyCamera(val sceneBounds:Double) {
 //        val roll: Double
         val pitch: Double = cameraRotateX.angle * Math.PI / 180
 
-        dz =  dr * cos(pitch) * cos(yaw)
-        dx =  dr * sin(yaw)
+        dz = dr * cos(pitch) * cos(yaw)
+        dx = dr * sin(yaw)
         dy = -dr * sin(pitch) * cos(yaw)
-
-//        ta.appendText("dr: " + dr + "  dx: " + dx + "  dy: " + dy + "  dz: " + dz + " -   pitch: " + pitch + "  yaw: " + yaw + "   - sin( yaw ): " + Math.sin(yaw) + "  cos( yaw ): " + Math.cos(yaw) + "\n")
-
 
         camera.translateX = camera.translateX + dx
         camera.translateY = camera.translateY + dy
         camera.translateZ = camera.translateZ + dz
     }
 
-
-
-
-
-
-}
-
-class Hero {
-    fun useSuperpowers() {
-        println("Applied super powers")
-    }
-}
-fun Hero.savePlanet() {
-    useSuperpowers()
 }
 
