@@ -34,8 +34,8 @@ open class FlyCamera(val sceneBounds:Double) {
     }
 
      fun moveViewport(deltaX: Double, deltaY: Double) {
-         camera.translateX = - deltaX
-         camera.translateY = - deltaY
+         camera.translateX  -= deltaX
+         camera.translateY  -= deltaY
      }
 
 
