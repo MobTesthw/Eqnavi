@@ -45,9 +45,9 @@ class ControllerMainWindow {
     @FXML     lateinit var spnIteration: Spinner<Int>
     @FXML     lateinit var spnSceneBounds: Spinner<Int>
 
-//    @FXML     private val BtnPrintAllScene: Button? = null
+//    @FXML     private val btnPrintAllScene: Button? = null
 
-    @FXML     lateinit var selectSavePath: TextField
+//    @FXML     lateinit var selectSavePath: TextField
     @FXML     lateinit var ta: TextArea
     @FXML     lateinit var sFieldOfView: Slider
     @FXML     lateinit var sRotateZ: Slider
@@ -82,19 +82,19 @@ class ControllerMainWindow {
     //    private double orgTranslateX, orgTranslateY;
     private var mousePosX: Double = 0.toDouble()
     private var mousePosY: Double = 0.toDouble()
-    private val mouseOldX = 0.0
-    private val mouseOldY = 0.0
-    private val nearFlip = 0.1
-    private val farFlip = 50000.0
+//    private val mouseOldX = 0.0
+//    private val mouseOldY = 0.0
+//    private val nearFlip = 0.1
+//    private val farFlip = 50000.0
 
     private var viewportHeight: Double = 0.toDouble()
     private var viewPortWidth: Double = 0.toDouble()
 
 
 
-    private val cameraInitAngleX = 0.0
-    private val cameraInitAngleY = 0.0
-    private val cameraInitAngleZ = 0.0
+//    private val cameraInitAngleX = 0.0
+//    private val cameraInitAngleY = 0.0
+//    private val cameraInitAngleZ = 0.0
 
     private var selectedNode: Node? = null
     private var sceneBounds = 1000
@@ -142,7 +142,7 @@ class ControllerMainWindow {
         //SubScene
         subScene = SubScene(root, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
         viewportPane.children.clear()
-        SetViewportSize()
+        setViewportSize()
         viewportPane.children.add(subScene)
 
         //        //Fill camera selector
@@ -152,16 +152,16 @@ class ControllerMainWindow {
         //        }
         //        ComboBox_CameraSelector.setValue(perspectiveCamera.getId());
 
-        SetSelectedCamera()
+        setSelectedCamera()
 
-        ResetCamera()
+        resetCamera()
 
         //Register Events and listeners
-        LookAndFeel()
+        lookAndFeel()
         ShowCameraTransform()
     }
 
-    private fun SetViewportSize() {
+    private fun setViewportSize() {
         viewPortWidth = viewportPane.width
         viewportHeight = viewportPane.height
         subScene!!.width = viewPortWidth
@@ -170,7 +170,7 @@ class ControllerMainWindow {
     }
 
     @FXML
-    private fun DrawAxes() {
+    private fun drawAxes() {
         if (cbShowAxes.isSelected)
             root.children.addAll(axis.axis)
         else
@@ -178,7 +178,7 @@ class ControllerMainWindow {
     }
 
     @FXML
-    private fun BtnGoClick(event: ActionEvent) {
+    private fun btnGoClick(event: ActionEvent) {
         content.children.clear()
         //SetViewportSize();
         val itr = spnIteration.value
@@ -193,62 +193,62 @@ class ControllerMainWindow {
     }
 
     @FXML
-    private fun BtnDoClick(event: ActionEvent) {
+    private fun btnDoClick(event: ActionEvent) {
 
 
     }
 
     @FXML
-    private fun BtnDoClick1(event: ActionEvent) {
+    private fun btnDoClick1(event: ActionEvent) {
 
 
     }
 
     @FXML
-    private fun BtnDoClick2(event: ActionEvent) {
+    private fun btnDoClick2(event: ActionEvent) {
 
     }
 
     @FXML
-    private fun ResetCamera() {
+    private fun resetCamera() {
         flyCamera.reset()
     }
 
     @FXML
-    private fun SetSelectedCamera() {
+    private fun setSelectedCamera() {
         subScene!!.camera = flyCamera.camera
     }
 
     @FXML
-    private fun BtnSaveClick(event: ActionEvent) {
+    private fun btnSaveClick(event: ActionEvent) {
 
         val path = "D:\\1\\JavaFx\\"
         val cal = Calendar.getInstance()
         val sdf = SimpleDateFormat("YYYY_MM_DD__HH_mm_ss")
         val FILE_NAME = sdf.format(cal.time)
 
-        val SNAPSHOT = viewportPane.snapshot(SnapshotParameters(), null)
-        val NAME = path + FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "")
-        val FILE = File("$NAME.png")
+        val snapshot = viewportPane.snapshot(SnapshotParameters(), null)
+        val name = path + FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "")
+        val file = File("$name.png")
 
         try {
-            ImageIO.write(SwingFXUtils.fromFXImage(SNAPSHOT, null), "png", FILE)
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file)
         } catch (exception: IOException) {
             // handle exception here
         }
 
-        ta.appendText("Saved snapshot :  $NAME\n")
+        ta.appendText("Saved snapshot :  $name\n")
     }
 
     @FXML
-    private fun BtnPrintAllScene() {
+    private fun btnPrintAllScene() {
         ta.appendText("\n  Scene nodes: " + "\n")
         for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
             printNodeProperties(n)
         }
     }
 
-    private fun LookAndFeel() {
+    private fun lookAndFeel() {
         //Mouse Scroll
         viewportPane.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
         //Mouse pressed
@@ -306,7 +306,7 @@ class ControllerMainWindow {
                     popup.x = e.x
                     popup.y = e.y
                     val deleteShape = Label("Delete Shape")
-                    deleteShape.setOnMouseClicked { eh ->
+                    deleteShape.setOnMouseClicked {
                         root.children.remove(selectedNode)
                         popup.hide()
                     }
@@ -322,8 +322,8 @@ class ControllerMainWindow {
         //Hide node status when no nodes selected
         hbNodeStatusBar.managedProperty().bind(hbNodeStatusBar.visibleProperty())
 
-        viewportPane.widthProperty().addListener { cl -> SetViewportSize() }
-        viewportPane.heightProperty().addListener {cl -> SetViewportSize() }
+        viewportPane.widthProperty().addListener { _ -> setViewportSize() }
+        viewportPane.heightProperty().addListener {_ -> setViewportSize() }
 
         //Split panes auto divider
 
@@ -368,7 +368,7 @@ class ControllerMainWindow {
 
 
         //Selected Node
-        tfNodeID.textProperty().addListener { _: ObservableValue<out String>, oldValue: String, newValue: String ->
+        tfNodeID.textProperty().addListener { _: ObservableValue<out String>, _: String, newValue: String ->
             // expand the TextField
             // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
             Platform.runLater {
@@ -383,9 +383,9 @@ class ControllerMainWindow {
                 tfNodeID.positionCaret(tfNodeID.caretPosition) // If you remove this line, it flashes a little bit
             }
         }
-        msnNodeX.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = msnNodeX.value }
-        msnNodeY.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = msnNodeY.value }
-        msnNodeZ.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = msnNodeZ.value }
+        msnNodeX.textField.setOnKeyReleased { _ -> selectedNode!!.translateX = msnNodeX.value }
+        msnNodeY.textField.setOnKeyReleased { _ -> selectedNode!!.translateY = msnNodeY.value }
+        msnNodeZ.textField.setOnKeyReleased { _ -> selectedNode!!.translateZ = msnNodeZ.value }
 
         //        MSN_nodeAngleX.textField.setOnKeyReleased(eh->selectedNode.getTransforms().addAll(nodeRotateX.setAngle(MSN_nodeAngleX.getValue())));
         //        MSN_nodeAngleY.textField.setOnKeyReleased(eh->nodeRotateY.setAngle(MSN_nodeAngleY.getValue()));

@@ -85,21 +85,21 @@
                                                      AnchorPane.rightAnchor="3.0"/>
                                             <Button layoutX="2.0" layoutY="2.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnGoClick"
+                                                    onAction="#btnGoClick"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0" text="Go"
                                                     AnchorPane.leftAnchor="2.0"
                                                     AnchorPane.rightAnchor="2.0"/>
                                             <Button layoutX="2.0" layoutY="439.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnSaveClick"
+                                                    onAction="#btnSaveClick"
                                                     prefHeight="26.0"
                                                     prefWidth="162.0" text="Save"
                                                     AnchorPane.leftAnchor="2.0"
                                                     AnchorPane.rightAnchor="2.0"/>
                                             <Button layoutX="2.0" layoutY="319.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnDoClick"
+                                                    onAction="#btnDoClick"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0" text="Do"/>
                                             <Slider fx:id="sFieldOfView"
@@ -116,21 +116,21 @@
                                                       layoutX="2.0"
                                                       layoutY="163.0"
                                                       mnemonicParsing="false"
-                                                      onAction="#DrawAxes"
+                                                      onAction="#drawAxes"
                                                       selected="true"
                                                       text="Show axes"
                                                       AnchorPane.leftAnchor="2.0"/>
                                             <Button
                                                     layoutX="2.0" layoutY="412.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#ResetCamera"
+                                                    onAction="#resetCamera"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0"
                                                     text="Reset Camera"/>
                                             <ComboBox
                                                       layoutX="2.0"
                                                       layoutY="229.0"
-                                                      onAction="#ResetCamera"
+                                                      onAction="#resetCamera"
                                                       prefHeight="26.0"
                                                       prefWidth="146.0"/>
                                             <Slider fx:id="sRotateZ"
@@ -153,7 +153,7 @@
                                             <Button layoutX="2.0"
                                                     layoutY="490.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnDoClick"
+                                                    onAction="#btnDoClick"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0"
                                                     text="Set Camera Middle"/>
@@ -183,14 +183,14 @@
                                             <Button  layoutX="2.0"
                                                     layoutY="347.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnDoClick1"
+                                                    onAction="#btnDoClick1"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0"
                                                     text="Do 1"/>
                                             <Button layoutX="2.0"
                                                     layoutY="375.0"
                                                     mnemonicParsing="false"
-                                                    onAction="#BtnDoClick2"
+                                                    onAction="#btnDoClick2"
                                                     prefHeight="26.0"
                                                     prefWidth="146.0"
                                                     text="Do 2"/>
@@ -224,8 +224,8 @@
                                         AnchorPane.topAnchor="1.0"/>
                                 <TextField  layoutX="97.0"
                                            layoutY="1.0" text="&quot;D:\\1\\JavaFx\\"/>
-                                <Button fx:id="BtnPrintAllScene" layoutY="31.0"
-                                        mnemonicParsing="false" onAction="#BtnPrintAllScene"
+                                <Button layoutY="31.0"
+                                        mnemonicParsing="false" onAction="#btnPrintAllScene"
                                         text="Print All Scene"/>
                             </AnchorPane>
                         </Tab>
