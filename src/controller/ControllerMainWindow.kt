@@ -1,471 +1,497 @@
-package controller;
+package controller
 
-import customcomponent.MiniSpinner;
-import model.Axis;
-import model.EnvironmentNodes;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.geometry.Bounds;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.WritableImage;
-import javafx.scene.input.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Transform;
-import javafx.scene.transform.Translate;
-import javafx.stage.Popup;
-import view.CameraTransform;
+import customcomponent.MiniSpinner
+import model.Axis
+import model.EnvironmentNodes
+import javafx.application.Platform
+import javafx.beans.value.ObservableValue
+import javafx.collections.FXCollections
+import javafx.embed.swing.SwingFXUtils
+import javafx.scene.*
+import javafx.scene.control.*
+import javafx.event.ActionEvent
+import javafx.fxml.FXML
+import javafx.scene.control.Button
+import javafx.scene.control.Label
+import javafx.scene.control.TextArea
+import javafx.scene.control.TextField
+import javafx.scene.input.*
+import javafx.scene.layout.GridPane
+import javafx.scene.layout.HBox
+import javafx.scene.layout.Pane
+import javafx.scene.text.Text
+import javafx.stage.Popup
+import view.FlyCamera
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 
-public class ControllerMainWindow {
+import javax.imageio.ImageIO
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.ArrayList
+import java.util.Calendar
+
+import view.backwardX
+
+
+class ControllerMainWindow {
+
+
+
     //    private final Set<KeyCode> pressedKeys = new HashSet<>();
-    @FXML    private TreeView treeView;
-    @FXML    private GridPane gridPaneMain;
-    @FXML    private Pane viewportPane;
-    @FXML    private SplitPane MainSplitPane;
-    @FXML    private SplitPane ToolSplitPane;
-    @FXML    private Spinner <Integer> SPN_Iteration;
-    @FXML    private Spinner <Integer> SPN_SceneBounds;
+    @FXML     private val treeView: TreeView<*>? = null
+    @FXML     private val gridPaneMain: GridPane? = null
+    @FXML     private val viewportPane: Pane? = null
+    @FXML     private val MainSplitPane: SplitPane? = null
+    @FXML     private val ToolSplitPane: SplitPane? = null
+    @FXML     private val SPN_Iteration: Spinner<Int>? = null
+    @FXML     private val SPN_SceneBounds: Spinner<Int>? = null
 
-    @FXML    private Button BtnGo;
-    @FXML    private Button BtnSave;
-    @FXML    private Button BtnResetCamera;
-    @FXML    private Button BtnDo;
-    @FXML    private Button BtnSavePath;
-    @FXML    private Button BtnCameraAlongX;
-    @FXML    private Button BtnCameraAlongY;
-    @FXML    private Button BtnCameraAlongZ;
-    @FXML    private Button BtnCameraAlong0;
-    @FXML    private Button BtnPrintAllScene;
-//    @FXML    private Button BtnLowPerspective;
-    @FXML    private TextField SelectSavePath;
-    @FXML    private TextArea ta;
-    @FXML    private Slider S_FieldOfView;
-    @FXML    private Slider S_RotateZ;
-    @FXML    private CheckBox CB_ShowAxes;
-    @FXML    private ComboBox ComboBox_CameraSelector;
-    @FXML    private HBox HB_CameraStatusBar;
-    @FXML    private HBox HB_nodeStatusBar;
+    @FXML     private val BtnPrintAllScene: Button? = null
 
-    private MiniSpinner MSN_cameraX;
-    private MiniSpinner MSN_cameraY;
-    private MiniSpinner MSN_cameraZ;
-    private MiniSpinner MSN_cameraAngleX;
-    private MiniSpinner MSN_cameraAngleY;
-    private MiniSpinner MSN_cameraAngleZ;
-    private MiniSpinner MSN_cameraFieldOfView;
-    private MiniSpinner MSN_cameraNearClip;
-    private MiniSpinner MSN_cameraFarClip;
+    @FXML     private val SelectSavePath: TextField? = null
+    @FXML     private val ta: TextArea? = null
+    @FXML     private val S_FieldOfView: Slider? = null
+    @FXML     private val S_RotateZ: Slider? = null
+    @FXML     private val CB_ShowAxes: CheckBox? = null
 
-    private TextField   TF_nodeID;
-    private MiniSpinner MSN_nodeX;
-    private MiniSpinner MSN_nodeY;
-    private MiniSpinner MSN_nodeZ;
-    private MiniSpinner MSN_nodeAngleX;
-    private MiniSpinner MSN_nodeAngleY;
-    private MiniSpinner MSN_nodeAngleZ;
+    @FXML     private val HB_CameraStatusBar: HBox? = null
+    @FXML     private val HB_nodeStatusBar: HBox? = null
 
-    private double onPrssSceneX, onPressSceneY;
-//    private double orgTranslateX, orgTranslateY;
-    private double mousePosX,mousePosY;
-    private double mouseOldX=0;
-    private double mouseOldY=0;
-    private double nearFlip=0.1;
-    private double farFlip=50000;
+    internal val shiftIncrement = 10.0
+    internal val rotateIncrement = 5.0
 
-    private double viewportHeight,viewPortWidth;
-    double rotateIncrement = 5.0, shiftIncrement = 10.0;
+    private val msnCameraX: MiniSpinner=MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnCameraY: MiniSpinner = MiniSpinner(" Y:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnCameraZ: MiniSpinner = MiniSpinner(" Z:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val msnCameraAngleX: MiniSpinner = MiniSpinner(" ∠X:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val msnCameraAngleY: MiniSpinner = MiniSpinner(" ∠Y:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val msnCameraAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val msnCameraFieldOfView: MiniSpinner = MiniSpinner(" Field of View:", -999999.0, 0.0, 999999.0, 0.1)
+    private val msnCameraNearClip: MiniSpinner = MiniSpinner(" Near Clip:", -999999.0, 0.0, 999999.0, 0.1)
+    private val msnCameraFarClip: MiniSpinner = MiniSpinner(" Far Clip:", -999999.0, 0.0, 999999.0, 0.1)
 
-    private double cameraInitAngleX =0, cameraInitAngleY =0, cameraInitAngleZ =0;
+    private val TF_nodeID: TextField = TextField("?")
+    private val MSN_nodeX: MiniSpinner = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val MSN_nodeY: MiniSpinner = MiniSpinner(" Y:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val MSN_nodeZ: MiniSpinner = MiniSpinner(" Z:", -999999.0, 0.0, 999999.0, shiftIncrement)
+    private val MSN_nodeAngleX: MiniSpinner = MiniSpinner(" ∠X:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val MSN_nodeAngleY: MiniSpinner = MiniSpinner(" ∠Y:", -999999.0, 0.0, 999999.0, rotateIncrement)
+    private val MSN_nodeAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", -999999.0, 0.0, 999999.0, rotateIncrement)
 
-    private Node selectedNode;
-    private int sceneBounds=1000;
+    private var onPrssSceneX: Double = 0.toDouble()
+    private var onPressSceneY: Double = 0.toDouble()
+    //    private double orgTranslateX, orgTranslateY;
+    private var mousePosX: Double = 0.toDouble()
+    private var mousePosY: Double = 0.toDouble()
+    private val mouseOldX = 0.0
+    private val mouseOldY = 0.0
+    private val nearFlip = 0.1
+    private val farFlip = 50000.0
 
-    private Group root= new Group();
-    private Group content= new Group();//Group for content of the scene
-    private SubScene subScene;
-    private Axis axis = new Axis(sceneBounds);
-    private EnvironmentNodes environmentNodes ;
-    private CameraTransform cameraTransform =new CameraTransform();
+    private var viewportHeight: Double = 0.toDouble()
+    private var viewPortWidth: Double = 0.toDouble()
+
+
+
+    private val cameraInitAngleX = 0.0
+    private val cameraInitAngleY = 0.0
+    private val cameraInitAngleZ = 0.0
+
+    private var selectedNode: Node? = null
+    private var sceneBounds = 1000
+
+    private val root = Group()
+    private val content = Group()//Group for content of the scene
+    private var subScene: SubScene? = null
+    private val axis = Axis(sceneBounds.toDouble())
+    private var environmentNodes: EnvironmentNodes? = null
+    private val flyCamera = FlyCamera(sceneBounds.toDouble())
 
     //Initialization
-    public void initialize() {
+    fun initialize() {
 
-        SPN_Iteration.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000,10,2)      );
-        SPN_SceneBounds.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000,100,100) );
+
+        SPN_Iteration!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
+        SPN_SceneBounds!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
 
         //Camera properties
-        MSN_cameraX=new MiniSpinner(" X:",-999999,0,999999,shiftIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraX.getComponent());
-        MSN_cameraY=new MiniSpinner(" Y:",-999999,0,999999,shiftIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraY.getComponent());
-        MSN_cameraZ=new MiniSpinner(" Z:",-999999,0,999999,shiftIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraZ.getComponent());
-        MSN_cameraAngleX=new MiniSpinner(" ∠X:",-999999,0,999999, rotateIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraAngleX.getComponent());
-        MSN_cameraAngleY=new MiniSpinner(" ∠Y:",-999999,0,999999, rotateIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraAngleY.getComponent());
-        MSN_cameraAngleZ=new MiniSpinner(" ∠Z:",-999999,0,999999, rotateIncrement) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraAngleZ.getComponent());
-        MSN_cameraFieldOfView=new MiniSpinner(" Field of View:",-999999,0,999999,0.1) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraFieldOfView.getComponent());
-        MSN_cameraNearClip=new MiniSpinner(" Near Clip:",-999999,0,999999,0.1) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraNearClip.getComponent());
-        MSN_cameraFarClip=new MiniSpinner(" Far Clip:",-999999,0,999999,0.1) ;
-        HB_CameraStatusBar.getChildren().add(MSN_cameraFarClip.getComponent());
+//        MSN_cameraX = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
+        HB_CameraStatusBar!!.children.add(msnCameraX.component)
+        HB_CameraStatusBar.children.add(msnCameraY.component)
+        HB_CameraStatusBar.children.add(msnCameraZ.component)
+        HB_CameraStatusBar.children.add(msnCameraAngleX.component)
+        HB_CameraStatusBar.children.add(msnCameraAngleY.component)
+        HB_CameraStatusBar.children.add(msnCameraAngleZ.component)
+        HB_CameraStatusBar.children.add(msnCameraFieldOfView.component)
+        HB_CameraStatusBar.children.add(msnCameraNearClip.component)
+        HB_CameraStatusBar.children.add(msnCameraFarClip.component)
 
         //Selected Node properties
-        TF_nodeID=new TextField("?");
-        HB_nodeStatusBar.getChildren().add(TF_nodeID);
-        MSN_nodeX=new MiniSpinner(" X:",-999999,0,999999,shiftIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeX.getComponent());
-        MSN_nodeY=new MiniSpinner(" Y:",-999999,0,999999,shiftIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeY.getComponent());
-        MSN_nodeZ=new MiniSpinner(" Z:",-999999,0,999999,shiftIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeZ.getComponent());
-        MSN_nodeAngleX=new MiniSpinner(" ∠X:",-999999,0,999999, rotateIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeAngleX.getComponent());
-        MSN_nodeAngleY=new MiniSpinner(" ∠Y:",-999999,0,999999, rotateIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeAngleY.getComponent());
-        MSN_nodeAngleZ=new MiniSpinner(" ∠Z:",-999999,0,999999, rotateIncrement) ;
-        HB_nodeStatusBar.getChildren().add(MSN_nodeAngleZ.getComponent());
+
+        HB_nodeStatusBar!!.children.add(TF_nodeID)
+        HB_nodeStatusBar.children.add(MSN_nodeX.component)
+        HB_nodeStatusBar.children.add(MSN_nodeY.component)
+        HB_nodeStatusBar.children.add(MSN_nodeZ.component)
+        HB_nodeStatusBar.children.add(MSN_nodeAngleX.component)
+        HB_nodeStatusBar.children.add(MSN_nodeAngleY.component)
+        HB_nodeStatusBar.children.add(MSN_nodeAngleZ.component)
 
 
-        content.getChildren().clear();
+        content.children.clear()
 
-        root.getChildren().addAll(cameraTransform.getPCamera(),axis.getAxis(), axis.getAxisLabels(),axis.getGrid(),content);
+        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
         //SubScene
-        subScene= new SubScene(root, 500, 400, true,SceneAntialiasing.BALANCED);
-        viewportPane.getChildren().clear();
-        SetViewportSize();
-        viewportPane.getChildren().add(subScene);
+        subScene = SubScene(root, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
+        viewportPane!!.children.clear()
+        SetViewportSize()
+        viewportPane.children.add(subScene)
 
-//        //Fill camera selector
-//        ComboBox_CameraSelector.getItems().clear();
-//        for(int i=0;i<camerasGroup.getChildren().size();i++){
-//            ComboBox_CameraSelector.getItems().add(camerasGroup.getChildren().get(i).getId());
-//        }
-//        ComboBox_CameraSelector.setValue(perspectiveCamera.getId());
+        //        //Fill camera selector
+        //        ComboBox_CameraSelector.getItems().clear();
+        //        for(int i=0;i<camerasGroup.getChildren().size();i++){
+        //            ComboBox_CameraSelector.getItems().add(camerasGroup.getChildren().get(i).getId());
+        //        }
+        //        ComboBox_CameraSelector.setValue(perspectiveCamera.getId());
 
-        SetSelectedCamera();
+        SetSelectedCamera()
 
-        ResetCamera();
+        ResetCamera()
 
         //Register Events and listeners
-        LookAndFeel();
-        ShowCameraTransform();
+        LookAndFeel()
+        ShowCameraTransform()
     }
 
-    private void SetViewportSize(){
-        viewPortWidth =  viewportPane.getWidth();
-        viewportHeight = viewportPane.getHeight();
-        subScene.setWidth(viewPortWidth);
-        subScene.setHeight(viewportHeight);
-//        ta.appendText("Viewport sizes set to w: "+viewPortWidth+" h: "+viewportHeight+"\n");
+    private fun SetViewportSize() {
+        viewPortWidth = viewportPane!!.width
+        viewportHeight = viewportPane.height
+        subScene!!.width = viewPortWidth
+        subScene!!.height = viewportHeight
+        //        ta.appendText("Viewport sizes set to w: "+viewPortWidth+" h: "+viewportHeight+"\n");
     }
 
     @FXML
-    private void DrawAxes (){
-        if(CB_ShowAxes.isSelected())
-            root.getChildren().addAll(axis.getAxis());
+    private fun DrawAxes() {
+        if (CB_ShowAxes!!.isSelected)
+            root.children.addAll(axis.axis)
         else
-            root.getChildren().removeAll(axis.getAxis());
+            root.children.removeAll(axis.axis)
     }
+
     @FXML
-    private void BtnGoClick(ActionEvent event) {
-        content.getChildren().clear();
+    private fun BtnGoClick(event: ActionEvent) {
+        content.children.clear()
         //SetViewportSize();
-        int itr=SPN_Iteration.getValue();
-        sceneBounds=SPN_SceneBounds.getValue();
-        ta.setText("Starting new iteration number of iterations: "+itr+"  scene bound: "+sceneBounds+"\n");
+        val itr = SPN_Iteration!!.value
+        sceneBounds = SPN_SceneBounds!!.value
+        ta!!.text = "Starting new iteration number of iterations: $itr  scene bound: $sceneBounds\n"
 
-        environmentNodes= new EnvironmentNodes(sceneBounds,itr);
-        content.getChildren().add(environmentNodes.getContent());
+        environmentNodes = EnvironmentNodes(sceneBounds, itr)
+        content.children.add(environmentNodes!!.content)
 
-        ta.appendText("\n  Calculation finished.. ? Scene nodes: " +root.getChildren().toArray().length+"\n");
+        ta.appendText("\n  Calculation finished.. ? Scene nodes: " + root.children.toTypedArray().size + "\n")
 
-    }
-    @FXML
-    private void BtnDoClick(ActionEvent event){
-        selectedNode.setRotate(selectedNode.getRotate()+10);
     }
 
     @FXML
-    private void ResetCamera(){
-        cameraTransform.reset();
-    }
-    @FXML
-    private void SetSelectedCamera(){
-        subScene.setCamera(cameraTransform.getPCamera());
-    }
-    @FXML
-    private void BtnSaveClick(ActionEvent event) {
+    private fun BtnDoClick(event: ActionEvent) {
 
-        String path="D:\\1\\JavaFx\\";
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY_MM_DD__HH_mm_ss");
-        String FILE_NAME=sdf.format(cal.getTime());
 
-        final WritableImage SNAPSHOT = viewportPane.snapshot(new SnapshotParameters(), null);
-        final String        NAME     = path+FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "");
-        final File          FILE     = new File(NAME + ".png");
+    }
+
+    @FXML
+    private fun BtnDoClick1(event: ActionEvent) {
+
+
+    }
+
+    @FXML
+    private fun BtnDoClick2(event: ActionEvent) {
+
+    }
+
+    @FXML
+    private fun ResetCamera() {
+        flyCamera.reset()
+    }
+
+    @FXML
+    private fun SetSelectedCamera() {
+        subScene!!.camera = flyCamera.camera
+    }
+
+    @FXML
+    private fun BtnSaveClick(event: ActionEvent) {
+
+        val path = "D:\\1\\JavaFx\\"
+        val cal = Calendar.getInstance()
+        val sdf = SimpleDateFormat("YYYY_MM_DD__HH_mm_ss")
+        val FILE_NAME = sdf.format(cal.time)
+
+        val SNAPSHOT = viewportPane!!.snapshot(SnapshotParameters(), null)
+        val NAME = path + FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "")
+        val FILE = File("$NAME.png")
 
         try {
-            ImageIO.write(SwingFXUtils.fromFXImage(SNAPSHOT, null), "png", FILE);
-        } catch (IOException exception) {
+            ImageIO.write(SwingFXUtils.fromFXImage(SNAPSHOT, null), "png", FILE)
+        } catch (exception: IOException) {
             // handle exception here
         }
-        ta.appendText("Saved snapshot :  "+NAME+"\n");
+
+        ta!!.appendText("Saved snapshot :  $NAME\n")
     }
 
-    @FXML private void BtnPrintAllScene(){
-        ta.appendText("\n  Scene nodes: "+"\n");
-        for (Node n:getAllNodes(/*gridPaneMain*/viewportPane)){
-            printNodeProperties(n);
+    @FXML
+    private fun BtnPrintAllScene() {
+        ta!!.appendText("\n  Scene nodes: " + "\n")
+        for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
+            printNodeProperties(n)
         }
     }
-    private void LookAndFeel(){
+
+    private fun LookAndFeel() {
         //Mouse Scroll
-        viewportPane.setOnScroll(e-> cameraTransform.zoom( e.getDeltaY())  );
+        viewportPane!!.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
         //Mouse pressed
-        viewportPane.setOnMousePressed(e-> {
+        viewportPane.setOnMousePressed { e ->
 
-            if (e.getButton() == MouseButton.PRIMARY){
-                onPrssSceneX = e.getSceneX();
-                onPressSceneY = e.getSceneY();
+            if (e.button == MouseButton.PRIMARY) {
+                onPrssSceneX = e.sceneX
+                onPressSceneY = e.sceneY
 
+            } else if (e.button == MouseButton.MIDDLE) {
+                mousePosX = e.sceneX
+                mousePosY = e.sceneY
+                //                ta.appendText("Middle button pressed X:"+mousePosX+"  Y: "+mousePosY+"\n");
             }
-            else if (e.getButton() == MouseButton.MIDDLE){
-                mousePosX = e.getSceneX();
-                mousePosY = e.getSceneY();
-//                ta.appendText("Middle button pressed X:"+mousePosX+"  Y: "+mousePosY+"\n");
-            }
-        });
+        }
         //Mouse dragged
-        viewportPane.setOnMouseDragged(e-> {
-            if (e.getButton() == MouseButton.PRIMARY){
+        viewportPane.setOnMouseDragged { e ->
+            if (e.button == MouseButton.PRIMARY) {
 
-                cameraTransform.moveViewport(e.getSceneX() - onPrssSceneX,e.getSceneY() - onPressSceneY);
+                flyCamera.moveViewport(e.sceneX - onPrssSceneX, e.sceneY - onPressSceneY)
+
+            } else if (e.button == MouseButton.MIDDLE) {
+                val dx = mousePosX - e.sceneX
+                val dy = mousePosY - e.sceneY
+                flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height)
 
             }
-            else if (e.getButton() == MouseButton.MIDDLE){
-                double dx = (mousePosX - e.getSceneX()) ;
-                double dy = (mousePosY - e.getSceneY());
-                 cameraTransform.rotateViewport(dx,dy,viewportPane.getWidth(),viewportPane.getHeight());
-
-            }
-        });
+        }
         //Mouse click
-        viewportPane.setOnMouseClicked(e->{
-            selectedNode=e.getPickResult().getIntersectedNode();
-            printNodeProperties(e.getPickResult().getIntersectedNode());
+        viewportPane.setOnMouseClicked { e ->
+            selectedNode = e.pickResult.intersectedNode
+            printNodeProperties(e.pickResult.intersectedNode)
 
             //Show node properties statusbar if node selected
-            if(selectedNode.getId()==viewportPane.getId()){
-                HB_nodeStatusBar.setVisible(false);
-                printNodeProperties(cameraTransform.getPCamera());
-            }
-            else {
-                HB_nodeStatusBar.setVisible(true);
-                ShowSelectedNodeTransformBar();
+            if (selectedNode!!.id === viewportPane.id) {
+                HB_nodeStatusBar!!.isVisible = false
+                printNodeProperties(flyCamera.camera)
+            } else {
+                HB_nodeStatusBar!!.isVisible = true
+                ShowSelectedNodeTransformBar()
 
                 //RMB Selected object properties
-                if(e.getButton()==MouseButton.SECONDARY){
-//          Worked
-//                    final Stage dialog = new Stage();
-//                    dialog.initModality(Modality.APPLICATION_MODAL);
-////                    dialog.initOwner(this.get);
-//                    VBox dialogVbox = new VBox(20);
-//                    dialogVbox.getChildren().add(new Text("This is a Dialog"));
-//                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
-//                    dialog.setScene(dialogScene);
-//                    dialog.show();
+                if (e.button == MouseButton.SECONDARY) {
+                    //          Worked
+                    //                    final Stage dialog = new Stage();
+                    //                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    ////                    dialog.initOwner(this.get);
+                    //                    VBox dialogVbox = new VBox(20);
+                    //                    dialogVbox.getChildren().add(new Text("This is a Dialog"));
+                    //                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                    //                    dialog.setScene(dialogScene);
+                    //                    dialog.show();
 
-                    final Popup popup = new Popup();
-                    popup.setX(e.getX());
-                    popup.setY(e.getY());
-                    Label deleteShape =new Label("Delete Shape");
-                    deleteShape.setOnMouseClicked(eh->{
-                        root.getChildren().remove(selectedNode);
-                        popup.hide();
-                    });
-                    popup.getContent().addAll(new HBox(deleteShape));
-                    popup.show(viewportPane.getScene().getWindow());
+                    val popup = Popup()
+                    popup.x = e.x
+                    popup.y = e.y
+                    val deleteShape = Label("Delete Shape")
+                    deleteShape.setOnMouseClicked { eh ->
+                        root.children.remove(selectedNode)
+                        popup.hide()
+                    }
+                    popup.content.addAll(HBox(deleteShape))
+                    popup.show(viewportPane.scene.window)
 
 
                 }
 
             }
-        });
+        }
 
         //Hide node status when no nodes selected
-        HB_nodeStatusBar.managedProperty().bind(HB_nodeStatusBar.visibleProperty());
+        HB_nodeStatusBar!!.managedProperty().bind(HB_nodeStatusBar.visibleProperty())
 
-        viewportPane.widthProperty().addListener(cl->SetViewportSize() );
-        viewportPane.heightProperty().addListener(cl->SetViewportSize() );
+        viewportPane.widthProperty().addListener { cl -> SetViewportSize() }
+        viewportPane.heightProperty().addListener { cl -> SetViewportSize() }
 
         //Split panes auto divider
-        ChangeListener<Number>  MainSplitPaneSizeListener = (observable, oldValue, newValue) -> {
-                MainSplitPane.setDividerPositions(0.9);//System.out.println("Height: " + ToolSplitPane.getHeight() + " Width: " + ToolSplitPane.getWidth());
-            };
-        MainSplitPane.widthProperty().addListener( MainSplitPaneSizeListener);
-        double w1,pos1,w2;
-        w1=798.4;
-        pos1=0.785;
+        val MainSplitPaneSizeListener = { (observable, oldValue, newValue )->
+            MainSplitPane!!.setDividerPositions(0.9)//System.out.println("Height: " + ToolSplitPane.getHeight() + " Width: " + ToolSplitPane.getWidth());
+        }
+        MainSplitPane!!.widthProperty().addListener(MainSplitPaneSizeListener)
+        val w1: Double
+        val pos1: Double
+        val w2: Double
+        w1 = 798.4
+        pos1 = 0.785
         //System.out.println("Start ToolSplitPane.getWidth: " +ToolSplitPane.getWidth());
-        ChangeListener<Number> ToolSplitPaneSizeListener = (observable, oldValue, newValue) ->
-            ToolSplitPane.setDividerPositions(1-w1*(1-pos1)/ ToolSplitPane.getWidth());
+        val ToolSplitPaneSizeListener = { observable, oldValue, newValue -> ToolSplitPane!!.setDividerPositions(1 - w1 * (1 - pos1) / ToolSplitPane.width) }
 
-        ToolSplitPane.widthProperty().addListener(ToolSplitPaneSizeListener);
+        ToolSplitPane!!.widthProperty().addListener(ToolSplitPaneSizeListener)
 
         //Slider camera Field of View
-        S_FieldOfView.valueProperty().addListener((ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) ->
-                    cameraTransform.getPCamera().setFieldOfView(new_val.doubleValue())        );
+        S_FieldOfView!!.valueProperty().addListener { ov: ObservableValue<out Number>, old_val: Number, new_val: Number -> flyCamera.camera.fieldOfView = new_val.toDouble() }
 
         //Slider rotate around Z axis
-        S_RotateZ.valueProperty().addListener((ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) ->
-                cameraTransform.setAngleAlongX(new_val.doubleValue())        );
+        S_RotateZ!!.valueProperty().addListener { ov: ObservableValue<out Number>, old_val: Number, new_val: Number -> flyCamera.setAngleAlongX(new_val.toDouble()) }
 
         //Set listener to all camera transforms
-        ObservableList<Transform> observableList = FXCollections.observableList(subScene.getCamera().getTransforms());
-        observableList.forEach(node->node.setOnTransformChanged(transformChangedEvent -> ShowCameraTransform()));
+        val observableList = FXCollections.observableList(subScene!!.camera.transforms)
+        observableList.forEach { node -> node.setOnTransformChanged { transformChangedEvent -> ShowCameraTransform() } }
 
 
 
 
-        MSN_cameraX.textField.setOnKeyReleased(eh->cameraTransform.getPCamera().setTranslateX(MSN_cameraX.getValue()));
-        MSN_cameraY.textField.setOnKeyReleased(eh->cameraTransform.getPCamera().setTranslateY(MSN_cameraY.getValue()));
-        MSN_cameraZ.textField.setOnKeyReleased(eh->cameraTransform.getPCamera().setTranslateZ(MSN_cameraZ.getValue()));
-        MSN_cameraAngleX.textField.setOnKeyReleased(eh->cameraTransform.setAngleAlongX(MSN_cameraAngleX.getValue()));
-        MSN_cameraAngleY.textField.setOnKeyReleased(eh->cameraTransform.setAngleAlongY(MSN_cameraAngleY.getValue()));
-        MSN_cameraAngleZ.textField.setOnKeyReleased(eh->{
-            cameraTransform.setAngleAlongZ(MSN_cameraAngleZ.getValue());
-            S_RotateZ.setValue(MSN_cameraAngleZ.getValue());
-        });
+        msnCameraX!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateX = msnCameraX!!.value }
+        msnCameraY!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateY = msnCameraY!!.value }
+        msnCameraZ!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateZ = msnCameraZ!!.value }
+        msnCameraAngleX!!.textField.setOnKeyReleased { eh -> flyCamera.setAngleAlongX(msnCameraAngleX!!.value) }
+        msnCameraAngleY!!.textField.setOnKeyReleased { eh -> flyCamera.setAngleAlongY(msnCameraAngleY!!.value) }
+        msnCameraAngleZ!!.textField.setOnKeyReleased { eh ->
+            flyCamera.setAngleAlongZ(msnCameraAngleZ!!.value)
+            S_RotateZ.value = msnCameraAngleZ!!.value
+        }
 
-        MSN_cameraFieldOfView.textField.setOnKeyReleased(eh->{
-            cameraTransform.getPCamera().fieldOfViewProperty().setValue( MSN_cameraFieldOfView.getValue());
-            S_FieldOfView.setValue(MSN_cameraNearClip.getValue());
-        });
-        MSN_cameraNearClip.textField.setOnKeyReleased(eh->cameraTransform.getPCamera().nearClipProperty().setValue(MSN_cameraNearClip.getValue()));
-        MSN_cameraFarClip.textField.setOnKeyReleased(eh->cameraTransform.getPCamera().farClipProperty().setValue(MSN_cameraNearClip.getValue()));
+        msnCameraFieldOfView!!.textField.setOnKeyReleased { eh ->
+            flyCamera.camera.fieldOfViewProperty().setValue(msnCameraFieldOfView!!.value)
+            S_FieldOfView.value = msnCameraNearClip!!.value
+        }
+        msnCameraNearClip!!.textField.setOnKeyReleased { eh -> flyCamera.camera.nearClipProperty().setValue(msnCameraNearClip!!.value) }
+        msnCameraFarClip!!.textField.setOnKeyReleased { eh -> flyCamera.camera.farClipProperty().setValue(msnCameraNearClip!!.value) }
 
 
         //Selected Node
-        TF_nodeID.textProperty().addListener(
-            (ObservableValue<? extends String> observable, String oldValue, String newValue) ->
-            {
-                    // expand the TextField
-                    // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
-                    Platform.runLater(() -> {
-                        Text text = new Text(newValue);
-                        text.setFont(TF_nodeID.getFont()); // Set the same font, so the size is the same
-                        double width = text.getLayoutBounds().getWidth() // This big is the Text in the TextField
-                                + TF_nodeID.getPadding().getLeft() + TF_nodeID.getPadding().getRight() // Add the padding of the TextField
-                                + 2d; // Add some spacing
-                        TF_nodeID.setPrefWidth(width); // Set the width
-                        TF_nodeID.positionCaret(TF_nodeID.getCaretPosition()); // If you remove this line, it flashes a little bit
-                    });
-                }
-            );
-        MSN_nodeX.textField.setOnKeyReleased(eh->selectedNode.setTranslateX(MSN_nodeX.getValue()));
-        MSN_nodeY.textField.setOnKeyReleased(eh->selectedNode.setTranslateY(MSN_nodeY.getValue()));
-        MSN_nodeZ.textField.setOnKeyReleased(eh->selectedNode.setTranslateZ(MSN_nodeZ.getValue()));
+        TF_nodeID!!.textProperty().addListener { observable: ObservableValue<out String>, oldValue: String, newValue: String ->
+            // expand the TextField
+            // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
+            Platform.runLater {
+                val text = Text(newValue)
+                text.font = TF_nodeID!!.font // Set the same font, so the size is the same
+                val width = (text.layoutBounds.width // This big is the Text in the TextField
 
-//        MSN_nodeAngleX.textField.setOnKeyReleased(eh->selectedNode.getTransforms().addAll(nodeRotateX.setAngle(MSN_nodeAngleX.getValue())));
-//        MSN_nodeAngleY.textField.setOnKeyReleased(eh->nodeRotateY.setAngle(MSN_nodeAngleY.getValue()));
-//        MSN_nodeAngleZ.textField.setOnKeyReleased(eh->nodeRotateZ.setAngle(MSN_nodeAngleZ.getValue()));
+                        + TF_nodeID!!.padding.left + TF_nodeID!!.padding.right // Add the padding of the TextField
+
+                        + 2.0) // Add some spacing
+                TF_nodeID!!.prefWidth = width // Set the width
+                TF_nodeID!!.positionCaret(TF_nodeID!!.caretPosition) // If you remove this line, it flashes a little bit
+            }
+        }
+        MSN_nodeX!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = MSN_nodeX!!.value }
+        MSN_nodeY!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = MSN_nodeY!!.value }
+        MSN_nodeZ!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = MSN_nodeZ!!.value }
+
+        //        MSN_nodeAngleX.textField.setOnKeyReleased(eh->selectedNode.getTransforms().addAll(nodeRotateX.setAngle(MSN_nodeAngleX.getValue())));
+        //        MSN_nodeAngleY.textField.setOnKeyReleased(eh->nodeRotateY.setAngle(MSN_nodeAngleY.getValue()));
+        //        MSN_nodeAngleZ.textField.setOnKeyReleased(eh->nodeRotateZ.setAngle(MSN_nodeAngleZ.getValue()));
 
     }
 
-    private void ShowCameraTransform(){
+    private fun ShowCameraTransform() {
         //int caret=0;
-        MSN_cameraX.setText(cameraTransform.getPCamera().getTranslateX());
-        MSN_cameraY.setText(cameraTransform.getPCamera().getTranslateY());
-        MSN_cameraZ.setText(cameraTransform.getPCamera().getTranslateZ());
-        MSN_cameraAngleX.setText(cameraTransform.getAngleAlongX());
-        MSN_cameraAngleY.setText( cameraTransform.getAngleAlongY());
-        MSN_cameraAngleZ.setText(cameraTransform.getAngleAlongZ());
-        MSN_cameraFieldOfView.setText(cameraTransform.getPCamera().fieldOfViewProperty().getValue());
-        MSN_cameraNearClip.setText(cameraTransform.getPCamera().nearClipProperty().getValue());
-        MSN_cameraFarClip.setText(cameraTransform.getPCamera().farClipProperty().getValue());
+        msnCameraX!!.setText(flyCamera.camera.translateX)
+        msnCameraY!!.setText(flyCamera.camera.translateY)
+        msnCameraZ!!.setText(flyCamera.camera.translateZ)
+        msnCameraAngleX!!.setText(flyCamera.getAngleAlongX())
+        msnCameraAngleY!!.setText(flyCamera.getAngleAlongY())
+        msnCameraAngleZ!!.setText(flyCamera.getAngleAlongZ())
+        msnCameraFieldOfView!!.setText(flyCamera.camera.fieldOfViewProperty().value!!)
+        msnCameraNearClip!!.setText(flyCamera.camera.nearClipProperty().value!!)
+        msnCameraFarClip!!.setText(flyCamera.camera.farClipProperty().value!!)
 
     }
-    private void ShowSelectedNodeTransformBar(){
-        TF_nodeID.setText(selectedNode.getId());
-        MSN_nodeX.setText(selectedNode.getTranslateX());
-        MSN_nodeY.setText(selectedNode.getTranslateY());
-        MSN_nodeZ.setText(selectedNode.getTranslateZ());
+
+    private fun ShowSelectedNodeTransformBar() {
+        TF_nodeID!!.text = selectedNode!!.id
+        MSN_nodeX!!.setText(selectedNode!!.translateX)
+        MSN_nodeY!!.setText(selectedNode!!.translateY)
+        MSN_nodeZ!!.setText(selectedNode!!.translateZ)
 
     }
-    @FXML     private void CameraAlongX(){
-        cameraTransform.alongX(sceneBounds);
+
+    @FXML
+    private fun CameraAlongX() {
+
+        flyCamera.backwardX()
     }
-    @FXML     private void CameraAlongY(){
-        cameraTransform.alongY(sceneBounds);
+
+    @FXML
+    private fun CameraAlongY() {
+        flyCamera.alongY(sceneBounds)
     }
-    @FXML     private void CameraAlongZ(){
-        cameraTransform.alongZ(sceneBounds);
+
+    @FXML
+    private fun CameraAlongZ() {
+        flyCamera.alongZ(sceneBounds)
     }
-    @FXML     private void CameraAlong0() { cameraTransform.along0(sceneBounds); }
+
+    @FXML
+    private fun CameraAlongXr() {
+        flyCamera.backwardX(sceneBounds)
+    }
+
+    @FXML
+    private fun CameraAlongYr() {
+        flyCamera.backwaedY(sceneBounds)
+    }
+
+    @FXML
+    private fun CameraAlongZr() {
+        flyCamera.backwardZ(sceneBounds)
+    }
+
+    @FXML
+    private fun CameraAlong0() {
+        flyCamera.along0(sceneBounds)
+    }
 
 
-private void printNodeProperties(Node node){
+    private fun printNodeProperties(node: Node) {
 
-    Bounds boundsInScene = node.localToScene(node.getBoundsInLocal());
+        val boundsInScene = node.localToScene(node.boundsInLocal)
 
-    ta.appendText(
-//            "\n"+
-                    node.getTypeSelector()+
-                    " "+node.getStyle()+
-                    "  x: "/*+ nodeTranslate.getX()+*/+((int)boundsInScene.getMinX())+
-                    "  y: "/*+ nodeTranslate.getY()+*/+((int)boundsInScene.getMinY())+
-                    "  z: "/*+ nodeTranslate.getZ()+*/+((int)boundsInScene.getMinZ())+
-                    "  "+node.getId()+
-                    "  to sting: "+node.toString()+
-                    "  Bound in local: "+node.getBoundsInLocal().toString()+
-                    "  Layout bounds: "+node.getLayoutBounds().toString()+
-//                    "  Layout bounds: "+selectedNode..getLayoutBounds().toString()+
-//                    "  transforms: "+selectedNode.getTransforms().toArray().toString()+
-                    "  Compute area in screen: "+node.computeAreaInScreen()+
-                    "\n");
-    for (int i=0;i<node.getTransforms().toArray().length;i++)ta.appendText(node.getTransforms().toArray()[i].toString()+"\n");
-}
+        ta!!.appendText(
+                //            "\n"+
+                node.typeSelector +
+                        " " + node.style +
+                        "  x: "/*+ nodeTranslate.getX()+*/ + boundsInScene.minX.toInt() +
+                        "  y: "/*+ nodeTranslate.getY()+*/ + boundsInScene.minY.toInt() +
+                        "  z: "/*+ nodeTranslate.getZ()+*/ + boundsInScene.minZ.toInt() +
+                        "  " + node.id +
+                        "  to sting: " + node.toString() +
+                        "  Bound in local: " + node.boundsInLocal.toString() +
+                        "  Layout bounds: " + node.layoutBounds.toString() +
+                        //                    "  Layout bounds: "+selectedNode..getLayoutBounds().toString()+
+                        //                    "  transforms: "+selectedNode.getTransforms().toArray().toString()+
+                        "  Compute area in screen: " + node.computeAreaInScreen() +
+                        "\n")
+        for (i in 0 until node.transforms.toTypedArray().size) ta.appendText(node.transforms.toTypedArray()[i].toString() + "\n")
+    }
 
 
-private static ArrayList<Node> getAllNodes(Parent root) {
-    ArrayList<Node> nodes = new ArrayList<>();
-    addAllDescendants(root, nodes);
-    return nodes;
-}
+    private fun getAllNodes(root: Parent?): ArrayList<Node> {
+        val nodes = ArrayList<Node>()
+        addAllDescendants(root!!, nodes)
+        return nodes
+    }
 
-    private static void addAllDescendants(Parent parent, ArrayList<Node> nodes) {
-        for (Node node : parent.getChildrenUnmodifiable()) {
-            nodes.add(node);
-            if (node instanceof Parent)
-                addAllDescendants((Parent)node, nodes);
+    private fun addAllDescendants(parent: Parent, nodes: ArrayList<Node>) {
+        for (node in parent.childrenUnmodifiable) {
+            nodes.add(node)
+            if (node is Parent)
+                addAllDescendants(node, nodes)
         }
     }
 
@@ -473,9 +499,7 @@ private static ArrayList<Node> getAllNodes(Parent root) {
 }
 
 
-
-
-    /*
+/*
     Issue:
     Z rotation local pivot
     MiniSpinner:
@@ -499,3 +523,5 @@ private static ArrayList<Node> getAllNodes(Parent root) {
     subScene AntiAliasing
     Aligning camera and node properties
     */
+
+
