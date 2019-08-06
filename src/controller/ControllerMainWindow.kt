@@ -23,6 +23,7 @@ import javafx.stage.Popup
 import view.*
 
 
+
 import javax.imageio.ImageIO
 import java.io.File
 import java.io.IOException
@@ -36,24 +37,24 @@ class ControllerMainWindow {
 
 
     //    private final Set<KeyCode> pressedKeys = new HashSet<>();
-    @FXML     private val treeView: TreeView<*>? = null
-    @FXML     private val gridPaneMain: GridPane? = null
-    @FXML     private val viewportPane: Pane? = null
-    @FXML     private val mainSplitPane: SplitPane? = null
-    @FXML     private val toolSplitPane: SplitPane? = null
-    @FXML     private val spnIteration: Spinner<Int>? = null
-    @FXML     private val spnSceneBounds: Spinner<Int>? = null
+    @FXML     lateinit var treeView: TreeView<*>
+    @FXML     lateinit var gridPaneMain: GridPane
+    @FXML     lateinit var viewportPane: Pane
+    @FXML     lateinit var mainSplitPane: SplitPane
+    @FXML     lateinit var toolSplitPane: SplitPane
+    @FXML     lateinit var spnIteration: Spinner<Int>
+    @FXML     lateinit var spnSceneBounds: Spinner<Int>
 
 //    @FXML     private val BtnPrintAllScene: Button? = null
 
-    @FXML     private val selectSavePath: TextField? = null
-    @FXML     private val ta: TextArea? = null
-    @FXML     private val sFieldOfView: Slider? = null
-    @FXML     private val sRotateZ: Slider? = null
-    @FXML     private val cbShowAxes: CheckBox? = null
+    @FXML     lateinit var selectSavePath: TextField
+    @FXML     lateinit var ta: TextArea
+    @FXML     lateinit var sFieldOfView: Slider
+    @FXML     lateinit var sRotateZ: Slider
+    @FXML     lateinit var cbShowAxes: CheckBox
 
-    @FXML     private val hbCameraStatusBar: HBox? = null
-    @FXML     private val hbNodeStatusBar: HBox? = null
+    @FXML     lateinit var hbCameraStatusBar: HBox
+    @FXML     lateinit var hbNodeStatusBar: HBox
 
     private val shiftIncrement = 10.0
     private val rotateIncrement = 5.0
