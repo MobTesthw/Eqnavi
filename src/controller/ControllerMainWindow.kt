@@ -262,6 +262,8 @@ class ControllerMainWindow {
         viewportPane.setOnMouseDragged { e ->
             if (e.button == MouseButton.PRIMARY) {
                 flyCamera.moveViewport(e.sceneX - onPressSceneX, e.sceneY - onPressSceneY)
+                onPressSceneX = e.sceneX
+                onPressSceneY = e.sceneY
 //                ta.appendText("Middle button pressed X:"+mousePosX+"  Y: "+mousePosY+"\n")
                 ta.appendText(e.sceneX.toInt().toString() +" - "+onPressSceneX.toInt().toString()+" ; " +e.sceneY +onPressSceneY.toInt()+"\n")
             } else if (e.button == MouseButton.MIDDLE) {

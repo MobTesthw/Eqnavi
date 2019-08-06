@@ -17,7 +17,7 @@ open class FlyCamera(val sceneBounds:Double) {
     val cameraInitX = 0.0
     val cameraInitY = 0.0
     val cameraInitZ = -500.0
-    val cameraZoomFactor = 5.0
+    val cameraZoomFactor = 2.0
 
 
 
