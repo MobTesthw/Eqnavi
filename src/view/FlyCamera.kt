@@ -19,8 +19,8 @@ open class FlyCamera(val sceneBounds:Double) {
     val cameraInitZ = -500.0
 
     private val cameraMoveMultiplier = 2.0
-    private val cameraRotateMultiplier = 2.0
-    private val cameraZoomMultiplier = 2.0
+    private val cameraRotateMultiplier = 10
+    private val cameraZoomMultiplier = -2.0
 
 
 
@@ -37,8 +37,19 @@ open class FlyCamera(val sceneBounds:Double) {
     }
 
      fun moveViewport(deltaX: Double, deltaY: Double) {
-         camera.translateX  += deltaX * cameraMoveMultiplier
-         camera.translateY  += deltaY * cameraMoveMultiplier
+//         camera.translateX  += deltaX * cameraMoveMultiplier
+//         camera.translateY  += deltaY * cameraMoveMultiplier
+         //x - yz
+         //y - zx
+         //z - xy
+
+         val ax=cameraRotateX.angle * Math.PI / 180
+         val ay=cameraRotateY.angle * Math.PI / 180
+//         val az=cameraRotateZ.angle * Math.PI / 180
+
+         camera.translateX  += deltaX * cos(ay) * cameraMoveMultiplier
+         camera.translateY  += deltaY * cos(ax) * cameraMoveMultiplier
+         camera.translateZ  += (deltaX * sin(ay) - deltaY * sin(ax)) * cameraMoveMultiplier
      }
 
     fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double) {
