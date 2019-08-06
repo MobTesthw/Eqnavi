@@ -14,7 +14,7 @@ fun FlyCamera.alongX() {
     cameraRotateZ.angle = 0.0
 }
 
-    fun FlyCamera.backwardX(sceneBounds:Double) {
+    fun FlyCamera.backwardX() {
         camera.translateX= - sceneBounds
         camera.translateY= 0.0
         camera.translateZ= 0.0
@@ -23,7 +23,7 @@ fun FlyCamera.alongX() {
         cameraRotateY.angle = 90.0
         cameraRotateZ.angle = 0.0
     }
-    fun FlyCamera.alongY (sceneBounds:Double){
+    fun FlyCamera.alongY (){
         camera.translateX=0.0
         camera.translateY= sceneBounds * 3
         camera.translateZ=0.0
@@ -32,7 +32,7 @@ fun FlyCamera.alongX() {
         cameraRotateY.angle = 0.0
         cameraRotateZ.angle = 0.0
     }
-    fun FlyCamera.backwardY (sceneBounds:Double){
+    fun FlyCamera.backwardY (){
         camera.translateX=0.0
         camera.translateY= - sceneBounds
         camera.translateZ=0.0
@@ -42,7 +42,7 @@ fun FlyCamera.alongX() {
         cameraRotateZ.angle = 0.0
     }
 
-    fun FlyCamera.alongZ(sceneBounds:Double) {
+    fun FlyCamera.alongZ() {
         camera.translateX=0.0
         camera.translateY= 0.0
         camera.translateZ=sceneBounds * 3
@@ -51,7 +51,7 @@ fun FlyCamera.alongX() {
         cameraRotateY.angle = 180.0
         cameraRotateZ.angle = 0.0
     }
-    fun FlyCamera.backwardZ(sceneBounds:Double) {
+    fun FlyCamera.backwardZ() {
         camera.translateX=0.0
         camera.translateY= 0.0
         camera.translateZ= - sceneBounds
@@ -61,7 +61,7 @@ fun FlyCamera.alongX() {
         cameraRotateZ.angle = 0.0
     }
 
-    fun FlyCamera.along0(sceneBounds:Double) {
+    fun FlyCamera.along0() {
         camera.translateX= -56.0
         camera.translateY= -135.0
         camera.translateZ=  146.0

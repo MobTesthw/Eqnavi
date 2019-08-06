@@ -21,9 +21,9 @@ open class FlyCamera(val sceneBounds:Double) {
 
 
 
-    fun getAngleAlongX() = cameraRotateX.angle
-    fun getAngleAlongY() = cameraRotateY.angle
-    fun getAngleAlongZ() = cameraRotateZ.angle
+//    fun AngleAlongX() = cameraRotateX.angle
+//    fun AngleAlongY() = cameraRotateY.angle
+//    fun AngleAlongZ() = cameraRotateZ.angle
 
 
     init {

@@ -21,7 +21,7 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
 import javafx.scene.text.Text
 import javafx.stage.Popup
-import view.FlyCamera
+import view.*
 
 
 import javax.imageio.ImageIO
@@ -30,8 +30,6 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Calendar
-
-import view.backwardX
 
 
 class ControllerMainWindow {
@@ -42,8 +40,8 @@ class ControllerMainWindow {
     @FXML     private val treeView: TreeView<*>? = null
     @FXML     private val gridPaneMain: GridPane? = null
     @FXML     private val viewportPane: Pane? = null
-    @FXML     private val MainSplitPane: SplitPane? = null
-    @FXML     private val ToolSplitPane: SplitPane? = null
+    @FXML     private val mainSplitPane: SplitPane? = null
+    @FXML     private val toolSplitPane: SplitPane? = null
     @FXML     private val SPN_Iteration: Spinner<Int>? = null
     @FXML     private val SPN_SceneBounds: Spinner<Int>? = null
 
@@ -51,8 +49,8 @@ class ControllerMainWindow {
 
     @FXML     private val SelectSavePath: TextField? = null
     @FXML     private val ta: TextArea? = null
-    @FXML     private val S_FieldOfView: Slider? = null
-    @FXML     private val S_RotateZ: Slider? = null
+    @FXML     private val sFieldOfView: Slider? = null
+    @FXML     private val sRotateZ: Slider? = null
     @FXML     private val CB_ShowAxes: CheckBox? = null
 
     @FXML     private val HB_CameraStatusBar: HBox? = null
@@ -325,73 +323,69 @@ class ControllerMainWindow {
         HB_nodeStatusBar!!.managedProperty().bind(HB_nodeStatusBar.visibleProperty())
 
         viewportPane.widthProperty().addListener { cl -> SetViewportSize() }
-        viewportPane.heightProperty().addListener { cl -> SetViewportSize() }
+        viewportPane.heightProperty().addListener {cl -> SetViewportSize() }
 
         //Split panes auto divider
-        val MainSplitPaneSizeListener = { (observable, oldValue, newValue )->
-            MainSplitPane!!.setDividerPositions(0.9)//System.out.println("Height: " + ToolSplitPane.getHeight() + " Width: " + ToolSplitPane.getWidth());
-        }
-        MainSplitPane!!.widthProperty().addListener(MainSplitPaneSizeListener)
+
+        mainSplitPane!!.widthProperty().addListener { _, _, _-> mainSplitPane.setDividerPositions(0.9) }
+
         val w1: Double
         val pos1: Double
         val w2: Double
         w1 = 798.4
         pos1 = 0.785
         //System.out.println("Start ToolSplitPane.getWidth: " +ToolSplitPane.getWidth());
-        val ToolSplitPaneSizeListener = { observable, oldValue, newValue -> ToolSplitPane!!.setDividerPositions(1 - w1 * (1 - pos1) / ToolSplitPane.width) }
-
-        ToolSplitPane!!.widthProperty().addListener(ToolSplitPaneSizeListener)
+        toolSplitPane!!.widthProperty().addListener { _, _, _-> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
 
         //Slider camera Field of View
-        S_FieldOfView!!.valueProperty().addListener { ov: ObservableValue<out Number>, old_val: Number, new_val: Number -> flyCamera.camera.fieldOfView = new_val.toDouble() }
-
+        sFieldOfView!!.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
         //Slider rotate around Z axis
-        S_RotateZ!!.valueProperty().addListener { ov: ObservableValue<out Number>, old_val: Number, new_val: Number -> flyCamera.setAngleAlongX(new_val.toDouble()) }
+        sRotateZ!!.valueProperty().addListener {_,_,new_val->flyCamera.cameraRotateZ.angle=new_val.toDouble()}
 
         //Set listener to all camera transforms
         val observableList = FXCollections.observableList(subScene!!.camera.transforms)
-        observableList.forEach { node -> node.setOnTransformChanged { transformChangedEvent -> ShowCameraTransform() } }
+        observableList.forEach { node -> node.setOnTransformChanged { _ -> ShowCameraTransform() } }
 
 
 
 
-        msnCameraX!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateX = msnCameraX!!.value }
-        msnCameraY!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateY = msnCameraY!!.value }
-        msnCameraZ!!.textField.setOnKeyReleased { eh -> flyCamera.camera.translateZ = msnCameraZ!!.value }
-        msnCameraAngleX!!.textField.setOnKeyReleased { eh -> flyCamera.setAngleAlongX(msnCameraAngleX!!.value) }
-        msnCameraAngleY!!.textField.setOnKeyReleased { eh -> flyCamera.setAngleAlongY(msnCameraAngleY!!.value) }
-        msnCameraAngleZ!!.textField.setOnKeyReleased { eh ->
-            flyCamera.setAngleAlongZ(msnCameraAngleZ!!.value)
-            S_RotateZ.value = msnCameraAngleZ!!.value
+        msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
+        msnCameraY.textField.setOnKeyReleased {  flyCamera.camera.translateY = msnCameraY.value }
+        msnCameraZ.textField.setOnKeyReleased {  flyCamera.camera.translateZ = msnCameraZ.value }
+        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
+        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
+        msnCameraAngleZ.textField.setOnKeyReleased {
+            flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
+            sRotateZ.value = msnCameraAngleZ.value
         }
 
-        msnCameraFieldOfView!!.textField.setOnKeyReleased { eh ->
-            flyCamera.camera.fieldOfViewProperty().setValue(msnCameraFieldOfView!!.value)
-            S_FieldOfView.value = msnCameraNearClip!!.value
+        msnCameraFieldOfView.textField.setOnKeyReleased {
+            flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
+            sFieldOfView.value = msnCameraNearClip.value
         }
-        msnCameraNearClip!!.textField.setOnKeyReleased { eh -> flyCamera.camera.nearClipProperty().setValue(msnCameraNearClip!!.value) }
-        msnCameraFarClip!!.textField.setOnKeyReleased { eh -> flyCamera.camera.farClipProperty().setValue(msnCameraNearClip!!.value) }
+        msnCameraNearClip.textField.setOnKeyReleased { flyCamera.camera.nearClipProperty().value = msnCameraNearClip.value }
+        msnCameraFarClip.textField.setOnKeyReleased { flyCamera.camera.farClipProperty().value = msnCameraNearClip.value }
 
 
         //Selected Node
-        TF_nodeID!!.textProperty().addListener { observable: ObservableValue<out String>, oldValue: String, newValue: String ->
+        TF_nodeID.textProperty().addListener { _: ObservableValue<out String>, oldValue: String, newValue: String ->
             // expand the TextField
             // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
             Platform.runLater {
                 val text = Text(newValue)
-                text.font = TF_nodeID!!.font // Set the same font, so the size is the same
+                text.font = TF_nodeID.font // Set the same font, so the size is the same
                 val width = (text.layoutBounds.width // This big is the Text in the TextField
 
-                        + TF_nodeID!!.padding.left + TF_nodeID!!.padding.right // Add the padding of the TextField
+                        + TF_nodeID.padding.left + TF_nodeID.padding.right // Add the padding of the TextField
 
                         + 2.0) // Add some spacing
-                TF_nodeID!!.prefWidth = width // Set the width
-                TF_nodeID!!.positionCaret(TF_nodeID!!.caretPosition) // If you remove this line, it flashes a little bit
+                TF_nodeID.prefWidth = width // Set the width
+                TF_nodeID.positionCaret(TF_nodeID.caretPosition) // If you remove this line, it flashes a little bit
             }
         }
-        MSN_nodeX!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = MSN_nodeX!!.value }
-        MSN_nodeY!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = MSN_nodeY!!.value }
-        MSN_nodeZ!!.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = MSN_nodeZ!!.value }
+        MSN_nodeX.textField.setOnKeyReleased { eh -> selectedNode!!.translateX = MSN_nodeX.value }
+        MSN_nodeY.textField.setOnKeyReleased { eh -> selectedNode!!.translateY = MSN_nodeY.value }
+        MSN_nodeZ.textField.setOnKeyReleased { eh -> selectedNode!!.translateZ = MSN_nodeZ.value }
 
         //        MSN_nodeAngleX.textField.setOnKeyReleased(eh->selectedNode.getTransforms().addAll(nodeRotateX.setAngle(MSN_nodeAngleX.getValue())));
         //        MSN_nodeAngleY.textField.setOnKeyReleased(eh->nodeRotateY.setAngle(MSN_nodeAngleY.getValue()));
@@ -401,61 +395,33 @@ class ControllerMainWindow {
 
     private fun ShowCameraTransform() {
         //int caret=0;
-        msnCameraX!!.setText(flyCamera.camera.translateX)
-        msnCameraY!!.setText(flyCamera.camera.translateY)
-        msnCameraZ!!.setText(flyCamera.camera.translateZ)
-        msnCameraAngleX!!.setText(flyCamera.getAngleAlongX())
-        msnCameraAngleY!!.setText(flyCamera.getAngleAlongY())
-        msnCameraAngleZ!!.setText(flyCamera.getAngleAlongZ())
-        msnCameraFieldOfView!!.setText(flyCamera.camera.fieldOfViewProperty().value!!)
-        msnCameraNearClip!!.setText(flyCamera.camera.nearClipProperty().value!!)
-        msnCameraFarClip!!.setText(flyCamera.camera.farClipProperty().value!!)
+        msnCameraX.setText(flyCamera.camera.translateX)
+        msnCameraY.setText(flyCamera.camera.translateY)
+        msnCameraZ.setText(flyCamera.camera.translateZ)
+        msnCameraAngleX.setText(flyCamera.cameraRotateX.angle)
+        msnCameraAngleY.setText(flyCamera.cameraRotateY.angle)
+        msnCameraAngleZ.setText(flyCamera.cameraRotateZ.angle)
+        msnCameraFieldOfView.setText(flyCamera.camera.fieldOfViewProperty().value!!)
+        msnCameraNearClip.setText(flyCamera.camera.nearClipProperty().value!!)
+        msnCameraFarClip.setText(flyCamera.camera.farClipProperty().value!!)
 
     }
 
     private fun ShowSelectedNodeTransformBar() {
-        TF_nodeID!!.text = selectedNode!!.id
-        MSN_nodeX!!.setText(selectedNode!!.translateX)
-        MSN_nodeY!!.setText(selectedNode!!.translateY)
-        MSN_nodeZ!!.setText(selectedNode!!.translateZ)
+        TF_nodeID.text = selectedNode!!.id
+        MSN_nodeX.setText(selectedNode!!.translateX)
+        MSN_nodeY.setText(selectedNode!!.translateY)
+        MSN_nodeZ.setText(selectedNode!!.translateZ)
 
     }
 
-    @FXML
-    private fun CameraAlongX() {
-
-        flyCamera.backwardX()
-    }
-
-    @FXML
-    private fun CameraAlongY() {
-        flyCamera.alongY(sceneBounds)
-    }
-
-    @FXML
-    private fun CameraAlongZ() {
-        flyCamera.alongZ(sceneBounds)
-    }
-
-    @FXML
-    private fun CameraAlongXr() {
-        flyCamera.backwardX(sceneBounds)
-    }
-
-    @FXML
-    private fun CameraAlongYr() {
-        flyCamera.backwaedY(sceneBounds)
-    }
-
-    @FXML
-    private fun CameraAlongZr() {
-        flyCamera.backwardZ(sceneBounds)
-    }
-
-    @FXML
-    private fun CameraAlong0() {
-        flyCamera.along0(sceneBounds)
-    }
+    @FXML     private fun cameraAlongX() = flyCamera.alongX()
+    @FXML     private fun cameraAlongY() = flyCamera.alongY()
+    @FXML     private fun cameraAlongZ() = flyCamera.alongZ()
+    @FXML     private fun cameraBackwardX() = flyCamera.backwardX()
+    @FXML     private fun cameraBackwardY() = flyCamera.backwardY()
+    @FXML     private fun cameraBackwardZ() = flyCamera.backwardZ()
+    @FXML     private fun cameraAlong0() = flyCamera.alongX()
 
 
     private fun printNodeProperties(node: Node) {
