@@ -17,7 +17,10 @@ open class FlyCamera(val sceneBounds:Double) {
     val cameraInitX = 0.0
     val cameraInitY = 0.0
     val cameraInitZ = -500.0
-    val cameraZoomFactor = 2.0
+
+    private val cameraMoveMultiplier = 2.0
+    private val cameraRotateMultiplier = 2.0
+    private val cameraZoomMultiplier = 2.0
 
 
 
@@ -34,10 +37,16 @@ open class FlyCamera(val sceneBounds:Double) {
     }
 
      fun moveViewport(deltaX: Double, deltaY: Double) {
-         camera.translateX  -= deltaX
-         camera.translateY  -= deltaY
+         camera.translateX  += deltaX * cameraMoveMultiplier
+         camera.translateY  += deltaY * cameraMoveMultiplier
      }
 
+    fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double) {
+        //For Camera
+        cameraRotateX.angle -=  deltaY * cameraRotateMultiplier / viewPortHeight*  360 * (Math.PI / 180)
+        cameraRotateY.angle -=  deltaX * cameraRotateMultiplier/ viewPortWidth * -360 * (Math.PI / 180)
+
+    }
 
 
 
@@ -45,7 +54,7 @@ open class FlyCamera(val sceneBounds:Double) {
 
      fun zoom(delta:Double) {
         //Math calculates in radians!!!!!!!
-        val dr = delta * cameraZoomFactor
+        val dr = delta * cameraZoomMultiplier
         val dx: Double
         val dy: Double
         val dz: Double
@@ -65,20 +74,7 @@ open class FlyCamera(val sceneBounds:Double) {
         camera.translateZ = camera.translateZ + dz
     }
 
-     fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double) {
-        //For Camera
-        cameraRotateX.angle = cameraRotateX.angle + deltaY / viewPortHeight*  360 * (Math.PI / 180)
-        cameraRotateY.angle = cameraRotateY.angle + deltaX / viewPortWidth * -360 * (Math.PI / 180)
 
-
-
-
-//                }
-//                //For Nodes
-//                mouseOldX = mousePosX;
-//                mouseOldY = mousePosY;
-//                ta.appendText("Middle button Dragged X: "+cameraRotateX.getAngle()+"  Y: "+cameraRotateY.getAngle()+"  dx: "+dx+"  dy: "+dy+"\n");
-    }
 
 
 

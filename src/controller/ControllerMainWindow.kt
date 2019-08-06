@@ -1,35 +1,24 @@
 package controller
 
+
 import customcomponent.MiniSpinner
-import model.Axis
-import model.EnvironmentNodes
 import javafx.application.Platform
 import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
-import javafx.embed.swing.SwingFXUtils
-import javafx.scene.*
-import javafx.scene.control.*
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
-import javafx.scene.control.Label
-import javafx.scene.control.TextArea
-import javafx.scene.control.TextField
-import javafx.scene.input.*
+import javafx.scene.*
+import javafx.scene.control.*
+import javafx.scene.input.MouseButton
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
 import javafx.scene.text.Text
 import javafx.stage.Popup
+import model.Axis
+import model.EnvironmentNodes
 import view.*
-
-
-
-import javax.imageio.ImageIO
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.ArrayList
-import java.util.Calendar
+import java.util.*
 
 
 class ControllerMainWindow {
@@ -46,9 +35,7 @@ class ControllerMainWindow {
     @FXML     lateinit var spnIteration: Spinner<Int>
     @FXML     lateinit var spnSceneBounds: Spinner<Int>
 
-//    @FXML     private val btnPrintAllScene: Button? = null
 
-//    @FXML     lateinit var selectSavePath: TextField
     @FXML     lateinit var ta: TextArea
     @FXML     lateinit var sFieldOfView: Slider
     @FXML     lateinit var sRotateZ: Slider
@@ -79,24 +66,13 @@ class ControllerMainWindow {
     private val msnNodeAngleY: MiniSpinner = MiniSpinner(" ∠Y:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnNodeAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", minVal, 0.0, maxVal, rotateIncrement)
 
-    private var onPressSceneX: Double = 0.toDouble()
-    private var onPressSceneY: Double = 0.toDouble()
-    //    private double orgTranslateX, orgTranslateY;
-    private var mousePosX: Double = 0.toDouble()
-    private var mousePosY: Double = 0.toDouble()
-//    private val mouseOldX = 0.0
-//    private val mouseOldY = 0.0
-//    private val nearFlip = 0.1
-//    private val farFlip = 50000.0
+    private var onPressLMBx: Double = 0.0
+    private var onPressLMBy: Double = 0.0
+    private var onPressMMBx: Double = 0.0
+    private var onPressMMBy: Double = 0.0
 
     private var viewportHeight: Double = 0.toDouble()
     private var viewPortWidth: Double = 0.toDouble()
-
-
-
-//    private val cameraInitAngleX = 0.0
-//    private val cameraInitAngleY = 0.0
-//    private val cameraInitAngleZ = 0.0
 
     private var selectedNode: Node? = null
     private var sceneBounds = 1000
@@ -110,7 +86,6 @@ class ControllerMainWindow {
 
     //Initialization
     fun initialize() {
-
 
         spnIteration.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
         spnSceneBounds.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
@@ -127,7 +102,6 @@ class ControllerMainWindow {
         hbCameraStatusBar.children.add(msnCameraFarClip.component)
 
         //Selected Node properties
-
         hbNodeStatusBar.children.add(tfNodeID)
         hbNodeStatusBar.children.add(msnNodeX.component)
         hbNodeStatusBar.children.add(msnNodeY.component)
@@ -135,7 +109,6 @@ class ControllerMainWindow {
         hbNodeStatusBar.children.add(msnNodeAngleX.component)
         hbNodeStatusBar.children.add(msnNodeAngleY.component)
         hbNodeStatusBar.children.add(msnNodeAngleZ.component)
-
 
         content.children.clear()
 
@@ -163,16 +136,14 @@ class ControllerMainWindow {
         //        ta.appendText("Viewport sizes set to w: "+viewPortWidth+" h: "+viewportHeight+"\n");
     }
 
-    @FXML
-    private fun drawAxes() {
+    @FXML     private fun drawAxes() {
         if (cbShowAxes.isSelected)
             root.children.addAll(axis.axis)
         else
             root.children.removeAll(axis.axis)
     }
 
-    @FXML
-    private fun btnGoClick(event: ActionEvent) {
+    @FXML     private fun btnGoClick(event: ActionEvent) {
         content.children.clear()
         //SetViewportSize();
         val itr = spnIteration.value
@@ -186,56 +157,32 @@ class ControllerMainWindow {
 
     }
 
-    @FXML
-    private fun btnDoClick(event: ActionEvent) {
-
+    @FXML     private fun btnDoClick(event: ActionEvent) {
 
     }
 
-    @FXML
-    private fun btnDoClick1(event: ActionEvent) {
-
+    @FXML     private fun btnDoClick1(event: ActionEvent) {
 
     }
 
-    @FXML
-    private fun btnDoClick2(event: ActionEvent) {
+    @FXML     private fun btnDoClick2(event: ActionEvent) {
 
     }
 
-    @FXML
-    private fun resetCamera() {
+    @FXML     private fun resetCamera() {
         flyCamera.reset()
     }
 
-    @FXML
-    private fun setSelectedCamera() {
+    @FXML     private fun setSelectedCamera() {
         subScene!!.camera = flyCamera.camera
     }
 
-    @FXML
-    private fun btnSaveClick(event: ActionEvent) {
-
-        val path = "D:\\1\\JavaFx\\"
-        val cal = Calendar.getInstance()
-        val sdf = SimpleDateFormat("YYYY_MM_DD__HH_mm_ss")
-        val fileName = sdf.format(cal.time)
-
-        val snapshot = viewportPane.snapshot(SnapshotParameters(), null)
-        val name = path + fileName.replace("\\.[a-zA-Z]{3,4}", "")
-        val file = File("$name.png")
-
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file)
-        } catch (exception: IOException) {
-            // handle exception here
-        }
-
+    @FXML     private fun btnSaveClick(event: ActionEvent) {
+        val name=SaveImage.toDefault(viewportPane.snapshot(SnapshotParameters(), null))
         ta.appendText("Saved snapshot :  $name\n")
     }
 
-    @FXML
-    private fun btnPrintAllScene() {
+    @FXML     private fun btnPrintAllScene() {
         ta.appendText("\n  Scene nodes: " + "\n")
         for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
             printNodeProperties(n)
@@ -249,31 +196,33 @@ class ControllerMainWindow {
         viewportPane.setOnMousePressed { e ->
 
             if (e.button == MouseButton.PRIMARY) {
-                onPressSceneX = e.sceneX
-                onPressSceneY = e.sceneY
+                onPressLMBx = e.sceneX
+                onPressLMBy = e.sceneY
 
             } else if (e.button == MouseButton.MIDDLE) {
-                mousePosX = e.sceneX
-                mousePosY = e.sceneY
+                onPressMMBx = e.sceneX
+                onPressMMBy = e.sceneY
 
             }
         }
         //Mouse dragged
         viewportPane.setOnMouseDragged { e ->
             if (e.button == MouseButton.PRIMARY) {
-                flyCamera.moveViewport(e.sceneX - onPressSceneX, e.sceneY - onPressSceneY)
-                onPressSceneX = e.sceneX
-                onPressSceneY = e.sceneY
-//                ta.appendText("Middle button pressed X:"+mousePosX+"  Y: "+mousePosY+"\n")
-                ta.appendText(e.sceneX.toInt().toString() +" - "+onPressSceneX.toInt().toString()+" ; " +e.sceneY +onPressSceneY.toInt()+"\n")
-            } else if (e.button == MouseButton.MIDDLE) {
-                val dx = mousePosX - e.sceneX
-                val dy = mousePosY - e.sceneY
-                flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height)
+                //Viewport move
+                flyCamera.moveViewport( onPressLMBx - e.sceneX, onPressLMBy - e.sceneY )
+                onPressLMBx = e.sceneX
+                onPressLMBy = e.sceneY
 
+            } else if (e.button == MouseButton.MIDDLE) {
+                //Viewport rotate
+                val dx = onPressMMBx - e.sceneX
+                val dy = onPressMMBy - e.sceneY
+                flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height)
+                onPressMMBx = e.sceneX
+                onPressMMBy = e.sceneY
             }
         }
-        //Mouse click
+        //Select node on Mouse click
         viewportPane.setOnMouseClicked { e ->
             selectedNode = e.pickResult.intersectedNode
             printNodeProperties(e.pickResult.intersectedNode)
