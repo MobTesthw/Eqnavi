@@ -141,7 +141,7 @@ class ControllerMainWindow {
         root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
         //SubScene
         subScene = SubScene(root, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
-        viewportPane!!.children.clear()
+        viewportPane.children.clear()
         SetViewportSize()
         viewportPane.children.add(subScene)
 
@@ -162,7 +162,7 @@ class ControllerMainWindow {
     }
 
     private fun SetViewportSize() {
-        viewPortWidth = viewportPane!!.width
+        viewPortWidth = viewportPane.width
         viewportHeight = viewportPane.height
         subScene!!.width = viewPortWidth
         subScene!!.height = viewportHeight
@@ -171,7 +171,7 @@ class ControllerMainWindow {
 
     @FXML
     private fun DrawAxes() {
-        if (cbShowAxes!!.isSelected)
+        if (cbShowAxes.isSelected)
             root.children.addAll(axis.axis)
         else
             root.children.removeAll(axis.axis)
@@ -181,9 +181,9 @@ class ControllerMainWindow {
     private fun BtnGoClick(event: ActionEvent) {
         content.children.clear()
         //SetViewportSize();
-        val itr = spnIteration!!.value
-        sceneBounds = spnSceneBounds!!.value
-        ta!!.text = "Starting new iteration number of iterations: $itr  scene bound: $sceneBounds\n"
+        val itr = spnIteration.value
+        sceneBounds = spnSceneBounds.value
+        ta.text = "Starting new iteration number of iterations: $itr  scene bound: $sceneBounds\n"
 
         environmentNodes = EnvironmentNodes(sceneBounds, itr)
         content.children.add(environmentNodes!!.content)
@@ -227,7 +227,7 @@ class ControllerMainWindow {
         val sdf = SimpleDateFormat("YYYY_MM_DD__HH_mm_ss")
         val FILE_NAME = sdf.format(cal.time)
 
-        val SNAPSHOT = viewportPane!!.snapshot(SnapshotParameters(), null)
+        val SNAPSHOT = viewportPane.snapshot(SnapshotParameters(), null)
         val NAME = path + FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "")
         val FILE = File("$NAME.png")
 
@@ -237,12 +237,12 @@ class ControllerMainWindow {
             // handle exception here
         }
 
-        ta!!.appendText("Saved snapshot :  $NAME\n")
+        ta.appendText("Saved snapshot :  $NAME\n")
     }
 
     @FXML
     private fun BtnPrintAllScene() {
-        ta!!.appendText("\n  Scene nodes: " + "\n")
+        ta.appendText("\n  Scene nodes: " + "\n")
         for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
             printNodeProperties(n)
         }
@@ -250,7 +250,7 @@ class ControllerMainWindow {
 
     private fun LookAndFeel() {
         //Mouse Scroll
-        viewportPane!!.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
+        viewportPane.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
         //Mouse pressed
         viewportPane.setOnMousePressed { e ->
 
@@ -284,10 +284,10 @@ class ControllerMainWindow {
 
             //Show node properties statusbar if node selected
             if (selectedNode!!.id === viewportPane.id) {
-                hbNodeStatusBar!!.isVisible = false
+                hbNodeStatusBar.isVisible = false
                 printNodeProperties(flyCamera.camera)
             } else {
-                hbNodeStatusBar!!.isVisible = true
+                hbNodeStatusBar.isVisible = true
                 ShowSelectedNodeTransformBar()
 
                 //RMB Selected object properties
@@ -320,27 +320,27 @@ class ControllerMainWindow {
         }
 
         //Hide node status when no nodes selected
-        hbNodeStatusBar!!.managedProperty().bind(hbNodeStatusBar.visibleProperty())
+        hbNodeStatusBar.managedProperty().bind(hbNodeStatusBar.visibleProperty())
 
         viewportPane.widthProperty().addListener { cl -> SetViewportSize() }
         viewportPane.heightProperty().addListener {cl -> SetViewportSize() }
 
         //Split panes auto divider
 
-        mainSplitPane!!.widthProperty().addListener { _, _, _-> mainSplitPane.setDividerPositions(0.9) }
+        mainSplitPane.widthProperty().addListener { _, _, _-> mainSplitPane.setDividerPositions(0.9) }
 
         val w1: Double
         val pos1: Double
-        val w2: Double
+//        val w2: Double
         w1 = 798.4
         pos1 = 0.785
         //System.out.println("Start ToolSplitPane.getWidth: " +ToolSplitPane.getWidth());
-        toolSplitPane!!.widthProperty().addListener { _, _, _-> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
+        toolSplitPane.widthProperty().addListener { _, _, _-> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
 
         //Slider camera Field of View
-        sFieldOfView!!.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
+        sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
         //Slider rotate around Z axis
-        sRotateZ!!.valueProperty().addListener {_,_,new_val->flyCamera.cameraRotateZ.angle=new_val.toDouble()}
+        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.cameraRotateZ.angle=new_val.toDouble()}
 
         //Set listener to all camera transforms
         val observableList = FXCollections.observableList(subScene!!.camera.transforms)
@@ -428,7 +428,7 @@ class ControllerMainWindow {
 
         val boundsInScene = node.localToScene(node.boundsInLocal)
 
-        ta!!.appendText(
+        ta.appendText(
                 //            "\n"+
                 node.typeSelector +
                         " " + node.style +
