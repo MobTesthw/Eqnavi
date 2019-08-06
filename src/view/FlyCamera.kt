@@ -11,7 +11,7 @@ open class FlyCamera(val sceneBounds:Double) {
     val camera = PerspectiveCamera(true)
 
     val cameraRotateX = Rotate(0.0, Rotate.X_AXIS)
-    val cameraRotateY = Rotate(0.0, Rotate.Y_AXIS)
+    val cameraRotateY = Rotate(0.0,Rotate.Y_AXIS)
     val cameraRotateZ = Rotate(0.0, Rotate.Z_AXIS)
 
     val cameraInitX = 0.0
@@ -21,6 +21,8 @@ open class FlyCamera(val sceneBounds:Double) {
     private val cameraMoveMultiplier = 2.0
     private val cameraRotateMultiplier = 10
     private val cameraZoomMultiplier = -2.0
+
+
 
 
     init {
@@ -45,11 +47,29 @@ open class FlyCamera(val sceneBounds:Double) {
         camera.translateZ += (deltaX * sin(ay) - deltaY * sin(ax)) * cameraMoveMultiplier
     }
 
-    fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double) {
-        //For Camera
-        cameraRotateX.angle -= deltaY * cameraRotateMultiplier / viewPortHeight * 360 * (Math.PI / 180)
-        cameraRotateY.angle -= deltaX * cameraRotateMultiplier / viewPortWidth * -360 * (Math.PI / 180)
+    fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double):String {
 
+        //For Camera
+        val ax = cameraRotateX.angle * Math.PI / 180
+        val ay = cameraRotateY.angle * Math.PI / 180
+        val az=cameraRotateZ.angle * Math.PI / 180
+
+        val deltaAx = deltaY * cameraRotateMultiplier / viewPortHeight * 360 * (Math.PI / 180)
+        val deltaAy = deltaX * cameraRotateMultiplier / viewPortWidth * -360 * (Math.PI / 180)
+
+        val sinAx = sin(ax)
+        val sinAy = sin(ay)
+        val cosAx = cos(ax)
+        val cosAy = cos(ay)
+
+        val finDeltaAx =  - ( deltaAx * cos(ay) - deltaAy * sin(ax))
+        val finDeltaAy =  - ( deltaAy * cos(ax) - deltaAx * sin(ay))
+        val finDeltaAz=0.0
+        cameraRotateX.angle += finDeltaAx
+        cameraRotateY.angle += finDeltaAy
+
+//        cameraRotateZ -= cameraRotateX.angle
+        return "Δx $finDeltaAx  Δy $finDeltaAy  Δz $finDeltaAz  sinAx $sinAx cosAx $cosAx  sinAy $sinAy cosAy $cosAy\n"
     }
 
     fun zoom(delta: Double) {

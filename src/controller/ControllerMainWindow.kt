@@ -54,7 +54,7 @@ class ControllerMainWindow {
     private val msnCameraAngleX: MiniSpinner = MiniSpinner(" ∠X:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnCameraAngleY: MiniSpinner = MiniSpinner(" ∠Y:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnCameraAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", minVal, 0.0, maxVal, rotateIncrement)
-    private val msnCameraFieldOfView: MiniSpinner = MiniSpinner(" Field of View:", minVal, 0.0, maxVal, 0.1)
+    private val msnCameraFieldOfView: MiniSpinner = MiniSpinner(" Field of View:", minVal, 30.0, maxVal, 0.1)
     private val msnCameraNearClip: MiniSpinner = MiniSpinner(" Near Clip:", minVal, 0.0, maxVal, 0.1)
     private val msnCameraFarClip: MiniSpinner = MiniSpinner(" Far Clip:", minVal, 0.0, maxVal, 0.1)
 
@@ -66,13 +66,13 @@ class ControllerMainWindow {
     private val msnNodeAngleY: MiniSpinner = MiniSpinner(" ∠Y:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnNodeAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", minVal, 0.0, maxVal, rotateIncrement)
 
-    private var onPressLMBx: Double = 0.0
-    private var onPressLMBy: Double = 0.0
-    private var onPressMMBx: Double = 0.0
-    private var onPressMMBy: Double = 0.0
+    private var onPressLMBx = 0.0
+    private var onPressLMBy = 0.0
+    private var onPressMMBx = 0.0
+    private var onPressMMBy = 0.0
 
-    private var viewportHeight: Double = 0.toDouble()
-    private var viewPortWidth: Double = 0.toDouble()
+    private var viewportHeight = 0.0
+    private var viewPortWidth = 0.0
 
     private var selectedNode: Node? = null
     private var sceneBounds = 1000
@@ -91,24 +91,14 @@ class ControllerMainWindow {
         spnSceneBounds.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
 
         //Camera properties
-        hbCameraStatusBar.children.add(msnCameraX.component)
-        hbCameraStatusBar.children.add(msnCameraY.component)
-        hbCameraStatusBar.children.add(msnCameraZ.component)
-        hbCameraStatusBar.children.add(msnCameraAngleX.component)
-        hbCameraStatusBar.children.add(msnCameraAngleY.component)
-        hbCameraStatusBar.children.add(msnCameraAngleZ.component)
-        hbCameraStatusBar.children.add(msnCameraFieldOfView.component)
-        hbCameraStatusBar.children.add(msnCameraNearClip.component)
-        hbCameraStatusBar.children.add(msnCameraFarClip.component)
+        hbCameraStatusBar.children.addAll(msnCameraX.component,msnCameraY.component,msnCameraZ.component)
+        hbCameraStatusBar.children.addAll(msnCameraAngleX.component,msnCameraAngleY.component,msnCameraAngleZ.component)
+        hbCameraStatusBar.children.addAll(msnCameraFieldOfView.component,msnCameraNearClip.component,msnCameraFarClip.component)
 
         //Selected Node properties
-        hbNodeStatusBar.children.add(tfNodeID)
-        hbNodeStatusBar.children.add(msnNodeX.component)
-        hbNodeStatusBar.children.add(msnNodeY.component)
-        hbNodeStatusBar.children.add(msnNodeZ.component)
-        hbNodeStatusBar.children.add(msnNodeAngleX.component)
-        hbNodeStatusBar.children.add(msnNodeAngleY.component)
-        hbNodeStatusBar.children.add(msnNodeAngleZ.component)
+        hbNodeStatusBar.children.addAll(tfNodeID,msnNodeX.component,msnNodeY.component,msnNodeZ.component)
+        hbNodeStatusBar.children.addAll(msnNodeAngleX.component,msnNodeAngleY.component,msnNodeAngleZ.component)
+
 
         content.children.clear()
 
@@ -120,8 +110,7 @@ class ControllerMainWindow {
         viewportPane.children.add(subScene)
 
         setSelectedCamera()
-
-        resetCamera()
+        flyCamera.reset()
 
         //Register Events and listeners
         lookAndFeel()
@@ -217,7 +206,7 @@ class ControllerMainWindow {
                 //Viewport rotate
                 val dx = onPressMMBx - e.sceneX
                 val dy = onPressMMBy - e.sceneY
-                flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height)
+                ta.appendText(flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height))
                 onPressMMBx = e.sceneX
                 onPressMMBy = e.sceneY
             }
@@ -325,7 +314,6 @@ class ControllerMainWindow {
     }
 
     private fun showCameraTransform() {
-        //int caret=0;
         msnCameraX.setText(flyCamera.camera.translateX)
         msnCameraY.setText(flyCamera.camera.translateY)
         msnCameraZ.setText(flyCamera.camera.translateZ)

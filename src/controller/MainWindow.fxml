@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
 <GridPane fx:id="gridPaneMain" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMainWindow">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
         <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="590.2000488281251" minHeight="558.2000488281251" prefHeight="590.2000488281251" valignment="CENTER" vgrow="ALWAYS" />
         <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-        <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+        <RowConstraints percentHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
         <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
         <RowConstraints />
     </rowConstraints>
-    <SplitPane fx:id="treeSplitPane" dividerPositions="0.0" prefHeight="542.0" prefWidth="800.0">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <SplitPane fx:id="treeSplitPane" dividerPositions="0.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
             <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
             <SplitPane fx:id="mainSplitPane" dividerPositions="0.9310221586847748" orientation="VERTICAL" prefHeight="521.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <TabPane prefHeight="516.0" prefWidth="788.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -72,8 +90,8 @@
             </SplitPane>
         </AnchorPane>
     </SplitPane>
-    <VBox prefHeight="36.0" prefWidth="800.0" GridPane.rowIndex="1">
-        <HBox fx:id="hbNodeStatusBar" prefHeight="100.0" prefWidth="200.0" visible="false" />
+    <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+        <HBox fx:id="hbNodeStatusBar" visible="false" />
         <HBox fx:id="hbCameraStatusBar" alignment="CENTER_LEFT" />
     </VBox>
 </GridPane>

@@ -15,6 +15,7 @@ fun FlyCamera.reset() {
     camera.farClip = sceneBounds*5
     camera.nearClip = 0.1
     camera.fieldOfView=30.0
+
 }
 
 
