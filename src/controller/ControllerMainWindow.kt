@@ -110,12 +110,12 @@ class ControllerMainWindow {
     fun initialize() {
 
 
-        spnIteration!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
-        spnSceneBounds!!.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
+        spnIteration.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
+        spnSceneBounds.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
 
         //Camera properties
 //        MSN_cameraX = MiniSpinner(" X:", -999999.0, 0.0, 999999.0, shiftIncrement)
-        hbCameraStatusBar!!.children.add(msnCameraX.component)
+        hbCameraStatusBar.children.add(msnCameraX.component)
         hbCameraStatusBar.children.add(msnCameraY.component)
         hbCameraStatusBar.children.add(msnCameraZ.component)
         hbCameraStatusBar.children.add(msnCameraAngleX.component)
@@ -127,7 +127,7 @@ class ControllerMainWindow {
 
         //Selected Node properties
 
-        hbNodeStatusBar!!.children.add(tfNodeID)
+        hbNodeStatusBar.children.add(tfNodeID)
         hbNodeStatusBar.children.add(msnNodeX.component)
         hbNodeStatusBar.children.add(msnNodeY.component)
         hbNodeStatusBar.children.add(msnNodeZ.component)

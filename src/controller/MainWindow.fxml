@@ -124,8 +124,8 @@
       </SplitPane>
       <VBox prefHeight="36.0" prefWidth="800.0" GridPane.rowIndex="1">
          <children>
-            <HBox fx:id="HB_nodeStatusBar" prefHeight="100.0" prefWidth="200.0" visible="false" />
-            <HBox fx:id="HB_CameraStatusBar" alignment="CENTER_LEFT" />
+            <HBox fx:id="hbNodeStatusBar" prefHeight="100.0" prefWidth="200.0" visible="false" />
+            <HBox fx:id="hbCameraStatusBar" alignment="CENTER_LEFT" />
          </children>
       </VBox>
    </children>
