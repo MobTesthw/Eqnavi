@@ -2,9 +2,8 @@ package view.scenetree
 
 import javafx.scene.Group
 import javafx.scene.Node
-import javafx.scene.control.TreeView
 import javafx.scene.control.TreeItem
-import java.lang.reflect.Field
+import javafx.scene.control.TreeView
 
 
 /**

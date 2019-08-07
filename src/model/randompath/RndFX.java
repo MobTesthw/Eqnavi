@@ -9,9 +9,9 @@ import javafx.scene.shape.*;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 
-//Random Material
-
 import static model.randompath.Rnd.getBelow;
+
+//Random Material
 
  public class RndFX {
       private static Material getMaterial(){

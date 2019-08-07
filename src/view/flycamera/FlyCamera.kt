@@ -6,11 +6,7 @@ package view.flycamera
  */
 
 
-import javafx.scene.Group
 import javafx.scene.PerspectiveCamera
-import javafx.scene.transform.Rotate
-import kotlin.math.cos
-import kotlin.math.sin
 
 open class FlyCamera( val sceneBounds:Double) {
     //    val presets=FlyCameraPresets(this)
@@ -35,7 +31,7 @@ open class FlyCamera( val sceneBounds:Double) {
 
     private val cameraMoveMultiplier = 2.0
     private val cameraRotateMultiplier = 10
-    private val cameraZoomMultiplier = -2.0
+    private val cameraZoomMultiplier = 2.0
 
 //    val cameraGroup = Group()
 
@@ -65,8 +61,8 @@ open class FlyCamera( val sceneBounds:Double) {
     }
 
     fun moveViewport(deltaX: Double, deltaY: Double) {
-        cameraXform2.t.setX(cameraXform2.t.getX() + mouseDeltaX * modifierFactor * modifier * 0.3)  // -
-        cameraXform2.t.setY(cameraXform2.t.getY() + mouseDeltaY * modifierFactor * modifier * 0.3)  // -
+        cameraXform2.t.setX(cameraXform2.t.getX() + deltaX * cameraMoveMultiplier)  // -
+        cameraXform2.t.setY(cameraXform2.t.getY() + deltaY * cameraMoveMultiplier)  // -
 //        val ax = cameraRotateX.angle * Math.PI / 180
 //        val ay = cameraRotateY.angle * Math.PI / 180
 //        camera.translateX += deltaX * cos(ay) * cameraMoveMultiplier
@@ -75,8 +71,8 @@ open class FlyCamera( val sceneBounds:Double) {
     }
 
     fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double):String {
-        cameraXform.ry.setAngle(cameraXform.ry.getAngle() - mouseDeltaX * modifierFactor * modifier * 2.0)  // +
-        cameraXform.rx.setAngle(cameraXform.rx.getAngle() + mouseDeltaY * modifierFactor * modifier * 2.0)  // -
+        cameraXform.ry.setAngle(cameraXform.ry.getAngle() - deltaX * cameraRotateMultiplier)  // +
+        cameraXform.rx.setAngle(cameraXform.rx.getAngle() + deltaY * cameraRotateMultiplier)  // -
 
 //        //For Camera
 //        val ax = cameraRotateX.angle * Math.PI / 180
@@ -104,7 +100,7 @@ open class FlyCamera( val sceneBounds:Double) {
     fun zoom(delta: Double) {
 
         val z = camera.getTranslateZ()
-        val newZ = z + mouseDeltaX * modifierFactor * modifier
+        val newZ = delta + cameraZoomMultiplier
         camera.setTranslateZ(newZ)
 
 //        //Math calculates in radians!!!!!!!
@@ -126,56 +122,56 @@ open class FlyCamera( val sceneBounds:Double) {
     }
 
     fun up(){
-        if (event.isControlDown() && event.isShiftDown()) {
-        cameraXform2.t.setY(cameraXform2.t.getY() - 10.0 * CONTROL_MULTIPLIER)
-    } else if (event.isAltDown() && event.isShiftDown()) {
-        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 10.0 * ALT_MULTIPLIER)
-    } else if (event.isControlDown()) {
-        cameraXform2.t.setY(cameraXform2.t.getY() - 1.0 * CONTROL_MULTIPLIER)
-    } else if (event.isAltDown()) {
-        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 2.0 * ALT_MULTIPLIER)
-    } else if (event.isShiftDown()) {
-        val z = camera.getTranslateZ()
-        val newZ = z + 5.0 * SHIFT_MULTIPLIER
-        camera.setTranslateZ(newZ)
+//        if (event.isControlDown() && event.isShiftDown()) {
+//        cameraXform2.t.setY(cameraXform2.t.getY() - 10.0 * CONTROL_MULTIPLIER)
+//    } else if (event.isAltDown() && event.isShiftDown()) {
+//        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 10.0 * ALT_MULTIPLIER)
+//    } else if (event.isControlDown()) {
+//        cameraXform2.t.setY(cameraXform2.t.getY() - 1.0 * CONTROL_MULTIPLIER)
+//    } else if (event.isAltDown()) {
+//        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 2.0 * ALT_MULTIPLIER)
+//    } else if (event.isShiftDown()) {
+//        val z = camera.getTranslateZ()
+//        val newZ = z + 5.0 * SHIFT_MULTIPLIER
+//        camera.setTranslateZ(newZ)
     }
     fun down(){
-        if (event.isControlDown() && event.isShiftDown()) {
-            cameraXform2.t.setY(cameraXform2.t.getY() + 10.0 * CONTROL_MULTIPLIER)
-        } else if (event.isAltDown() && event.isShiftDown()) {
-            cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 10.0 * ALT_MULTIPLIER)
-        } else if (event.isControlDown()) {
-            cameraXform2.t.setY(cameraXform2.t.getY() + 1.0 * CONTROL_MULTIPLIER)
-        } else if (event.isAltDown()) {
-            cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 2.0 * ALT_MULTIPLIER)
-        } else if (event.isShiftDown()) {
-            val z = camera.getTranslateZ()
-            val newZ = z - 5.0 * SHIFT_MULTIPLIER
-            camera.setTranslateZ(newZ)
-        }
+//        if (event.isControlDown() && event.isShiftDown()) {
+//            cameraXform2.t.setY(cameraXform2.t.getY() + 10.0 * CONTROL_MULTIPLIER)
+//        } else if (event.isAltDown() && event.isShiftDown()) {
+//            cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 10.0 * ALT_MULTIPLIER)
+//        } else if (event.isControlDown()) {
+//            cameraXform2.t.setY(cameraXform2.t.getY() + 1.0 * CONTROL_MULTIPLIER)
+//        } else if (event.isAltDown()) {
+//            cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 2.0 * ALT_MULTIPLIER)
+//        } else if (event.isShiftDown()) {
+//            val z = camera.getTranslateZ()
+//            val newZ = z - 5.0 * SHIFT_MULTIPLIER
+//            camera.setTranslateZ(newZ)
+//        }
     }
         fun right(){
-            if (event.isControlDown() && event.isShiftDown()) {
-                cameraXform2.t.setX(cameraXform2.t.getX() + 10.0 * CONTROL_MULTIPLIER)
-            } else if (event.isAltDown() && event.isShiftDown()) {
-                cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 10.0 * ALT_MULTIPLIER)
-            } else if (event.isControlDown()) {
-                cameraXform2.t.setX(cameraXform2.t.getX() + 1.0 * CONTROL_MULTIPLIER)
-            } else if (event.isAltDown()) {
-                cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 2.0 * ALT_MULTIPLIER)
-            }
-        }
+//            if (event.isControlDown() && event.isShiftDown()) {
+//                cameraXform2.t.setX(cameraXform2.t.getX() + 10.0 * CONTROL_MULTIPLIER)
+//            } else if (event.isAltDown() && event.isShiftDown()) {
+//                cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 10.0 * ALT_MULTIPLIER)
+//            } else if (event.isControlDown()) {
+//                cameraXform2.t.setX(cameraXform2.t.getX() + 1.0 * CONTROL_MULTIPLIER)
+//            } else if (event.isAltDown()) {
+//                cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 2.0 * ALT_MULTIPLIER)
+//            }
+//        }
     }
     fun left(){
-        if (event.isControlDown() && event.isShiftDown()) {
-            cameraXform2.t.setX(cameraXform2.t.getX() - 10.0 * CONTROL_MULTIPLIER)
-        } else if (event.isAltDown() && event.isShiftDown()) {
-            cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 10.0 * ALT_MULTIPLIER)  // -
-        } else if (event.isControlDown()) {
-            cameraXform2.t.setX(cameraXform2.t.getX() - 1.0 * CONTROL_MULTIPLIER)
-        } else if (event.isAltDown()) {
-            cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 2.0 * ALT_MULTIPLIER)  // -
-        }
+//        if (event.isControlDown() && event.isShiftDown()) {
+//            cameraXform2.t.setX(cameraXform2.t.getX() - 10.0 * CONTROL_MULTIPLIER)
+//        } else if (event.isAltDown() && event.isShiftDown()) {
+//            cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 10.0 * ALT_MULTIPLIER)  // -
+//        } else if (event.isControlDown()) {
+//            cameraXform2.t.setX(cameraXform2.t.getX() - 1.0 * CONTROL_MULTIPLIER)
+//        } else if (event.isAltDown()) {
+//            cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 2.0 * ALT_MULTIPLIER)  // -
+//        }
     }
 
 }

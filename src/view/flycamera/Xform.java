@@ -6,10 +6,10 @@ package view.flycamera;
 // 3D Graphics tutorial. The method allows you to add your own transforms and rotation.
 //
 
-        import javafx.scene.Group;
-        import javafx.scene.transform.Rotate;
-        import javafx.scene.transform.Scale;
-        import javafx.scene.transform.Translate;
+import javafx.scene.Group;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 
 
 public class Xform extends Group {
