@@ -20,8 +20,18 @@ import model.Axis
 import model.EnvironmentNodes
 import view.flycamera.*
 import view.scenetree.SceneTree
+import java.awt.Color
+import java.awt.Paint
 
 import java.util.*
+import javafx.animation.Timeline
+import org.graalvm.compiler.nodes.PauseNode.pause
+import sun.jvm.hotspot.gc.shared.CollectedHeapName.Z
+import javafx.scene.Scene
+
+
+
+
 
 
 class ControllerMainWindow {
@@ -111,14 +121,32 @@ class ControllerMainWindow {
 //        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
 
         //SubScene
-
         sceneTree=SceneTree(treeView)
         sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup)
 
-
-
         subScene = SubScene(sceneTree.sceneRoot, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
         subScene!!.camera=flyCamera.camera
+//        subScene.fill=Paint.
+
+
+        val timeline: Timeline
+        val timelinePlaying = false
+        val ONE_FRAME = 1.0 / 24.0
+        val DELTA_MULTIPLIER = 200.0
+        val CONTROL_MULTIPLIER = 0.1
+        val SHIFT_MULTIPLIER = 0.1
+        val ALT_MULTIPLIER = 0.5
+
+        val mousePosX: Double
+        val mousePosY: Double
+        val mouseOldX: Double
+        val mouseOldY: Double
+        val mouseDeltaX: Double
+        val mouseDeltaY: Double
+
+        handleKeyboard(scene, world);
+        handleMouse(scene, world);
+
         viewportPane.children.clear()
         setViewportSize()
         viewportPane.children.add(subScene)
@@ -128,7 +156,7 @@ class ControllerMainWindow {
 
         //Register Events and listeners
 
-        lookAndFeel()
+//        lookAndFeel()
         showCameraTransform()
 
 
@@ -194,145 +222,146 @@ class ControllerMainWindow {
         for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
             printNodeProperties(n)
         }
-    }
-
-    private fun lookAndFeel() {
-        //Mouse Scroll
-        viewportPane.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
-        //Mouse pressed
-        viewportPane.setOnMousePressed { e ->
-
-            if (e.button == MouseButton.PRIMARY) {
-                onPressLMBx = e.sceneX
-                onPressLMBy = e.sceneY
-
-            } else if (e.button == MouseButton.MIDDLE) {
-                onPressMMBx = e.sceneX
-                onPressMMBy = e.sceneY
-
-            }
-        }
-        //Mouse dragged
-        viewportPane.setOnMouseDragged { e ->
-            if (e.button == MouseButton.PRIMARY) {
-                //Viewport move
-                flyCamera.moveViewport( onPressLMBx - e.sceneX, onPressLMBy - e.sceneY )
-                onPressLMBx = e.sceneX
-                onPressLMBy = e.sceneY
-
-            } else if (e.button == MouseButton.MIDDLE) {
-                //Viewport rotate
-                val dx = onPressMMBx - e.sceneX
-                val dy = onPressMMBy - e.sceneY
-                ta.appendText(flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height))
-                onPressMMBx = e.sceneX
-                onPressMMBy = e.sceneY
-            }
-        }
-        //Select node on Mouse click
-        viewportPane.setOnMouseClicked { e ->
-            selectedNode = e.pickResult.intersectedNode
-            printNodeProperties(e.pickResult.intersectedNode)
-
-            //Show node properties statusbar if node selected
-            if (selectedNode!!.id === viewportPane.id) {
-                hbNodeStatusBar.isVisible = false
-//                printNodeProperties(flyCamera.camera)
-            } else {
-                hbNodeStatusBar.isVisible = true
-                showSelectedNodeTransformBar()
-
-                //RMB Selected object properties
-                if (e.button == MouseButton.SECONDARY) {
-                    //          Worked
-                    //                    final Stage dialog = new Stage();
-                    //                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    ////                    dialog.initOwner(this.get);
-                    //                    VBox dialogVbox = new VBox(20);
-                    //                    dialogVbox.getChildren().add(new Text("This is a Dialog"));
-                    //                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
-                    //                    dialog.setScene(dialogScene);
-                    //                    dialog.show();
-
-                    val popup = Popup()
-                    popup.x = e.x
-                    popup.y = e.y
-                    val deleteShape = Label("Delete Shape")
-                    deleteShape.setOnMouseClicked {
-//                        root.children.remove(selectedNode)
-                        popup.hide()
-                    }
-                    popup.content.addAll(HBox(deleteShape))
-                    popup.show(viewportPane.scene.window)
-                }
-
-            }
-        }
-
-        //Hide node status when no nodes selected
-        hbNodeStatusBar.managedProperty().bind(hbNodeStatusBar.visibleProperty())
-
-        viewportPane.widthProperty().addListener  {_ -> setViewportSize() }
-        viewportPane.heightProperty().addListener {_ -> setViewportSize() }
-
-        //Split panes auto divider
-        mainSplitPane.widthProperty().addListener { _,_,_-> mainSplitPane.setDividerPositions(0.9) }
-        treeSplitPane.widthProperty().addListener { _,_,_-> treeSplitPane.setDividerPositions(0.2) }
-
-        //Toolbar width save during changes
-        val w1 = 798.4
-        val pos1 = 0.785
-        toolSplitPane.widthProperty().addListener { _, _, _ -> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
-
-//        //Slider camera Field of View
-//        sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
-//        //!!!
-//        flyCamera.camera.fieldOfView=fieldOfViewStartVal
-//
-        //Slider rotate around Z axis
-//        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
-
-//        //Set listener to all camera transforms
-//        val observableList = FXCollections.observableList(subScene!!.camera.transforms)
-//        observableList.forEach { node -> node.setOnTransformChanged { showCameraTransform() } }
-
-//        msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
-//        msnCameraY.textField.setOnKeyReleased { flyCamera.camera.translateY = msnCameraY.value }
-//        msnCameraZ.textField.setOnKeyReleased { flyCamera.camera.translateZ = msnCameraZ.value }
-//        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
-//        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
-//        msnCameraAngleZ.textField.setOnKeyReleased {
-//            flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
-////            sRotateZ.value = msnCameraAngleZ.value
-//        }
-
-//        msnCameraFieldOfView.textField.setOnKeyReleased {
-//            flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
-//            sFieldOfView.value = msnCameraNearClip.value
-//        }
-//        msnCameraNearClip.textField.setOnKeyReleased { flyCamera.camera.nearClipProperty().value = msnCameraNearClip.value }
-//        msnCameraFarClip.textField.setOnKeyReleased { flyCamera.camera.farClipProperty().value = msnCameraNearClip.value }
-//
-
-        //Selected Node
-        tfNodeID.textProperty().addListener { _: ObservableValue<out String>, _: String, newValue: String ->
-            // expand the TextField
-            // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
-            Platform.runLater {
-                val text = Text(newValue)
-                text.font = tfNodeID.font // Set the same font, so the size is the same
-                val width = (text.layoutBounds.width // This big is the Text in the TextField
-                        + tfNodeID.padding.left + tfNodeID.padding.right // Add the padding of the TextField
-                        + 2.0) // Add some spacing
-                tfNodeID.prefWidth = width // Set the width
-                tfNodeID.positionCaret(tfNodeID.caretPosition) // If you remove this line, it flashes a little bit
-            }
-        }
-        msnNodeX.textField.setOnKeyReleased { selectedNode!!.translateX = msnNodeX.value }
-        msnNodeY.textField.setOnKeyReleased { selectedNode!!.translateY = msnNodeY.value }
-        msnNodeZ.textField.setOnKeyReleased { selectedNode!!.translateZ = msnNodeZ.value }
 
     }
+
+//    private fun lookAndFeel() {
+//        //Mouse Scroll
+//        viewportPane.setOnScroll { e -> flyCamera.zoom(e.deltaY) }
+//        //Mouse pressed
+//        viewportPane.setOnMousePressed { e ->
+//
+//            if (e.button == MouseButton.PRIMARY) {
+//                onPressLMBx = e.sceneX
+//                onPressLMBy = e.sceneY
+//
+//            } else if (e.button == MouseButton.MIDDLE) {
+//                onPressMMBx = e.sceneX
+//                onPressMMBy = e.sceneY
+//
+//            }
+//        }
+//        //Mouse dragged
+//        viewportPane.setOnMouseDragged { e ->
+//            if (e.button == MouseButton.PRIMARY) {
+//                //Viewport move
+//                flyCamera.moveViewport( onPressLMBx - e.sceneX, onPressLMBy - e.sceneY )
+//                onPressLMBx = e.sceneX
+//                onPressLMBy = e.sceneY
+//
+//            } else if (e.button == MouseButton.MIDDLE) {
+//                //Viewport rotate
+//                val dx = onPressMMBx - e.sceneX
+//                val dy = onPressMMBy - e.sceneY
+//                ta.appendText(flyCamera.rotateViewport(dx, dy, viewportPane.width, viewportPane.height))
+//                onPressMMBx = e.sceneX
+//                onPressMMBy = e.sceneY
+//            }
+//        }
+//        //Select node on Mouse click
+//        viewportPane.setOnMouseClicked { e ->
+//            selectedNode = e.pickResult.intersectedNode
+//            printNodeProperties(e.pickResult.intersectedNode)
+//
+//            //Show node properties statusbar if node selected
+//            if (selectedNode!!.id === viewportPane.id) {
+//                hbNodeStatusBar.isVisible = false
+////                printNodeProperties(flyCamera.camera)
+//            } else {
+//                hbNodeStatusBar.isVisible = true
+//                showSelectedNodeTransformBar()
+//
+//                //RMB Selected object properties
+//                if (e.button == MouseButton.SECONDARY) {
+//                    //          Worked
+//                    //                    final Stage dialog = new Stage();
+//                    //                    dialog.initModality(Modality.APPLICATION_MODAL);
+//                    ////                    dialog.initOwner(this.get);
+//                    //                    VBox dialogVbox = new VBox(20);
+//                    //                    dialogVbox.getChildren().add(new Text("This is a Dialog"));
+//                    //                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
+//                    //                    dialog.setScene(dialogScene);
+//                    //                    dialog.show();
+//
+//                    val popup = Popup()
+//                    popup.x = e.x
+//                    popup.y = e.y
+//                    val deleteShape = Label("Delete Shape")
+//                    deleteShape.setOnMouseClicked {
+////                        root.children.remove(selectedNode)
+//                        popup.hide()
+//                    }
+//                    popup.content.addAll(HBox(deleteShape))
+//                    popup.show(viewportPane.scene.window)
+//                }
+//
+//            }
+//        }
+//
+//        //Hide node status when no nodes selected
+//        hbNodeStatusBar.managedProperty().bind(hbNodeStatusBar.visibleProperty())
+//
+//        viewportPane.widthProperty().addListener  {_ -> setViewportSize() }
+//        viewportPane.heightProperty().addListener {_ -> setViewportSize() }
+//
+//        //Split panes auto divider
+//        mainSplitPane.widthProperty().addListener { _,_,_-> mainSplitPane.setDividerPositions(0.9) }
+//        treeSplitPane.widthProperty().addListener { _,_,_-> treeSplitPane.setDividerPositions(0.2) }
+//
+//        //Toolbar width save during changes
+//        val w1 = 798.4
+//        val pos1 = 0.785
+//        toolSplitPane.widthProperty().addListener { _, _, _ -> toolSplitPane.setDividerPositions(1 - w1 * (1 - pos1) / toolSplitPane.width) }
+//
+////        //Slider camera Field of View
+////        sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
+////        //!!!
+////        flyCamera.camera.fieldOfView=fieldOfViewStartVal
+////
+//        //Slider rotate around Z axis
+////        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
+//
+////        //Set listener to all camera transforms
+////        val observableList = FXCollections.observableList(subScene!!.camera.transforms)
+////        observableList.forEach { node -> node.setOnTransformChanged { showCameraTransform() } }
+//
+////        msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
+////        msnCameraY.textField.setOnKeyReleased { flyCamera.camera.translateY = msnCameraY.value }
+////        msnCameraZ.textField.setOnKeyReleased { flyCamera.camera.translateZ = msnCameraZ.value }
+////        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
+////        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
+////        msnCameraAngleZ.textField.setOnKeyReleased {
+////            flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
+//////            sRotateZ.value = msnCameraAngleZ.value
+////        }
+//
+////        msnCameraFieldOfView.textField.setOnKeyReleased {
+////            flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
+////            sFieldOfView.value = msnCameraNearClip.value
+////        }
+////        msnCameraNearClip.textField.setOnKeyReleased { flyCamera.camera.nearClipProperty().value = msnCameraNearClip.value }
+////        msnCameraFarClip.textField.setOnKeyReleased { flyCamera.camera.farClipProperty().value = msnCameraNearClip.value }
+////
+//
+//        //Selected Node
+//        tfNodeID.textProperty().addListener { _: ObservableValue<out String>, _: String, newValue: String ->
+//            // expand the TextField
+//            // Do this in a Platform.runLater because of Textfield has no padding at first time and so on
+//            Platform.runLater {
+//                val text = Text(newValue)
+//                text.font = tfNodeID.font // Set the same font, so the size is the same
+//                val width = (text.layoutBounds.width // This big is the Text in the TextField
+//                        + tfNodeID.padding.left + tfNodeID.padding.right // Add the padding of the TextField
+//                        + 2.0) // Add some spacing
+//                tfNodeID.prefWidth = width // Set the width
+//                tfNodeID.positionCaret(tfNodeID.caretPosition) // If you remove this line, it flashes a little bit
+//            }
+//        }
+//        msnNodeX.textField.setOnKeyReleased { selectedNode!!.translateX = msnNodeX.value }
+//        msnNodeY.textField.setOnKeyReleased { selectedNode!!.translateY = msnNodeY.value }
+//        msnNodeZ.textField.setOnKeyReleased { selectedNode!!.translateZ = msnNodeZ.value }
+//
+//    }
 
     private fun showCameraTransform() {
 //        msnCameraX.setText(flyCamera.camera.translateX)
@@ -399,6 +428,93 @@ class ControllerMainWindow {
             if (node is Parent)
                 addAllDescendants(node, nodes)
         }
+    }
+
+
+
+    private fun handleKeyboard(scene: Scene, root: Node) {
+        val moveCamera = true
+        scene.setOnKeyPressed(object : EventHandler<KeyEvent>() {
+            fun handle(event: KeyEvent) {
+                val currentTime: Duration
+                when (event.getCode()) {
+                    Z -> {
+                        if (event.isShiftDown()) {
+                            cameraXform.ry.setAngle(0.0)
+                            cameraXform.rx.setAngle(0.0)
+                            camera.setTranslateZ(-300.0)
+                        }
+                        cameraXform2.t.setX(0.0)
+                        cameraXform2.t.setY(0.0)
+                    }
+                    X -> if (event.isControlDown()) {
+                        if (axisGroup.isVisible()) {
+                            axisGroup.setVisible(false)
+                        } else {
+                            axisGroup.setVisible(true)
+                        }
+                    }
+                    S -> if (event.isControlDown()) {
+                        if (moleculeGroup.isVisible()) {
+                            moleculeGroup.setVisible(false)
+                        } else {
+                            moleculeGroup.setVisible(true)
+                        }
+                    }
+                    SPACE -> if (timelinePlaying) {
+                        timeline.pause()
+                        timelinePlaying = false
+                    } else {
+                        timeline.play()
+                        timelinePlaying = true
+                    }
+                    UP -> if (event.isControlDown() && event.isShiftDown()) {
+                        cameraXform2.t.setY(cameraXform2.t.getY() - 10.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown() && event.isShiftDown()) {
+                        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 10.0 * ALT_MULTIPLIER)
+                    } else if (event.isControlDown()) {
+                        cameraXform2.t.setY(cameraXform2.t.getY() - 1.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown()) {
+                        cameraXform.rx.setAngle(cameraXform.rx.getAngle() - 2.0 * ALT_MULTIPLIER)
+                    } else if (event.isShiftDown()) {
+                        val z = camera.getTranslateZ()
+                        val newZ = z + 5.0 * SHIFT_MULTIPLIER
+                        camera.setTranslateZ(newZ)
+                    }
+                    DOWN -> if (event.isControlDown() && event.isShiftDown()) {
+                        cameraXform2.t.setY(cameraXform2.t.getY() + 10.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown() && event.isShiftDown()) {
+                        cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 10.0 * ALT_MULTIPLIER)
+                    } else if (event.isControlDown()) {
+                        cameraXform2.t.setY(cameraXform2.t.getY() + 1.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown()) {
+                        cameraXform.rx.setAngle(cameraXform.rx.getAngle() + 2.0 * ALT_MULTIPLIER)
+                    } else if (event.isShiftDown()) {
+                        val z = camera.getTranslateZ()
+                        val newZ = z - 5.0 * SHIFT_MULTIPLIER
+                        camera.setTranslateZ(newZ)
+                    }
+                    RIGHT -> if (event.isControlDown() && event.isShiftDown()) {
+                        cameraXform2.t.setX(cameraXform2.t.getX() + 10.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown() && event.isShiftDown()) {
+                        cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 10.0 * ALT_MULTIPLIER)
+                    } else if (event.isControlDown()) {
+                        cameraXform2.t.setX(cameraXform2.t.getX() + 1.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown()) {
+                        cameraXform.ry.setAngle(cameraXform.ry.getAngle() - 2.0 * ALT_MULTIPLIER)
+                    }
+                    LEFT -> if (event.isControlDown() && event.isShiftDown()) {
+                        cameraXform2.t.setX(cameraXform2.t.getX() - 10.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown() && event.isShiftDown()) {
+                        cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 10.0 * ALT_MULTIPLIER)  // -
+                    } else if (event.isControlDown()) {
+                        cameraXform2.t.setX(cameraXform2.t.getX() - 1.0 * CONTROL_MULTIPLIER)
+                    } else if (event.isAltDown()) {
+                        cameraXform.ry.setAngle(cameraXform.ry.getAngle() + 2.0 * ALT_MULTIPLIER)  // -
+                    }
+                }
+            }
+        })
     }
 
 
