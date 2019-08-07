@@ -1,4 +1,4 @@
-package randompath;
+package model.randompath;
 // Iteration
 //Bounds sizes
 //Color span

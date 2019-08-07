@@ -1,4 +1,4 @@
-package randompath;
+package model.randompath;
 
 public interface Path3DSettings {
 }

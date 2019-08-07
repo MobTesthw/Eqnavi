@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane fx:id="gridPaneMain" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMainWindow">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints percentHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+        <RowConstraints />
+    </rowConstraints>
+    <SplitPane fx:id="treeSplitPane" dividerPositions="0.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+            <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+            <SplitPane fx:id="mainSplitPane" dividerPositions="0.9310221586847748" orientation="VERTICAL" prefHeight="521.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <TabPane prefHeight="516.0" prefWidth="788.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Tab text="Main">
+                            <SplitPane fx:id="toolSplitPane" dividerPositions="0.785" prefHeight="160.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    <Pane fx:id="viewportPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    <ScrollPane layoutY="8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="150.0">
+                                            <Label layoutX="4.0" layoutY="40.0" text="Iteration:" />
+                                            <Spinner fx:id="spnIteration" editable="true" layoutX="53.0" layoutY="35.0" prefHeight="26.0" prefWidth="110.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="3.0" />
+                                            <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnGoClick" prefHeight="26.0" prefWidth="146.0" text="Go" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" />
+                                            <Button layoutX="2.0" layoutY="439.0" mnemonicParsing="false" onAction="#btnSaveClick" prefHeight="26.0" prefWidth="162.0" text="Save" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" />
+                                            <Button layoutX="2.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnDoClick" prefHeight="26.0" prefWidth="146.0" text="Do" />
+                                            <Slider fx:id="sFieldOfView" layoutX="1.0" layoutY="122.0" majorTickUnit="90.0" max="360.0" minorTickCount="6" showTickLabels="true" showTickMarks="true" value="50.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" />
+                                            <CheckBox fx:id="cbShowAxes" layoutX="2.0" layoutY="163.0" mnemonicParsing="false" onAction="#drawAxes" selected="true" text="Show axes" AnchorPane.leftAnchor="2.0" />
+                                            <Button layoutX="2.0" layoutY="412.0" mnemonicParsing="false" onAction="#resetCamera" prefHeight="26.0" prefWidth="146.0" text="Reset Camera" />
+                                            <ComboBox layoutX="2.0" layoutY="229.0" onAction="#resetCamera" prefHeight="26.0" prefWidth="146.0" />
+                                            <Slider fx:id="sRotateZ" layoutX="1.0" layoutY="191.0" majorTickUnit="90.0" max="360.0" min="-360.0" minorTickCount="6" showTickLabels="true" showTickMarks="true" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="191.0" />
+                                            <Label layoutX="3.0" layoutY="69.0" text="Bounds" />
+                                            <Spinner fx:id="spnSceneBounds" editable="true" layoutX="52.0" layoutY="64.0" prefHeight="26.0" prefWidth="95.0" />
+                                            <Button layoutX="2.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnDoClick" prefHeight="26.0" prefWidth="146.0" text="Set Camera Middle" />
+                                            <Button layoutX="2.0" layoutY="260.0" mnemonicParsing="false" onAction="#cameraAlongX" text="X" />
+                                            <Button layoutX="29.0" layoutY="260.0" mnemonicParsing="false" onAction="#cameraAlongY" text="Y" />
+                                            <Button layoutX="56.0" layoutY="260.0" mnemonicParsing="false" onAction="#cameraAlongZ" text="Z" />
+                                            <Button layoutX="83.0" layoutY="260.0" mnemonicParsing="false" onAction="#cameraAlong0" text="0" />
+                                            <Button layoutX="2.0" layoutY="347.0" mnemonicParsing="false" onAction="#btnDoClick1" prefHeight="26.0" prefWidth="146.0" text="Do 1" />
+                                            <Button layoutX="2.0" layoutY="375.0" mnemonicParsing="false" onAction="#btnDoClick2" prefHeight="26.0" prefWidth="146.0" text="Do 2" />
+                                            <Button layoutX="2.0" layoutY="287.0" mnemonicParsing="false" onAction="#cameraBackwardX" text="Xr" />
+                                            <Button layoutX="29.0" layoutY="287.0" mnemonicParsing="false" onAction="#cameraBackwardY" text="Yr" />
+                                            <Button layoutX="56.0" layoutY="287.0" mnemonicParsing="false" onAction="#cameraBackwardZ" text="Zr" />
+                                        </AnchorPane>
+                                    </ScrollPane>
+                                </AnchorPane>
+                            </SplitPane>
+                        </Tab>
+                        <Tab text="Properties">
+                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                <Button layoutX="-5.0" layoutY="1.0" mnemonicParsing="false" text="Select Save Path" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="1.0" />
+                                <TextField layoutX="97.0" layoutY="1.0" text="&quot;D:\\1\\JavaFx\\" />
+                                <Button layoutY="31.0" mnemonicParsing="false" onAction="#btnPrintAllScene" text="Print All Scene" />
+                            </AnchorPane>
+                        </Tab>
+                    </TabPane>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <TextArea fx:id="ta" layoutY="-86.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                </AnchorPane>
+            </SplitPane>
+        </AnchorPane>
+    </SplitPane>
+    <VBox alignment="BOTTOM_CENTER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+        <HBox fx:id="hbNodeStatusBar" visible="false" />
+        <HBox fx:id="hbCameraStatusBar" alignment="CENTER_LEFT" />
+    </VBox>
+</GridPane>
