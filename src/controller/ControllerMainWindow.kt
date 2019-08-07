@@ -4,6 +4,7 @@ package controller
 import customcomponent.MiniSpinner
 import javafx.application.Platform
 import javafx.beans.value.ObservableValue
+import javafx.collections.FXCollections
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.*
@@ -108,7 +109,7 @@ class ControllerMainWindow {
         sceneTree=SceneTree(treeView)
         sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup)
 
-        subScene = SubScene(sceneTree.sceneRoot, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
+        subScene = SubScene(sceneTree.sceneRoot, 800.0, 600.0, true, SceneAntialiasing.BALANCED)
         subScene!!.camera=flyCamera.camera
 //        subScene.fill=Paint.
 
@@ -123,8 +124,9 @@ class ControllerMainWindow {
 
         //Register Events and listeners
 
-//        lookAndFeel()
-        showCameraTransform()
+        lookAndFeel()
+        flyCamera.reset()
+//        showCameraTransform()
 
 
 
@@ -172,7 +174,7 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun resetCamera() {
-//        flyCamera.reset()
+        flyCamera.reset()
     }
 
     @FXML     private fun setSelectedCamera() {
@@ -233,7 +235,7 @@ class ControllerMainWindow {
             //Show node properties statusbar if node selected
             if (selectedNode!!.id === viewportPane.id) {
                 hbNodeStatusBar.isVisible = false
-//                printNodeProperties(flyCamera.camera)
+                printNodeProperties(flyCamera.camera)
             } else {
                 hbNodeStatusBar.isVisible = true
                 showSelectedNodeTransformBar()
@@ -283,18 +285,18 @@ class ControllerMainWindow {
         //Slider camera Field of View
         sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
 //        //!!!
-//        flyCamera.camera.fieldOfView=fieldOfViewStartVal
+        flyCamera.camera.fieldOfView=fieldOfViewStartVal
 //
         //Slider rotate around Z axis
-//        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
+        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
 
-//        //Set listener to all camera transforms
-//        val observableList = FXCollections.observableList(subScene!!.camera.transforms)
-//        observableList.forEach { node -> node.setOnTransformChanged { showCameraTransform() } }
+        //Set listener to all camera transforms
+        val observableList = FXCollections.observableList(subScene!!.camera.transforms)
+        observableList.forEach { node -> node.setOnTransformChanged { showCameraTransform() } }
 
-//        msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
-//        msnCameraY.textField.setOnKeyReleased { flyCamera.camera.translateY = msnCameraY.value }
-//        msnCameraZ.textField.setOnKeyReleased { flyCamera.camera.translateZ = msnCameraZ.value }
+        msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
+        msnCameraY.textField.setOnKeyReleased { flyCamera.camera.translateY = msnCameraY.value }
+        msnCameraZ.textField.setOnKeyReleased { flyCamera.camera.translateZ = msnCameraZ.value }
 //        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
 //        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
 //        msnCameraAngleZ.textField.setOnKeyReleased {
@@ -302,13 +304,13 @@ class ControllerMainWindow {
 ////            sRotateZ.value = msnCameraAngleZ.value
 //        }
 
-//        msnCameraFieldOfView.textField.setOnKeyReleased {
-//            flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
-//            sFieldOfView.value = msnCameraNearClip.value
-//        }
-//        msnCameraNearClip.textField.setOnKeyReleased { flyCamera.camera.nearClipProperty().value = msnCameraNearClip.value }
-//        msnCameraFarClip.textField.setOnKeyReleased { flyCamera.camera.farClipProperty().value = msnCameraNearClip.value }
-//
+        msnCameraFieldOfView.textField.setOnKeyReleased {
+            flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
+            sFieldOfView.value = msnCameraNearClip.value
+        }
+        msnCameraNearClip.textField.setOnKeyReleased { flyCamera.camera.nearClipProperty().value = msnCameraNearClip.value }
+        msnCameraFarClip.textField.setOnKeyReleased { flyCamera.camera.farClipProperty().value = msnCameraNearClip.value }
+
 
         //Selected Node
         tfNodeID.textProperty().addListener { _: ObservableValue<out String>, _: String, newValue: String ->
@@ -331,9 +333,9 @@ class ControllerMainWindow {
     }
 
     private fun showCameraTransform() {
-//        msnCameraX.setText(flyCamera.camera.translateX)
-//        msnCameraY.setText(flyCamera.camera.translateY)
-//        msnCameraZ.setText(flyCamera.camera.translateZ)
+        msnCameraX.setText(flyCamera.camera.translateX)
+        msnCameraY.setText(flyCamera.camera.translateY)
+        msnCameraZ.setText(flyCamera.camera.translateZ)
 //        msnCameraAngleX.setText(flyCamera.cameraRotateX.angle)
 //        msnCameraAngleY.setText(flyCamera.cameraRotateY.angle)
 //        msnCameraAngleZ.setText(flyCamera.cameraRotateZ.angle)

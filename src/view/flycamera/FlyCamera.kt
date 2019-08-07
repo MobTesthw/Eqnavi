@@ -13,7 +13,7 @@ open class FlyCamera( val sceneBounds:Double) {
     val camera = PerspectiveCamera(true)
     private val cameraDistance = 500.0
     private val cameraNearClip=0.1
-    private val cameraFarClip=10000.0
+    private val cameraFarClip=5000.0
 
     val cameraXform = Xform()
     private val cameraXform2 = Xform()
@@ -30,7 +30,7 @@ open class FlyCamera( val sceneBounds:Double) {
 //    val cameraInitZ = -500.0
 
     private val cameraMoveMultiplier = 2.0
-    private val cameraRotateMultiplier = 10
+    private val cameraRotateMultiplier = 2
     private val cameraZoomMultiplier = 2.0
 
 //    val cameraGroup = Group()
@@ -47,6 +47,14 @@ open class FlyCamera( val sceneBounds:Double) {
         cameraXform3.setRotateZ(180.0)
 
         camera.id = "Perspective Camera"
+
+
+//        camera.transforms.addAll(cameraRotateX, cameraRotateY, cameraRotateZ)
+        reset()
+
+    }
+    fun reset(){
+        camera.fieldOfView=30.0
         camera.nearClip=cameraNearClip
         camera.farClip=cameraFarClip
         camera.translateZ=-cameraDistance
@@ -54,15 +62,11 @@ open class FlyCamera( val sceneBounds:Double) {
         cameraXform.ry.angle=320.0
         cameraXform.rx.angle=40.0
 
-
-//        camera.transforms.addAll(cameraRotateX, cameraRotateY, cameraRotateZ)
-//        reset()
-
     }
 
     fun moveViewport(deltaX: Double, deltaY: Double) {
-        cameraXform2.t.setX(cameraXform2.t.getX() + deltaX * cameraMoveMultiplier)  // -
-        cameraXform2.t.setY(cameraXform2.t.getY() + deltaY * cameraMoveMultiplier)  // -
+        cameraXform2.t.x = cameraXform2.t.x - deltaX * cameraMoveMultiplier  // -
+        cameraXform2.t.y = cameraXform2.t.y - deltaY * cameraMoveMultiplier  // -
 //        val ax = cameraRotateX.angle * Math.PI / 180
 //        val ay = cameraRotateY.angle * Math.PI / 180
 //        camera.translateX += deltaX * cos(ay) * cameraMoveMultiplier
@@ -71,8 +75,8 @@ open class FlyCamera( val sceneBounds:Double) {
     }
 
     fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double):String {
-        cameraXform.ry.setAngle(cameraXform.ry.getAngle() - deltaX * cameraRotateMultiplier)  // +
-        cameraXform.rx.setAngle(cameraXform.rx.getAngle() + deltaY * cameraRotateMultiplier)  // -
+        cameraXform.ry.angle = cameraXform.ry.angle + deltaX * cameraRotateMultiplier  // +
+        cameraXform.rx.angle = cameraXform.rx.angle - deltaY * cameraRotateMultiplier  // -
 
 //        //For Camera
 //        val ax = cameraRotateX.angle * Math.PI / 180
@@ -99,8 +103,8 @@ open class FlyCamera( val sceneBounds:Double) {
 
     fun zoom(delta: Double) {
 
-        val z = camera.getTranslateZ()
-        val newZ = delta + cameraZoomMultiplier
+        val newZ = camera.translateZ +delta*cameraZoomMultiplier
+
         camera.setTranslateZ(newZ)
 
 //        //Math calculates in radians!!!!!!!
