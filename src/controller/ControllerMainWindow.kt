@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
 import javafx.scene.text.Text
+import javafx.scene.transform.Rotate
 import javafx.stage.Popup
 import model.Axis
 import model.EnvironmentNodes
@@ -113,8 +114,12 @@ class ControllerMainWindow {
         flyCamera.reset()
 
         //Register Events and listeners
+
         lookAndFeel()
         showCameraTransform()
+
+        sFieldOfView.value=30.0
+        flyCamera.camera.fieldOfView=30.0
     }
 
     private fun setViewportSize() {
@@ -147,15 +152,15 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun btnDoClick(event: ActionEvent) {
-
+        flyCamera.camera.rotationAxis=Rotate.Y_AXIS
     }
 
     @FXML     private fun btnDoClick1(event: ActionEvent) {
-
+        flyCamera.camera.rotationAxis=Rotate.X_AXIS
     }
 
     @FXML     private fun btnDoClick2(event: ActionEvent) {
-
+        flyCamera.camera.rotationAxis=Rotate.Z_AXIS
     }
 
     @FXML     private fun resetCamera() {
@@ -269,7 +274,7 @@ class ControllerMainWindow {
         //Slider camera Field of View
         sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
         //Slider rotate around Z axis
-        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.cameraRotateZ.angle=new_val.toDouble()}
+        sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
 
         //Set listener to all camera transforms
         val observableList = FXCollections.observableList(subScene!!.camera.transforms)
@@ -282,7 +287,7 @@ class ControllerMainWindow {
         msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
         msnCameraAngleZ.textField.setOnKeyReleased {
             flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
-            sRotateZ.value = msnCameraAngleZ.value
+//            sRotateZ.value = msnCameraAngleZ.value
         }
 
         msnCameraFieldOfView.textField.setOnKeyReleased {

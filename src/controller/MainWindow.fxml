@@ -47,7 +47,7 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                     <ScrollPane layoutY="8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="150.0">
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="150.0">
                                             <Label layoutX="4.0" layoutY="40.0" text="Iteration:" />
                                             <Spinner fx:id="spnIteration" editable="true" layoutX="53.0" layoutY="35.0" prefHeight="26.0" prefWidth="110.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="3.0" />
                                             <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnGoClick" prefHeight="26.0" prefWidth="146.0" text="Go" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" />
@@ -57,7 +57,7 @@
                                             <CheckBox fx:id="cbShowAxes" layoutX="2.0" layoutY="163.0" mnemonicParsing="false" onAction="#drawAxes" selected="true" text="Show axes" AnchorPane.leftAnchor="2.0" />
                                             <Button layoutX="2.0" layoutY="412.0" mnemonicParsing="false" onAction="#resetCamera" prefHeight="26.0" prefWidth="146.0" text="Reset Camera" />
                                             <ComboBox layoutX="2.0" layoutY="229.0" onAction="#resetCamera" prefHeight="26.0" prefWidth="146.0" />
-                                            <Slider fx:id="sRotateZ" layoutX="1.0" layoutY="191.0" majorTickUnit="90.0" max="360.0" min="-360.0" minorTickCount="6" showTickLabels="true" showTickMarks="true" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" />
+                                            <Slider fx:id="sRotateZ" layoutX="1.0" layoutY="191.0" majorTickUnit="90.0" max="360.0" min="-360.0" minorTickCount="6" showTickLabels="true" showTickMarks="true" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="191.0" />
                                             <Label layoutX="3.0" layoutY="69.0" text="Bounds" />
                                             <Spinner fx:id="spnSceneBounds" editable="true" layoutX="52.0" layoutY="64.0" prefHeight="26.0" prefWidth="95.0" />
                                             <Button layoutX="2.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnDoClick" prefHeight="26.0" prefWidth="146.0" text="Set Camera Middle" />

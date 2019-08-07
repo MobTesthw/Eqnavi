@@ -63,20 +63,20 @@ fun FlyCamera.backwardY (){
 fun FlyCamera.alongZ() {
     camera.translateX=0.0
     camera.translateY= 0.0
-    camera.translateZ=sceneBounds * 3
+    camera.translateZ=-sceneBounds
 
     cameraRotateX.angle = 0.0
-    cameraRotateY.angle = 180.0
+    cameraRotateY.angle = 0.0
     cameraRotateZ.angle = 0.0
 }
 
 fun FlyCamera.backwardZ() {
     camera.translateX=0.0
     camera.translateY= 0.0
-    camera.translateZ= - sceneBounds
+    camera.translateZ= sceneBounds*3
 
     cameraRotateX.angle = 0.0
-    cameraRotateY.angle = - 180.0
+    cameraRotateY.angle = 180.0
     cameraRotateZ.angle = 0.0
 }
 

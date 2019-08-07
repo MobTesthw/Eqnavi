@@ -49,10 +49,11 @@ open class FlyCamera(val sceneBounds:Double) {
 
     fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth: Double, viewPortHeight: Double):String {
 
+
         //For Camera
         val ax = cameraRotateX.angle * Math.PI / 180
         val ay = cameraRotateY.angle * Math.PI / 180
-        val az=cameraRotateZ.angle * Math.PI / 180
+//        val az=cameraRotateZ.angle * Math.PI / 180
 
         val deltaAx = deltaY * cameraRotateMultiplier / viewPortHeight * 360 * (Math.PI / 180)
         val deltaAy = deltaX * cameraRotateMultiplier / viewPortWidth * -360 * (Math.PI / 180)
