@@ -18,15 +18,14 @@ import javafx.scene.transform.Rotate
 import javafx.stage.Popup
 import model.Axis
 import model.EnvironmentNodes
-import view.*
+import view.flycamera.*
+import view.scenetree.SceneTree
+
 import java.util.*
 
 
 class ControllerMainWindow {
 
-
-
-    //    private final Set<KeyCode> pressedKeys = new HashSet<>();
     @FXML     lateinit var treeView: TreeView<*>
     @FXML     lateinit var gridPaneMain: GridPane
     @FXML     lateinit var viewportPane: Pane
@@ -35,7 +34,6 @@ class ControllerMainWindow {
     @FXML     lateinit var toolSplitPane: SplitPane
     @FXML     lateinit var spnIteration: Spinner<Int>
     @FXML     lateinit var spnSceneBounds: Spinner<Int>
-
 
     @FXML     lateinit var ta: TextArea
     @FXML     lateinit var sFieldOfView: Slider
@@ -48,6 +46,7 @@ class ControllerMainWindow {
     private val rotateIncrement = 0.1
     private val minVal = -999999.0
     private val maxVal = 999999.0
+    private val fieldOfViewStartVal=30.0
 
     private val msnCameraX: MiniSpinner=MiniSpinner(" X:", minVal, 0.0, maxVal, shiftIncrement)
     private val msnCameraY: MiniSpinner = MiniSpinner(" Y:", minVal, 0.0, maxVal, shiftIncrement)
@@ -55,7 +54,7 @@ class ControllerMainWindow {
     private val msnCameraAngleX: MiniSpinner = MiniSpinner(" ∠X:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnCameraAngleY: MiniSpinner = MiniSpinner(" ∠Y:", minVal, 0.0, maxVal, rotateIncrement)
     private val msnCameraAngleZ: MiniSpinner = MiniSpinner(" ∠Z:", minVal, 0.0, maxVal, rotateIncrement)
-    private val msnCameraFieldOfView: MiniSpinner = MiniSpinner(" Field of View:", minVal, 30.0, maxVal, 0.1)
+    private val msnCameraFieldOfView: MiniSpinner = MiniSpinner(" Field of View:", minVal, fieldOfViewStartVal, maxVal, 0.1)
     private val msnCameraNearClip: MiniSpinner = MiniSpinner(" Near Clip:", minVal, 0.0, maxVal, 0.1)
     private val msnCameraFarClip: MiniSpinner = MiniSpinner(" Far Clip:", minVal, 0.0, maxVal, 0.1)
 
@@ -78,15 +77,20 @@ class ControllerMainWindow {
     private var selectedNode: Node? = null
     private var sceneBounds = 1000
 
-    private val root = Group()
-    private val content = Group()//Group for content of the scene
+
+    private val content = Group() //Group for content of the scene
     private var subScene: SubScene? = null
     private val axis = Axis(sceneBounds.toDouble())
-    private var environmentNodes: EnvironmentNodes? = null
+    private var environmentNodes: EnvironmentNodes? = null  //Initiated after parameters received from user
     private val flyCamera = FlyCamera(sceneBounds.toDouble())
+
+
+    private lateinit var sceneTree:SceneTree  //fill scene both treeView
 
     //Initialization
     fun initialize() {
+
+        sceneTree=SceneTree(treeView)
 
         spnIteration.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
         spnSceneBounds.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
@@ -100,12 +104,12 @@ class ControllerMainWindow {
         hbNodeStatusBar.children.addAll(tfNodeID,msnNodeX.component,msnNodeY.component,msnNodeZ.component)
         hbNodeStatusBar.children.addAll(msnNodeAngleX.component,msnNodeAngleY.component,msnNodeAngleZ.component)
 
-
         content.children.clear()
 
-        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
+//        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
+        sceneTree.addAlltoRoot(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
         //SubScene
-        subScene = SubScene(root, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
+        subScene = SubScene(sceneTree.sceneRoot, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
         viewportPane.children.clear()
         setViewportSize()
         viewportPane.children.add(subScene)
@@ -131,10 +135,10 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun drawAxes() {
-        if (cbShowAxes.isSelected)
-            root.children.addAll(axis.axis)
-        else
-            root.children.removeAll(axis.axis)
+//        if (cbShowAxes.isSelected)
+//            root.children.addAll(axis.axis)
+//        else
+//            root.children.removeAll(axis.axis)
     }
 
     @FXML     private fun btnGoClick(event: ActionEvent) {
@@ -147,7 +151,7 @@ class ControllerMainWindow {
         environmentNodes = EnvironmentNodes(sceneBounds, itr)
         content.children.add(environmentNodes!!.content)
 
-        ta.appendText("\n  Calculation finished.. ? Scene nodes: " + root.children.toTypedArray().size + "\n")
+//        ta.appendText("\n  Calculation finished.. ? Scene nodes: " + root.children.toTypedArray().size + "\n")
 
     }
 
@@ -246,7 +250,7 @@ class ControllerMainWindow {
                     popup.y = e.y
                     val deleteShape = Label("Delete Shape")
                     deleteShape.setOnMouseClicked {
-                        root.children.remove(selectedNode)
+//                        root.children.remove(selectedNode)
                         popup.hide()
                     }
                     popup.content.addAll(HBox(deleteShape))
@@ -264,7 +268,7 @@ class ControllerMainWindow {
 
         //Split panes auto divider
         mainSplitPane.widthProperty().addListener { _,_,_-> mainSplitPane.setDividerPositions(0.9) }
-        treeSplitPane.widthProperty().addListener { _,_,_-> treeSplitPane.setDividerPositions(0.0) }
+        treeSplitPane.widthProperty().addListener { _,_,_-> treeSplitPane.setDividerPositions(0.2) }
 
         //Toolbar width save during changes
         val w1 = 798.4

@@ -1,4 +1,9 @@
-package view
+package view.flycamera
+
+/**
+ * Fly camera prepare camera, movement transitions related to viewport
+ * and returns camera group
+ */
 
 
 import javafx.scene.PerspectiveCamera
@@ -22,13 +27,14 @@ open class FlyCamera(val sceneBounds:Double) {
     private val cameraRotateMultiplier = 10
     private val cameraZoomMultiplier = -2.0
 
-
+//    val cameraGroup = Group()
 
 
     init {
         camera.id = "Perspective Camera"
         camera.transforms.addAll(cameraRotateX, cameraRotateY, cameraRotateZ)
         reset()
+
     }
 
     fun moveViewport(deltaX: Double, deltaY: Double) {
@@ -93,4 +99,20 @@ open class FlyCamera(val sceneBounds:Double) {
     }
 
 }
+
+
+
+
+//fun up(){}
+//fun down(){}
+//fun left(){}
+//fun right(){}
+//fun moveViewport(deltaX:Double,deltaY:Double){}
+//fun rotateViewport(deltaX: Double, deltaY: Double, viewPortWidth:Double, viewPortHeight:Double){}
+//
+//fun zoom(delta:Double){}
+//fun zoomIn(){}
+//fun zoomOut(){}
+//
+//fun reset(){}
 

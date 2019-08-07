@@ -1,6 +1,4 @@
-package view
-
-import kotlin.math.sqrt
+package view.flycamera
 
 fun FlyCamera.reset() {
     camera.transforms.removeAll()
@@ -17,8 +15,6 @@ fun FlyCamera.reset() {
     camera.fieldOfView=30.0
 
 }
-
-
 
 fun FlyCamera.alongX() {
     camera.translateX=sceneBounds * 3
