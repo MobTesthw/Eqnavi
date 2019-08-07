@@ -13,14 +13,14 @@ import javafx.scene.input.MouseButton
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
+import javafx.scene.paint.Color
 import javafx.scene.text.Text
-import javafx.scene.transform.Rotate
 import javafx.stage.Popup
 import model.Axis
 import model.EnvironmentNodes
-import view.flycamera.*
+import model.randompath.Lights
+import view.flycamera.FlyCamera
 import view.scenetree.SceneTree
-
 import java.util.*
 
 
@@ -90,9 +90,6 @@ class ControllerMainWindow {
     //Initialization
     fun initialize() {
 
-
-        sceneTree=SceneTree(treeView)
-
         spnIteration.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 10, 2)
         spnSceneBounds.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000000000, 100, 100)
 
@@ -109,23 +106,32 @@ class ControllerMainWindow {
 //        content.id="Content in controller"
 
 //        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
-        sceneTree.addAlltoRoot(flyCamera.camera, axis.axisGroup)
+
         //SubScene
-        subScene = SubScene(sceneTree.sceneRoot, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
+        sceneTree=SceneTree(treeView)
+        sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup /*, Lights().buildLight()*/)
+
+        subScene = SubScene(sceneTree.sceneRoot, 800.0, 600.0, true, SceneAntialiasing.BALANCED)
+        subScene!!.camera=flyCamera.camera
+//        subScene!!.fill= Color.BLACK
+
+
+
         viewportPane.children.clear()
         setViewportSize()
         viewportPane.children.add(subScene)
 
-        setSelectedCamera()
-        flyCamera.reset()
+//        setSelectedCamera()
+//        flyCamera.reset()
 
         //Register Events and listeners
 
         lookAndFeel()
-        showCameraTransform()
+        flyCamera.reset()
+//        showCameraTransform()
 
-        sFieldOfView.value=30.0
-        flyCamera.camera.fieldOfView=30.0
+
+
     }
 
     private fun setViewportSize() {
@@ -158,15 +164,15 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun btnDoClick(event: ActionEvent) {
-        flyCamera.camera.rotationAxis=Rotate.Y_AXIS
+
     }
 
     @FXML     private fun btnDoClick1(event: ActionEvent) {
-        flyCamera.camera.rotationAxis=Rotate.X_AXIS
+
     }
 
     @FXML     private fun btnDoClick2(event: ActionEvent) {
-        flyCamera.camera.rotationAxis=Rotate.Z_AXIS
+
     }
 
     @FXML     private fun resetCamera() {
@@ -174,7 +180,7 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun setSelectedCamera() {
-        subScene!!.camera = flyCamera.camera
+//        subScene!!.camera = flyCamera.camera
     }
 
     @FXML     private fun btnSaveClick(event: ActionEvent) {
@@ -187,6 +193,7 @@ class ControllerMainWindow {
         for (n in getAllNodes(/*gridPaneMain*/viewportPane)) {
             printNodeProperties(n)
         }
+
     }
 
     private fun lookAndFeel() {
@@ -279,6 +286,9 @@ class ControllerMainWindow {
 
         //Slider camera Field of View
         sFieldOfView.widthProperty().addListener { _,_,new_val ->flyCamera.camera.fieldOfView=new_val.toDouble() }
+//        //!!!
+        flyCamera.camera.fieldOfView=fieldOfViewStartVal
+//
         //Slider rotate around Z axis
         sRotateZ.valueProperty().addListener {_,_,new_val->flyCamera.camera.rotate=new_val.toDouble()}
 
@@ -289,12 +299,12 @@ class ControllerMainWindow {
         msnCameraX.textField.setOnKeyReleased { flyCamera.camera.translateX = msnCameraX.value }
         msnCameraY.textField.setOnKeyReleased { flyCamera.camera.translateY = msnCameraY.value }
         msnCameraZ.textField.setOnKeyReleased { flyCamera.camera.translateZ = msnCameraZ.value }
-        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
-        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
-        msnCameraAngleZ.textField.setOnKeyReleased {
-            flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
-//            sRotateZ.value = msnCameraAngleZ.value
-        }
+//        msnCameraAngleX.textField.setOnKeyReleased {  flyCamera.cameraRotateX.angle = msnCameraAngleX.value }
+//        msnCameraAngleY.textField.setOnKeyReleased {  flyCamera.cameraRotateY.angle = msnCameraAngleY.value }
+//        msnCameraAngleZ.textField.setOnKeyReleased {
+//            flyCamera.cameraRotateZ.angle = msnCameraAngleZ.value
+////            sRotateZ.value = msnCameraAngleZ.value
+//        }
 
         msnCameraFieldOfView.textField.setOnKeyReleased {
             flyCamera.camera.fieldOfViewProperty().value = msnCameraFieldOfView.value
@@ -328,12 +338,12 @@ class ControllerMainWindow {
         msnCameraX.setText(flyCamera.camera.translateX)
         msnCameraY.setText(flyCamera.camera.translateY)
         msnCameraZ.setText(flyCamera.camera.translateZ)
-        msnCameraAngleX.setText(flyCamera.cameraRotateX.angle)
-        msnCameraAngleY.setText(flyCamera.cameraRotateY.angle)
-        msnCameraAngleZ.setText(flyCamera.cameraRotateZ.angle)
-        msnCameraFieldOfView.setText(flyCamera.camera.fieldOfViewProperty().value!!)
-        msnCameraNearClip.setText(flyCamera.camera.nearClipProperty().value!!)
-        msnCameraFarClip.setText(flyCamera.camera.farClipProperty().value!!)
+//        msnCameraAngleX.setText(flyCamera.cameraRotateX.angle)
+//        msnCameraAngleY.setText(flyCamera.cameraRotateY.angle)
+//        msnCameraAngleZ.setText(flyCamera.cameraRotateZ.angle)
+//        msnCameraFieldOfView.setText(flyCamera.camera.fieldOfViewProperty().value!!)
+//        msnCameraNearClip.setText(flyCamera.camera.nearClipProperty().value!!)
+//        msnCameraFarClip.setText(flyCamera.camera.farClipProperty().value!!)
 
     }
 
@@ -345,13 +355,13 @@ class ControllerMainWindow {
 
     }
 
-    @FXML     private fun cameraAlongX() = flyCamera.alongX()
-    @FXML     private fun cameraAlongY() = flyCamera.alongY()
-    @FXML     private fun cameraAlongZ() = flyCamera.alongZ()
-    @FXML     private fun cameraBackwardX() = flyCamera.backwardX()
-    @FXML     private fun cameraBackwardY() = flyCamera.backwardY()
-    @FXML     private fun cameraBackwardZ() = flyCamera.backwardZ()
-    @FXML     private fun cameraAlong0() = flyCamera.along0()
+    @FXML     private fun cameraAlongX()    {}//= flyCamera.alongX()
+    @FXML     private fun cameraAlongY()    {}//= flyCamera.alongY()
+    @FXML     private fun cameraAlongZ()    {}//= flyCamera.alongZ()
+    @FXML     private fun cameraBackwardX() {}//= flyCamera.backwardX()
+    @FXML     private fun cameraBackwardY() {}//= flyCamera.backwardY()
+    @FXML     private fun cameraBackwardZ() {}//= flyCamera.backwardZ()
+    @FXML     private fun cameraAlong0()    {}//= flyCamera.along0()
 
 
     private fun printNodeProperties(node: Node) {
@@ -390,6 +400,10 @@ class ControllerMainWindow {
                 addAllDescendants(node, nodes)
         }
     }
+
+
+
+
 
 
 }

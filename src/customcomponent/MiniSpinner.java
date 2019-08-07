@@ -6,21 +6,19 @@ import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
-
-import static javafx.scene.paint.Color.rgb;
 //Round digit 0
 //Text Filed value update with Increment/Decrement button clock performed with requesting focus
 
