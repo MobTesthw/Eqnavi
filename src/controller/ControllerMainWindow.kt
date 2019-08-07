@@ -13,10 +13,12 @@ import javafx.scene.input.MouseButton
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
+import javafx.scene.paint.Color
 import javafx.scene.text.Text
 import javafx.stage.Popup
 import model.Axis
 import model.EnvironmentNodes
+import model.randompath.Lights
 import view.flycamera.FlyCamera
 import view.scenetree.SceneTree
 import java.util.*
@@ -107,11 +109,11 @@ class ControllerMainWindow {
 
         //SubScene
         sceneTree=SceneTree(treeView)
-        sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup)
+        sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup /*, Lights().buildLight()*/)
 
         subScene = SubScene(sceneTree.sceneRoot, 800.0, 600.0, true, SceneAntialiasing.BALANCED)
         subScene!!.camera=flyCamera.camera
-//        subScene.fill=Paint.
+//        subScene!!.fill= Color.BLACK
 
 
 
