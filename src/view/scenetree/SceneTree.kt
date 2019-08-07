@@ -4,7 +4,7 @@ import javafx.scene.Group
 import javafx.scene.Node
 import javafx.scene.control.TreeView
 import javafx.scene.control.TreeItem
-
+import java.lang.reflect.Field
 
 
 /**
@@ -45,8 +45,14 @@ class SceneTree(tree:TreeView<*>) {
 //    }
 
     private fun getNodeName(node:Node):String{
-//        val str=""+node.id.let { node.id +" - " }
+
         var str=""
+
+//        var field = ""
+//        for(f in node.javaClass.declaredFields)
+//           field+=" "+f.genericType +" "/*+f.name */+ " = "/* + f.get(node)+ f.type*/+"  - "+f.toGenericString()+"  "+ f.toString()+"  "+f.annotations
+
+
         if(node.id!=null) str=node.id +" - "
         return str + node.typeSelector
     }

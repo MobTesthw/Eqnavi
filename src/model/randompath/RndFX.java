@@ -14,7 +14,7 @@ import javafx.scene.transform.Translate;
 import static model.randompath.Rnd.getBelow;
 
  public class RndFX {
-      static public Material getMaterial(){
+      private static Material getMaterial(){
         final PhongMaterial material = new PhongMaterial();
 //        switch (rnd) {
 //            case 0:
@@ -51,6 +51,7 @@ import static model.randompath.Rnd.getBelow;
     }
     static public Group getBoxes(int number, double maxWidth, double maxHeight, double maxDepth, double farX, double farY, double farZ){
          Group boxes = new Group();
+         boxes.setId("Multiple random boxes");
          for(int i=0;i<number;i++){
 
              Box box = new Box();

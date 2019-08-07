@@ -17,17 +17,27 @@ class Axis(sceneBounds:Double) {
     private val axisRadius = axisLabelOffset / 2
     private val gridDivision = 20.0
 
+    val axisGroup = Group()
+
     val axis = Group()
     val axisLabels = Group()
     val grid = Group()
 
+
     init {
+        axisGroup.id = "Axis Group"
+        axis.id="Axis"
+        axisLabels.id="Axis label"
+        grid.id="Grid"
 
-
+        axisGroup.children.addAll(axis,axisLabels,grid)
 
         val axisX = Cylinder(axisRadius, axisLength)
+        axisX.id="Axis X"
         val axisY = Cylinder(axisRadius, axisLength)
+        axisY.id="Axis Y"
         val axisZ = Cylinder(axisRadius, axisLength)
+        axisZ.id="Axis Z"
         axis.children.addAll(axisX,axisY,axisZ)
 
         val gridIterator = sceneBounds / gridDivision
@@ -71,6 +81,7 @@ class Axis(sceneBounds:Double) {
             axisLabels.children.add(Text(i.toDouble(), axisLabelOffset * 4, "x $i : 0"))
             axisLabels.children.add(Text(axisLabelOffset * 4, i.toDouble(), "y $i : 0"))
             val text = Text(axisLabelOffset * 4, axisLabelOffset * 4, "Z 0 : 0 $i")
+            text.id="Axis Z Tick Mark $i"
             text.translateZ = i.toDouble()
             axisLabels.children.add(text)
             i += (axisLength / labelsOnAxis).toInt()

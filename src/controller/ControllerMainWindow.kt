@@ -78,7 +78,7 @@ class ControllerMainWindow {
     private var sceneBounds = 1000
 
 
-    private val content = Group() //Group for content of the scene
+//    private val content = Group() //Group for content of the scene
     private var subScene: SubScene? = null
     private val axis = Axis(sceneBounds.toDouble())
     private var environmentNodes: EnvironmentNodes? = null  //Initiated after parameters received from user
@@ -89,6 +89,7 @@ class ControllerMainWindow {
 
     //Initialization
     fun initialize() {
+
 
         sceneTree=SceneTree(treeView)
 
@@ -104,10 +105,11 @@ class ControllerMainWindow {
         hbNodeStatusBar.children.addAll(tfNodeID,msnNodeX.component,msnNodeY.component,msnNodeZ.component)
         hbNodeStatusBar.children.addAll(msnNodeAngleX.component,msnNodeAngleY.component,msnNodeAngleZ.component)
 
-        content.children.clear()
+//        content.children.clear()
+//        content.id="Content in controller"
 
 //        root.children.addAll(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
-        sceneTree.addAlltoRoot(flyCamera.camera, axis.axis, axis.axisLabels, axis.grid, content)
+        sceneTree.addAlltoRoot(flyCamera.camera, axis.axisGroup)
         //SubScene
         subScene = SubScene(sceneTree.sceneRoot, 500.0, 400.0, true, SceneAntialiasing.BALANCED)
         viewportPane.children.clear()
@@ -142,14 +144,14 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun btnGoClick(event: ActionEvent) {
-        content.children.clear()
+//        content.children.clear()
         //SetViewportSize();
         val itr = spnIteration.value
         sceneBounds = spnSceneBounds.value
         ta.text = "Starting new iteration number of iterations: $itr  scene bound: $sceneBounds\n"
 
         environmentNodes = EnvironmentNodes(sceneBounds, itr)
-        content.children.add(environmentNodes!!.content)
+        sceneTree.addAlltoRoot(environmentNodes!!.content)
 
 //        ta.appendText("\n  Calculation finished.. ? Scene nodes: " + root.children.toTypedArray().size + "\n")
 
