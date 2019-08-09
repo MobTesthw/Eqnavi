@@ -19,9 +19,11 @@ import javafx.stage.Popup
 import model.Axis
 import model.EnvironmentNodes
 import model.randompath.Lights
+import model.randompath.Path3D
 import view.flycamera.FlyCamera
 import view.scenetree.SceneTree
 import java.util.*
+import kotlin.test.todo
 
 
 class ControllerMainWindow {
@@ -109,7 +111,7 @@ class ControllerMainWindow {
 
         //SubScene
         sceneTree=SceneTree(treeView)
-        sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup /*, Lights().buildLight()*/)
+        sceneTree.addAlltoRoot(flyCamera.cameraXform, axis.axisGroup,Path3D(iteration = 500).content /*, Lights().buildLight()*/)
 
         subScene = SubScene(sceneTree.sceneRoot, 800.0, 600.0, true, SceneAntialiasing.BALANCED)
         subScene!!.camera=flyCamera.camera
@@ -143,10 +145,13 @@ class ControllerMainWindow {
     }
 
     @FXML     private fun drawAxes() {
-//        if (cbShowAxes.isSelected)
-//            root.children.addAll(axis.axis)
-//        else
-//            root.children.removeAll(axis.axis)
+   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (cbShowAxes.isSelected)
+                sceneTree.sceneRoot.children.addAll(axis.axis)
+            else
+                sceneTree.sceneRoot.children.removeAll(axis.axis)
+
+
     }
 
     @FXML     private fun btnGoClick(event: ActionEvent) {
